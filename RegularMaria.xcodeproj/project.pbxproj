@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
-		97961B80246CA29A007F7BE6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7F246CA29A007F7BE6 /* Actions.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
 		97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B83246CA29A007F7BE6 /* GameViewController.swift */; };
 		97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97961B88246CA29C007F7BE6 /* Assets.xcassets */; };
@@ -17,6 +16,8 @@
 		97961B97246CA29C007F7BE6 /* RegularMariaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */; };
 		97961BA2246CA29C007F7BE6 /* RegularMariaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */; };
 		97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */; };
+		97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */; };
+		97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB9246DF4C2007F7BE6 /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +41,6 @@
 		97961B78246CA29A007F7BE6 /* RegularMaria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegularMaria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		97961B7F246CA29A007F7BE6 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		97961B81246CA29A007F7BE6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		97961B83246CA29A007F7BE6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		97961B88246CA29C007F7BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +53,8 @@
 		97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularMariaUITests.swift; sourceTree = "<group>"; };
 		97961BA3246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
+		97961BB9246DF4C2007F7BE6 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +107,14 @@
 			children = (
 				97961B7B246CA29A007F7BE6 /* AppDelegate.swift */,
 				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
-				97961B7F246CA29A007F7BE6 /* Actions.sks */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
+				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
 				97961B83246CA29A007F7BE6 /* GameViewController.swift */,
 				97961B88246CA29C007F7BE6 /* Assets.xcassets */,
 				97961B8A246CA29C007F7BE6 /* LaunchScreen.storyboard */,
 				97961B8D246CA29C007F7BE6 /* Info.plist */,
 				97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */,
+				97961BB9246DF4C2007F7BE6 /* Utils.swift */,
 			);
 			path = RegularMaria;
 			sourceTree = "<group>";
@@ -242,7 +245,6 @@
 				97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */,
 				97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */,
 				97961B8C246CA29C007F7BE6 /* LaunchScreen.storyboard in Resources */,
-				97961B80246CA29A007F7BE6 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */,
+				97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */,
 				97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
