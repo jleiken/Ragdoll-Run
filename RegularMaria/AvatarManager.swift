@@ -33,9 +33,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         // define avatar physics
         _avatar.physicsBody = SKPhysicsBody(rectangleOf: _avatar.size)
-        _avatar.physicsBody!.affectedByGravity = true
-        _avatar.physicsBody!.isDynamic = true
-        _avatar.physicsBody!.usesPreciseCollisionDetection = true
+        ///_avatar.physicsBody!.usesPreciseCollisionDetection = true // only if there start being weird missed collisions
         _avatar.physicsBody!.restitution = 0.0
         _avatar.physicsBody!.collisionBitMask = AVATAR_CONTACT_MASK
         
@@ -48,7 +46,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     func letAvatarJump() {
         // if the avatar is in contact with the floor, let them jump again
         if _touching &&  _avatar.physicsBody!.allContactedBodies().contains((_ground.physicsBody)!) {
-            _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 1000))
+            _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 200))
         }
     }
     
@@ -62,5 +60,13 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     func walk(_ increment: CGFloat) {
         _avatar.position.x += increment
+    }
+    
+    func offScreen() -> Bool {
+        return _avatar.position.y < -_avatar.scene!.size.height
+    }
+    
+    func removeSelf() {
+        _avatar.removeFromParent()
     }
 }

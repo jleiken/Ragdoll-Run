@@ -16,13 +16,15 @@ let AVATAR_NAME = "avatar"
 let GROUND_NAME = "ground"
 let OBSTACLE_NAME = "obstacle"
 
+let MENU_NAME = "menuBut"
+let PLAY_NAME = "playBut"
+
 var CAMERA_SPEED = CGFloat(1)
 
 func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?, _ contactMask: UInt32) {
     if let body = cBody {
         body.restitution = 0.0
-        body.friction = 1.0
         body.isDynamic = false
-        body.collisionBitMask = contactMask
+        ///body.collisionBitMask = contactMask
     }
 }
