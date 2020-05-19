@@ -126,21 +126,22 @@ class GameScene: SKScene {
         scoreText.fontSize = 36
         scene.addChild(scoreText)
         
-        let buttonSize = CGSize(width: 75, height: 75)
         // menu button
-        let menuBut = SKSpriteNode(imageNamed: "home")
-        menuBut.scale(to: buttonSize)
+        let menuBut = SKLabelNode(text: "🏠 Menu")
+        menuBut.fontName = "AvenirNext-Bold"
         // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
-        menuBut.position.x = cameraX - (scene.size.width / 2) + 60
+        menuBut.position.x = cameraX - (scene.size.width / 2) + 65
         menuBut.position.y = -(scene.size.height / 2) + 60
+        menuBut.fontSize = 28
         menuBut.name = MENU_NAME
         scene.addChild(menuBut)
         
         // play again button
-        let playBut = SKSpriteNode(imageNamed: "play")
-        playBut.scale(to: buttonSize)
+        let playBut = SKLabelNode(text: "Play 🏃‍♀️")
+        playBut.fontName = "AvenirNext-Bold"
         playBut.position.x = cameraX + (scene.size.width / 2) - 60
         playBut.position.y = menuBut.position.y
+        playBut.fontSize = 28
         playBut.name = PLAY_NAME
         scene.addChild(playBut)
     }
