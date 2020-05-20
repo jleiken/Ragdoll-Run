@@ -16,23 +16,17 @@ class GameScene: SKScene {
     private var _activeScene : Bool?
     
     private var _avatarManager : AvatarManager?
-    private var _ground : SKShapeNode?
+    private var _worldGenerator : WorldGenerator?
+    private var _groundHeight : CGFloat?
         
     override func didMove(to view: SKView) {
-        // Create the ground
-        let groundHeight = -self.size.height / 3
-        
-        var groundPoints = [CGPoint(x: -self.size.width/2, y: groundHeight),
-                            CGPoint(x: self.size.width, y: groundHeight)]
-        _ground = SKShapeNode(points: &groundPoints, count: groundPoints.count)
-        _ground!.name = GROUND_NAME
-        _ground!.lineWidth = 5
-        _ground!.physicsBody = SKPhysicsBody(edgeChainFrom: _ground!.path!)
-        initializeStaticPhysicsBody(body: _ground!.physicsBody, GROUND_CONTACT_MASK)
-        scene!.addChild(self._ground!)
+        // render the first part of the world
+        _groundHeight = -self.size.height / 3
+        _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
+        _worldGenerator!.renderChunk(size: 5 * CHUNK_SIZE)
         
         // initiliaze the avatar
-        _avatarManager = AvatarManager(self.scene!, _ground!, groundHeight)
+        _avatarManager = AvatarManager(self.scene!, _groundHeight!)
         
         // notify the avatar manager of all collisions
         scene?.physicsWorld.contactDelegate = _avatarManager
@@ -90,6 +84,11 @@ class GameScene: SKScene {
             
             // let the avatar jump if they're on the platform
             _avatarManager?.letAvatarJump()
+            
+            // render the next section of the level if we're close to the end
+            if _worldGenerator?.shouldRenderNextChunk(scene?.camera?.position.x) ?? false {
+                _worldGenerator!.renderChunk(size: CHUNK_SIZE * 3)
+            }
             
             // move the camera one cameraSpeed increment to the right along with the avatar
             scene?.camera?.position.x += CAMERA_SPEED

@@ -19,7 +19,7 @@ let OBSTACLE_NAME = "obstacle"
 let MENU_NAME = "menuBut"
 let PLAY_NAME = "playBut"
 
-var CAMERA_SPEED = CGFloat(1)
+var CAMERA_SPEED = CGFloat(3)
 
 func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?, _ contactMask: UInt32) {
     if let body = cBody {

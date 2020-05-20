@@ -12,17 +12,14 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     private var _avatar: SKSpriteNode
     
-    private var _ground: SKShapeNode
-    
     private var _touching: Bool
     var isTouching: Bool {
         get { return _touching }
         set { _touching = newValue }
     }
     
-    init(_ scene: SKScene, _ ground: SKShapeNode, _ groundHeight: CGFloat) {
+    init(_ scene: SKScene, _ groundHeight: CGFloat) {
         _touching = false
-        _ground = ground
         
         // Create the character avatar
         let w = (scene.size.width + scene.size.height) * 0.05
@@ -45,8 +42,13 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     func letAvatarJump() {
         // if the avatar is in contact with the floor, let them jump again
-        if _touching &&  _avatar.physicsBody!.allContactedBodies().contains((_ground.physicsBody)!) {
-            _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 200))
+        if _touching {
+            let contactedBodies = _avatar.physicsBody!.allContactedBodies()
+            for body in contactedBodies {
+                if body.node?.name ?? "" == GROUND_NAME {
+                    _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 200))
+                }
+            }
         }
     }
     
