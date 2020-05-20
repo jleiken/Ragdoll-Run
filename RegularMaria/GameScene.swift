@@ -11,6 +11,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    weak var controllerContainer : UIViewController?
+    
     private var _activeScene : Bool?
     
     private var _avatarManager : AvatarManager?
@@ -54,8 +56,8 @@ class GameScene: SKScene {
             let touchedNode = self.nodes(at: positionInScene).first
             
             if touchedNode?.name == MENU_NAME {
-                // touched menu icon
-                print("home")
+                // touched menu icon, dismiss this popover
+                controllerContainer?.dismiss(animated: true, completion: nil)
             } else if touchedNode?.name == PLAY_NAME {
                 // touched play icon
                 scene?.removeAllChildren()

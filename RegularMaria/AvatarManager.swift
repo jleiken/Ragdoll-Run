@@ -33,7 +33,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         // define avatar physics
         _avatar.physicsBody = SKPhysicsBody(rectangleOf: _avatar.size)
-        ///_avatar.physicsBody!.usesPreciseCollisionDetection = true // only if there start being weird missed collisions
+        //_avatar.physicsBody!.usesPreciseCollisionDetection = true // only if there start being weird missed collisions
         _avatar.physicsBody!.restitution = 0.0
         _avatar.physicsBody!.collisionBitMask = AVATAR_CONTACT_MASK
         

@@ -17,7 +17,9 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = GameScene(fileNamed: "GameScene") {
+                // set the controller container so it can dismiss this window on home click
+                scene.controllerContainer = self.presentingViewController
                 // Set the scale mode to resize to fit the window
                 scene.scaleMode = .resizeFill
                 
@@ -29,19 +31,17 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            self.navigationController?.popViewController(animated: true)
         }
     }
 
     override var shouldAutorotate: Bool {
-        return true
+        return false
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        return .portraitUpsideDown
     }
 
     override var prefersStatusBarHidden: Bool {

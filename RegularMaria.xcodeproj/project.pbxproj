@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		974AF65C2475C2ED00A1EC30 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */; };
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		97961B78246CA29A007F7BE6 /* RegularMaria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegularMaria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				97961B8A246CA29C007F7BE6 /* LaunchScreen.storyboard */,
 				97961B8D246CA29C007F7BE6 /* Info.plist */,
 				97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */,
+				974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */,
 				97961BB9246DF4C2007F7BE6 /* Utils.swift */,
 			);
 			path = RegularMaria;
@@ -270,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */,
+				974AF65C2475C2ED00A1EC30 /* MenuViewController.swift in Sources */,
 				97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */,
 				97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,

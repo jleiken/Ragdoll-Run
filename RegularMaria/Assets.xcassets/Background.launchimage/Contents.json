@@ -2,6 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria Background.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -18,6 +19,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria Background XR.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -50,6 +52,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria Background Full 5.5.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -66,6 +69,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria Background Full 5.5-1.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -74,6 +78,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria Background Full 5.5-3.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -89,6 +94,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria iPad Background-1.png",
       "idiom" : "ipad",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -103,6 +109,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "Regular Maria iPad Background.png",
       "idiom" : "ipad",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",

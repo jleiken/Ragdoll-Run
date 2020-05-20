@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,27 +12,46 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="paT-aZ-KOP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright Jacob Leiken 2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDu-H5-KAb">
-                                <rect key="frame" x="98.5" y="631" width="178" height="16"/>
+                                <rect key="frame" x="118" y="826" width="178" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Maria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioM-XR-CgF">
+                                <rect key="frame" x="53.666666666666657" y="419" width="307" height="58"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="42"/>
+                                <color key="textColor" red="0.66890862568985998" green="0.4295955385722775" blue="0.061349526041667823" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.6470588235294118" green="0.90980392156862744" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="paT-aZ-KOP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5R8-En-ocl"/>
+                            <constraint firstItem="ioM-XR-CgF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9Y2-FD-79x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="paT-aZ-KOP" secondAttribute="bottom" id="Ax7-oM-ZRD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="paT-aZ-KOP" secondAttribute="trailing" id="EjQ-fr-X1F"/>
+                            <constraint firstItem="paT-aZ-KOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JP2-ny-gso"/>
                             <constraint firstItem="MDu-H5-KAb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Paj-36-gCf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MDu-H5-KAb" secondAttribute="bottom" constant="20" id="Q6u-cn-dnX"/>
+                            <constraint firstItem="ioM-XR-CgF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZV0-X9-vb6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundImage" width="414" height="896"/>
+    </resources>
 </document>
