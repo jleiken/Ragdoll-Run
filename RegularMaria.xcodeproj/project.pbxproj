@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		971DC40624771D2500DD4006 /* scratch.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = scratch.playground; path = ../../scratch.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
 		97961B78246CA29A007F7BE6 /* RegularMaria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegularMaria.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +129,7 @@
 		97961B95246CA29C007F7BE6 /* RegularMariaTests */ = {
 			isa = PBXGroup;
 			children = (
+				971DC40624771D2500DD4006 /* scratch.playground */,
 				97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */,
 				97961B98246CA29C007F7BE6 /* Info.plist */,
 			);

@@ -8,9 +8,13 @@
 
 import SpriteKit
 
+let CAMERA_MARGIN = 15
+
 class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     private var _avatar: SKSpriteNode
+    
+    private let _cameraToAvatarOffset: CGFloat
     
     private var _touching: Bool
     var isTouching: Bool {
@@ -22,10 +26,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         _touching = false
         
         // Create the character avatar
-        let w = (scene.size.width + scene.size.height) * 0.05
-        let h = (scene.size.width + scene.size.height) * 0.10
-        
-        _avatar = SKSpriteNode(color: SKColor.green, size: CGSize.init(width: w, height: h))
+        _avatar = SKSpriteNode(color: .orange, size: sizeByScene(scene, xFactor: 0.05, yFactor: 0.10))
         _avatar.name = AVATAR_NAME
         
         // define avatar physics
@@ -35,9 +36,10 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         _avatar.physicsBody!.collisionBitMask = AVATAR_CONTACT_MASK
         
         // add avatar to the scene and set its position
+        _avatar.position = CGPoint(x: -scene.size.width/4, y: groundHeight+5)
         scene.addChild(_avatar)
-        _avatar.position = CGPoint.init(x: 0, y: groundHeight+5)
-        
+
+        _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - _avatar.position.x
     }
     
     func letAvatarJump() {
@@ -47,6 +49,8 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
             for body in contactedBodies {
                 if body.node?.name ?? "" == GROUND_NAME {
                     _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 200))
+                    // only apply the impulse once
+                    return
                 }
             }
         }
@@ -60,8 +64,18 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         }
     }
     
+    /// Increments the position of the avatar by increment.
+    /// If the avatar has gotten out of sync with the camera, it will also push it slightly extra towards the camera
     func walk(_ increment: CGFloat) {
         _avatar.position.x += increment
+        let cameraOffset = ((_avatar.scene?.camera?.position.x ?? _avatar.position.x) - _cameraToAvatarOffset) - _avatar.position.x
+        if Int(abs(cameraOffset)) > CAMERA_MARGIN {
+            if cameraOffset < 0 {
+                _avatar.position.x -= 1
+            } else {
+                _avatar.position.x += 1
+            }
+        }
     }
     
     func offScreen() -> Bool {

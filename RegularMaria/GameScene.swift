@@ -23,7 +23,7 @@ class GameScene: SKScene {
         // render the first part of the world
         _groundHeight = -self.size.height / 3
         _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
-        _worldGenerator!.renderChunk(size: 5 * CHUNK_SIZE)
+        _worldGenerator!.renderChunk(size: CHUNK_SIZE)
         
         // initiliaze the avatar
         _avatarManager = AvatarManager(self.scene!, _groundHeight!)
@@ -87,7 +87,7 @@ class GameScene: SKScene {
             
             // render the next section of the level if we're close to the end
             if _worldGenerator?.shouldRenderNextChunk(scene?.camera?.position.x) ?? false {
-                _worldGenerator!.renderChunk(size: CHUNK_SIZE * 3)
+                _worldGenerator!.renderChunk(size: CHUNK_SIZE)
             }
             
             // move the camera one cameraSpeed increment to the right along with the avatar
@@ -134,6 +134,7 @@ class GameScene: SKScene {
         menuBut.position.x = cameraX - (scene.size.width / 2) + 65
         menuBut.position.y = -(scene.size.height / 2) + 60
         menuBut.fontSize = 28
+        menuBut.fontColor = .red
         menuBut.name = MENU_NAME
         scene.addChild(menuBut)
         
@@ -142,6 +143,7 @@ class GameScene: SKScene {
         playBut.fontName = "AvenirNext-Bold"
         playBut.position.x = cameraX + (scene.size.width / 2) - 60
         playBut.position.y = menuBut.position.y
+        playBut.fontColor = .red
         playBut.fontSize = 28
         playBut.name = PLAY_NAME
         scene.addChild(playBut)
