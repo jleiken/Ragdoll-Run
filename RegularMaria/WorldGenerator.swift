@@ -20,7 +20,7 @@ class WorldGenerator {
     private var _groundHeight : CGFloat
     private var _scene : SKScene
     
-    private var ENEMY_FREQ = 5
+    private var ENEMY_FREQ = 15
     private var PIPE_FREQ = 10
     /// the percantage likeliness that a hole is generated at each tick, out of 100
     private var HOLE_FREQ = 5

@@ -106,7 +106,6 @@ class GameScene: SKScene {
     
     func gameOver(_ scene : SKScene) {
         _activeScene = false
-        _avatarManager?.removeSelf()
         
         let cameraX = scene.camera!.position.x
         

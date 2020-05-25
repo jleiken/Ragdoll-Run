@@ -9,12 +9,15 @@
 import SpriteKit
 
 let CAMERA_MARGIN = 15
+let OBSTACLE_DY = CGFloat(0.01)
+let GROUND_DY = CGFloat(0.5)
 
 class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     private var _avatar: SKSpriteNode
     
     private let _cameraToAvatarOffset: CGFloat
+    private let _jumpForce: CGFloat
     
     private var _touching: Bool
     var isTouching: Bool {
@@ -36,24 +39,32 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         _avatar.physicsBody!.collisionBitMask = AVATAR_CONTACT_MASK
         
         // add avatar to the scene and set its position
-        _avatar.position = CGPoint(x: -scene.size.width/4, y: groundHeight+5)
+        _avatar.position = CGPoint(x: -scene.size.width/4, y: groundHeight+_avatar.size.height)
         scene.addChild(_avatar)
 
         _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - _avatar.position.x
+        _jumpForce = scene.size.height / 2.75
     }
     
+    /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)
     func letAvatarJump() {
-        // if the avatar is in contact with the floor, let them jump again
-        if _touching {
-            let contactedBodies = _avatar.physicsBody!.allContactedBodies()
-            for body in contactedBodies {
-                if body.node?.name ?? "" == GROUND_NAME {
-                    _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 200))
-                    // only apply the impulse once
-                    return
-                }
+        if _touching && (belowVerticalMovement(OBSTACLE_DY) || touchingGround()) {
+            print("dy: \(_avatar.physicsBody!.velocity.dy)")
+            _avatar.physicsBody!.applyImpulse(CGVector(dx: 0, dy: _jumpForce))
+        }
+    }
+    
+    func belowVerticalMovement(_ dy: CGFloat) -> Bool {
+        return abs(_avatar.physicsBody?.velocity.dy ?? 0) < dy
+    }
+    
+    func touchingGround() -> Bool {
+        for body in (_avatar.physicsBody?.allContactedBodies() ?? []) {
+            if (body.node?.name ?? "") == GROUND_NAME {
+                return belowVerticalMovement(GROUND_DY)
             }
         }
+        return false
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -80,9 +91,6 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     func offScreen() -> Bool {
         return _avatar.position.y < -_avatar.scene!.size.height
-    }
-    
-    func removeSelf() {
-        _avatar.removeFromParent()
+            || _avatar.position.x < _avatar.scene!.camera!.position.x - (_avatar.scene!.size.width / 2)
     }
 }
