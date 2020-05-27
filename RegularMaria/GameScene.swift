@@ -26,10 +26,7 @@ class GameScene: SKScene {
         _worldGenerator!.renderChunk(size: CHUNK_SIZE)
         
         // initiliaze the avatar
-        _avatarManager = AvatarManager(self.scene!, _groundHeight!)
-        
-        // notify the avatar manager of all collisions
-        scene?.physicsWorld.contactDelegate = _avatarManager
+        _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!, color: .orange)
         
         // add a camera to the scene
         let cameraNode = SKCameraNode()

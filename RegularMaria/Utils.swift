@@ -28,7 +28,6 @@ func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?, _ contactMask: UInt
     if let body = cBody {
         body.restitution = 0.0
         body.isDynamic = false
-        body.categoryBitMask = contactMask
     }
 }
 
