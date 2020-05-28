@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		974AF65C2475C2ED00A1EC30 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */; };
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
+		977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
@@ -42,7 +43,8 @@
 /* Begin PBXFileReference section */
 		974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
-		97961B78246CA29A007F7BE6 /* RegularMaria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RegularMaria.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		977CB77B24804F7100FAF268 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		97961B78246CA29A007F7BE6 /* Ragdoll Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ragdoll Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		97961B81246CA29A007F7BE6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -50,10 +52,10 @@
 		97961B88246CA29C007F7BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97961B8B246CA29C007F7BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97961B8D246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97961B92246CA29C007F7BE6 /* RegularMariaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegularMariaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97961B92246CA29C007F7BE6 /* RagdollRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RagdollRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularMariaTests.swift; sourceTree = "<group>"; };
 		97961B98246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97961B9D246CA29C007F7BE6 /* RegularMariaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegularMariaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97961B9D246CA29C007F7BE6 /* RagdollRunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RagdollRunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularMariaUITests.swift; sourceTree = "<group>"; };
 		97961BA3246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
@@ -89,9 +91,9 @@
 		97961B6F246CA29A007F7BE6 = {
 			isa = PBXGroup;
 			children = (
-				97961B7A246CA29A007F7BE6 /* RegularMaria */,
-				97961B95246CA29C007F7BE6 /* RegularMariaTests */,
-				97961BA0246CA29C007F7BE6 /* RegularMariaUITests */,
+				97961B7A246CA29A007F7BE6 /* RagdollRun */,
+				97961B95246CA29C007F7BE6 /* RagdollRunTests */,
+				97961BA0246CA29C007F7BE6 /* RagdollRunUITests */,
 				97961B79246CA29A007F7BE6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,18 +101,19 @@
 		97961B79246CA29A007F7BE6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				97961B78246CA29A007F7BE6 /* RegularMaria.app */,
-				97961B92246CA29C007F7BE6 /* RegularMariaTests.xctest */,
-				97961B9D246CA29C007F7BE6 /* RegularMariaUITests.xctest */,
+				97961B78246CA29A007F7BE6 /* Ragdoll Run.app */,
+				97961B92246CA29C007F7BE6 /* RagdollRunTests.xctest */,
+				97961B9D246CA29C007F7BE6 /* RagdollRunUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		97961B7A246CA29A007F7BE6 /* RegularMaria */ = {
+		97961B7A246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXGroup;
 			children = (
 				97961B7B246CA29A007F7BE6 /* AppDelegate.swift */,
 				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
+				977CB77B24804F7100FAF268 /* MenuScene.sks */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
 				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
 				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
@@ -122,33 +125,33 @@
 				974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */,
 				97961BB9246DF4C2007F7BE6 /* Utils.swift */,
 			);
-			path = RegularMaria;
+			path = RagdollRun;
 			sourceTree = "<group>";
 		};
-		97961B95246CA29C007F7BE6 /* RegularMariaTests */ = {
+		97961B95246CA29C007F7BE6 /* RagdollRunTests */ = {
 			isa = PBXGroup;
 			children = (
 				97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */,
 				97961B98246CA29C007F7BE6 /* Info.plist */,
 			);
-			path = RegularMariaTests;
+			path = RagdollRunTests;
 			sourceTree = "<group>";
 		};
-		97961BA0246CA29C007F7BE6 /* RegularMariaUITests */ = {
+		97961BA0246CA29C007F7BE6 /* RagdollRunUITests */ = {
 			isa = PBXGroup;
 			children = (
 				97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */,
 				97961BA3246CA29C007F7BE6 /* Info.plist */,
 			);
-			path = RegularMariaUITests;
+			path = RagdollRunUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		97961B77246CA29A007F7BE6 /* RegularMaria */ = {
+		97961B77246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97961BA6246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMaria" */;
+			buildConfigurationList = 97961BA6246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRun" */;
 			buildPhases = (
 				97961B74246CA29A007F7BE6 /* Sources */,
 				97961B75246CA29A007F7BE6 /* Frameworks */,
@@ -158,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = RegularMaria;
+			name = RagdollRun;
 			productName = RegularMaria;
-			productReference = 97961B78246CA29A007F7BE6 /* RegularMaria.app */;
+			productReference = 97961B78246CA29A007F7BE6 /* Ragdoll Run.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97961B91246CA29C007F7BE6 /* RegularMariaTests */ = {
+		97961B91246CA29C007F7BE6 /* RagdollRunTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97961BA9246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMariaTests" */;
+			buildConfigurationList = 97961BA9246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRunTests" */;
 			buildPhases = (
 				97961B8E246CA29C007F7BE6 /* Sources */,
 				97961B8F246CA29C007F7BE6 /* Frameworks */,
@@ -176,14 +179,14 @@
 			dependencies = (
 				97961B94246CA29C007F7BE6 /* PBXTargetDependency */,
 			);
-			name = RegularMariaTests;
+			name = RagdollRunTests;
 			productName = RegularMariaTests;
-			productReference = 97961B92246CA29C007F7BE6 /* RegularMariaTests.xctest */;
+			productReference = 97961B92246CA29C007F7BE6 /* RagdollRunTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		97961B9C246CA29C007F7BE6 /* RegularMariaUITests */ = {
+		97961B9C246CA29C007F7BE6 /* RagdollRunUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97961BAC246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMariaUITests" */;
+			buildConfigurationList = 97961BAC246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRunUITests" */;
 			buildPhases = (
 				97961B99246CA29C007F7BE6 /* Sources */,
 				97961B9A246CA29C007F7BE6 /* Frameworks */,
@@ -194,9 +197,9 @@
 			dependencies = (
 				97961B9F246CA29C007F7BE6 /* PBXTargetDependency */,
 			);
-			name = RegularMariaUITests;
+			name = RagdollRunUITests;
 			productName = RegularMariaUITests;
-			productReference = 97961B9D246CA29C007F7BE6 /* RegularMariaUITests.xctest */;
+			productReference = 97961B9D246CA29C007F7BE6 /* RagdollRunUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +225,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 97961B73246CA29A007F7BE6 /* Build configuration list for PBXProject "RegularMaria" */;
+			buildConfigurationList = 97961B73246CA29A007F7BE6 /* Build configuration list for PBXProject "RagdollRun" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -235,9 +238,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				97961B77246CA29A007F7BE6 /* RegularMaria */,
-				97961B91246CA29C007F7BE6 /* RegularMariaTests */,
-				97961B9C246CA29C007F7BE6 /* RegularMariaUITests */,
+				97961B77246CA29A007F7BE6 /* RagdollRun */,
+				97961B91246CA29C007F7BE6 /* RagdollRunTests */,
+				97961B9C246CA29C007F7BE6 /* RagdollRunUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +253,7 @@
 				97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */,
 				97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */,
 				97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */,
+				977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */,
 				97961B8C246CA29C007F7BE6 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,12 +310,12 @@
 /* Begin PBXTargetDependency section */
 		97961B94246CA29C007F7BE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 97961B77246CA29A007F7BE6 /* RegularMaria */;
+			target = 97961B77246CA29A007F7BE6 /* RagdollRun */;
 			targetProxy = 97961B93246CA29C007F7BE6 /* PBXContainerItemProxy */;
 		};
 		97961B9F246CA29C007F7BE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 97961B77246CA29A007F7BE6 /* RegularMaria */;
+			target = 97961B77246CA29A007F7BE6 /* RagdollRun */;
 			targetProxy = 97961B9E246CA29C007F7BE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -448,13 +452,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMaria/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMaria;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
+				PRODUCT_NAME = "Ragdoll Run";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -466,13 +470,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMaria/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMaria;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
+				PRODUCT_NAME = "Ragdoll Run";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -496,7 +500,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RegularMaria.app/RegularMaria";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ragdoll Run.app/Ragdoll Run";
 			};
 			name = Debug;
 		};
@@ -518,7 +522,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RegularMaria.app/RegularMaria";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ragdoll Run.app/Ragdoll Run";
 			};
 			name = Release;
 		};
@@ -565,7 +569,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		97961B73246CA29A007F7BE6 /* Build configuration list for PBXProject "RegularMaria" */ = {
+		97961B73246CA29A007F7BE6 /* Build configuration list for PBXProject "RagdollRun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97961BA4246CA29C007F7BE6 /* Debug */,
@@ -574,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97961BA6246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMaria" */ = {
+		97961BA6246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97961BA7246CA29C007F7BE6 /* Debug */,
@@ -583,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97961BA9246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMariaTests" */ = {
+		97961BA9246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRunTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97961BAA246CA29C007F7BE6 /* Debug */,
@@ -592,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97961BAC246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RegularMariaUITests" */ = {
+		97961BAC246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRunUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97961BAD246CA29C007F7BE6 /* Debug */,
