@@ -63,13 +63,10 @@ class AvatarManager: NSObject {
         _fullNode = SKNode()
         for part in avatarParts {
             _fullNode.addChild(part)
-            part.name = AVATAR_NAME
-//            part.physicsBody = SKPhysicsBody(rectangleOf: part.size)
-//            part.physicsBody?.restitution = 0.0
         }
 
         // add the node that contains each body part
-        let xPos = -scene.size.width/4
+        let xPos = -scene.size.width/8
         let nodePos = CGPoint(x: xPos, y: groundHeight+legL.size.height+(torso.size.height*3/7))
         _fullNode.position = nodePos
         scene.addChild(_fullNode)
@@ -83,39 +80,38 @@ class AvatarManager: NSObject {
         legR.position = scene.convert(CGPoint(x: xPos+(torso.size.width/2), y: groundHeight+(legL.size.height/2)), to: _fullNode)
         
         // define part-specific physics: arms and legs literally don't do anything
-//        armL.physicsBody?.collisionBitMask = 0
-//        armL.physicsBody?.categoryBitMask = 0
-//        armL.physicsBody?.mass = 0.0001
-//        armL.physicsBody?.angularDamping = 1.0
-//        armR.physicsBody?.collisionBitMask = 0
-//        armR.physicsBody?.categoryBitMask = 0
-//        armR.physicsBody?.mass = 0.0001
-//        armR.physicsBody?.angularDamping = 1.0
-//        legL.physicsBody?.collisionBitMask = 0
-//        legL.physicsBody?.categoryBitMask = 0
-//        legL.physicsBody?.mass = 0.0001
-//        legL.physicsBody?.angularDamping = 1.0
-//        legR.physicsBody?.collisionBitMask = 0
-//        legR.physicsBody?.categoryBitMask = 0
-//        legR.physicsBody?.mass = 0.0001
-//        legR.physicsBody?.angularDamping = 1.0
+        torso.physicsBody = SKPhysicsBody(rectangleOf: torso.size)
+        torso.physicsBody?.isDynamic = false
+        torso.physicsBody?.categoryBitMask = 0
+        for part in [armL, armR, legL, legR] {
+            part.physicsBody = SKPhysicsBody(rectangleOf: part.size)
+            part.physicsBody?.restitution = 0.0
+            part.physicsBody?.collisionBitMask = 0
+            part.physicsBody?.categoryBitMask = 0
+            part.physicsBody?.angularDamping = 0.95
+        }
         
         // add joints here
-//        let shoulder = SKPhysicsJointFixed.joint(withBodyA: torso.physicsBody!, bodyB: head.physicsBody!,
-//                                                 anchor: CGPoint(x: xPos, y: head.position.y - (head.size.height / 2)))
-//        scene.physicsWorld.add(shoulder)
-//        let armJointL = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: armL.physicsBody!,
-//                                                  anchor: CGPoint(x: xPos-(torso.size.width/2), y: armL.position.y))
-//        scene.physicsWorld.add(armJointL)
-//        let armJointR = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: armR.physicsBody!,
-//                                                  anchor: CGPoint(x: xPos+(torso.size.width/2), y: armR.position.y))
-//        scene.physicsWorld.add(armJointR)
-//        let legJointL = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: legL.physicsBody!,
-//                                                anchor: CGPoint(x: xPos-(torso.size.width/2), y: groundHeight+legL.size.height))
-//        scene.physicsWorld.add(legJointL)
-//        let legJointR = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: legR.physicsBody!,
-//                                                anchor: CGPoint(x: xPos+(torso.size.width/2), y: groundHeight+legL.size.height))
-//        scene.physicsWorld.add(legJointR)
+        let armJointL = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: armL.physicsBody!,
+                                                anchor: CGPoint(
+                                                    x: xPos-(torso.size.width/2),
+                                                    y: groundHeight+legL.size.height+(torso.size.height*2/3)))
+        scene.physicsWorld.add(armJointL)
+        let armJointR = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: armR.physicsBody!,
+                                                anchor: CGPoint(
+                                                    x: xPos+(torso.size.width/2),
+                                                    y: groundHeight+legL.size.height+(torso.size.height*2/3)))
+        scene.physicsWorld.add(armJointR)
+        let legJointL = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: legL.physicsBody!,
+                                                anchor: CGPoint(
+                                                    x: xPos-(torso.size.width/2),
+                                                    y: groundHeight+legL.size.height))
+        scene.physicsWorld.add(legJointL)
+        let legJointR = SKPhysicsJointPin.joint(withBodyA: torso.physicsBody!, bodyB: legR.physicsBody!,
+                                                anchor: CGPoint(
+                                                    x: xPos+(torso.size.width/2),
+                                                    y: groundHeight+legL.size.height))
+        scene.physicsWorld.add(legJointR)
         
         // create the physics body of the whole thing for ease of reference
         _fullNode.physicsBody = SKPhysicsBody(rectangleOf: sizeByScene(scene, xFactor: 0.05, yFactor: 0.16))
@@ -123,7 +119,7 @@ class AvatarManager: NSObject {
         _avatarBody.restitution = 0.0
 
         _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - xPos
-        _jumpForce = scene.size.height / 2.5
+        _jumpForce = scene.size.height / 2.2
     }
     
     /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)
@@ -138,7 +134,12 @@ class AvatarManager: NSObject {
     }
     
     func touchingSomething() -> Bool {
-        return _avatarBody.allContactedBodies().count > 0
+        for body in _avatarBody.allContactedBodies() {
+            if body.node!.parent != _fullNode {
+                return true
+            }
+        }
+        return false
     }
     
     /// Increments the position of the avatar by increment.

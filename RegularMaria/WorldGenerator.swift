@@ -31,7 +31,7 @@ class WorldGenerator {
     init(groundHeight : CGFloat, startingPos : CGFloat, scene : SKScene) {
         _renderedTo = startingPos
         _groundHeight = groundHeight
-        HOLE_SIZE = abs(_groundHeight / 2)
+        HOLE_SIZE = abs(_groundHeight / 1.4)
         _scene = scene
         
         _enemyMovementSequence = SKAction.repeatForever(SKAction.sequence([
