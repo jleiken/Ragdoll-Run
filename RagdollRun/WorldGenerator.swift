@@ -96,6 +96,7 @@ class WorldGenerator {
             // position is x: nextStart, y: bottom of the screen
             ground.position = CGPoint(x: CGFloat(i) * HOLE_SIZE, y: _groundHeight * 1.5)
             ground.name = GROUND_NAME
+            ground.zPosition = 0
             ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
             initializeStaticPhysicsBody(body: ground.physicsBody, GROUND_CONTACT_MASK)
             _scene.addChild(ground)

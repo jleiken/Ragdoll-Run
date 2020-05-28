@@ -20,6 +20,11 @@ let ENEMY_NAME = "enemy"
 
 let MENU_NAME = "menuBut"
 let PLAY_NAME = "playBut"
+let REMOVE_AD_NAME = "removeAddBut"
+let NO_SOUND_NAME = "toggleSoundBut"
+let CUSTOMIZE_NAME = "customizeBut"
+
+let SCORE_KEY = "highScore"
 
 var CAMERA_SPEED = CGFloat(3)
 
@@ -42,4 +47,21 @@ func sizeByScene(_ scene: SKScene, xFactor: CGFloat, yFactor: CGFloat) -> CGSize
     let h = (scene.size.width + scene.size.height) * yFactor
     
     return CGSize(width: w, height: h)
+}
+
+var _highScore: Int64 = -1
+var highScore: Int64 {
+    /// checks with CloudKit if highScore has been pulled or set yet
+    get {
+        if _highScore == -1 {
+            // may not exist, but default is 0 anyway
+            _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: SCORE_KEY)
+        }
+        return _highScore
+    }
+    /// sets in CloudKit and locally
+    set {
+        _highScore = newValue
+        NSUbiquitousKeyValueStore.default.set(newValue, forKey: SCORE_KEY)
+    }
 }

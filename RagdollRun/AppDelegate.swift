@@ -15,8 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // for iCloud
+        // register to observe notifications from the store
+        NotificationCenter.default.addObserver(self, selector: #selector(storeDidChange), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: NSUbiquitousKeyValueStore.default)
+         
+        // get changes that might have happened while this
+        // instance of your app wasn't running
+        NSUbiquitousKeyValueStore.default.synchronize()
+        
         return true
+    }
+    
+    @objc func storeDidChange(notification: Notification) {
+        if let changedKey = notification.userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as? String {
+            if changedKey == SCORE_KEY {
+                _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: changedKey)
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

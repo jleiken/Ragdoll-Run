@@ -11,8 +11,6 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    weak var controllerContainer : UIViewController?
-    
     private var _activeScene : Bool?
     
     private var _avatarManager : AvatarManager?
@@ -48,7 +46,9 @@ class GameScene: SKScene {
             
             if touchedNode?.name == MENU_NAME {
                 // touched menu icon, dismiss this popover
-                controllerContainer?.dismiss(animated: true, completion: nil)
+                view?.presentScene(
+                    MenuScene(fileNamed: "MenuScene")!,
+                    transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
             } else if touchedNode?.name == PLAY_NAME {
                 // touched play icon
                 scene?.removeAllChildren()
@@ -97,7 +97,7 @@ class GameScene: SKScene {
         return _activeScene ?? false
     }
     
-    func score() -> Int {
+    func calcScore() -> Int {
         return Int(scene!.camera!.position.x / 100)
     }
     
@@ -116,11 +116,17 @@ class GameScene: SKScene {
         scene.addChild(goText)
         
         // score label
-        let scoreText = SKLabelNode(text: "Your score: \(score())")
+        let score = calcScore()
+        let scoreText = SKLabelNode(text: "Your score: \(score)")
         scoreText.position.x = cameraX
         scoreText.position.y = -40
         scoreText.fontName = "AvenirNext-Bold"
-        scoreText.fontSize = 36
+        // is it a high score? if so, set it and modify the a label
+        if score > highScore {
+            highScore = Int64(score)
+            scoreText.text = "New high score: \(score)!"
+            scoreText.fontColor = .green
+        }
         scene.addChild(scoreText)
         
         // menu button

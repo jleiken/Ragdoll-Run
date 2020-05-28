@@ -10,6 +10,7 @@
 		974AF65C2475C2ED00A1EC30 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */; };
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
 		977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
+		977CB7802480553D00FAF268 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
@@ -44,6 +45,8 @@
 		974AF65B2475C2ED00A1EC30 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
 		977CB77B24804F7100FAF268 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		977CB77F2480553D00FAF268 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ragdoll Run.entitlements"; sourceTree = "<group>"; };
 		97961B78246CA29A007F7BE6 /* Ragdoll Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ragdoll Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -111,9 +114,11 @@
 		97961B7A246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXGroup;
 			children = (
+				978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */,
 				97961B7B246CA29A007F7BE6 /* AppDelegate.swift */,
 				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
 				977CB77B24804F7100FAF268 /* MenuScene.sks */,
+				977CB77F2480553D00FAF268 /* MenuScene.swift */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
 				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
 				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
@@ -284,6 +289,7 @@
 				97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */,
 				97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */,
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
+				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
 			);
@@ -450,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
 				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";
@@ -468,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
 				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";

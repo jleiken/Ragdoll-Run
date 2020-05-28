@@ -69,6 +69,8 @@ class AvatarManager: NSObject {
         let xPos = -scene.size.width/8
         let nodePos = CGPoint(x: xPos, y: groundHeight+legL.size.height+(torso.size.height*3/7))
         _fullNode.position = nodePos
+        // we always want it to be at the front
+        _fullNode.zPosition = 100
         scene.addChild(_fullNode)
         
         // set the position of the body parts based on the parent node

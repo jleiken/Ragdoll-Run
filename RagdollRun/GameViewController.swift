@@ -16,10 +16,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = GameScene(fileNamed: "GameScene") {
-                // set the controller container so it can dismiss this window on home click
-                scene.controllerContainer = self.presentingViewController
+            // Load the SKScene from 'MenuScene.sks'
+            if let scene = MenuScene(fileNamed: "MenuScene") {
                 // Set the scale mode to resize to fit the window
                 scene.scaleMode = .resizeFill
                 
