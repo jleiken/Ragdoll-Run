@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 class MenuScene: SKScene {
             
@@ -23,44 +22,26 @@ class MenuScene: SKScene {
         // add a title
         let title = SKLabelNode(text: "Ragdoll Run")
         title.fontSize = 42.0
-        title.fontColor = UIColor(red: 0.67, green: 0.43, blue: 0.06, alpha: 1.0)
-        title.fontName = "AvenirNext-Heavy"
+        title.fontColor = ORANGE
+        title.fontName = TITLE_FONT
         title.position = CGPoint(x: 0, y: topOrBottom*2/3)
         scene!.addChild(title)
         
         // add the buttons
-        let playBut = makeButton(text: "Play 🏃‍♀️", name: PLAY_NAME)
+        let playBut = makeButton(scene: scene!, text: "Play 🏃‍♀️", name: PLAY_NAME)
         playBut.position = CGPoint(x: 0, y: topOrBottom/4)
         scene!.addChild(playBut)
         
-        let customizeBut = makeButton(text: "Customize 🎨", name: CUSTOMIZE_NAME)
+        let customizeBut = makeButton(scene: scene!, text: "Customize 🎨", name: CUSTOMIZE_NAME)
         customizeBut.position = .zero
         scene!.addChild(customizeBut)
         
         // add score counter
         let score = SKLabelNode(text: "High Score: \(highScore)")
         score.fontColor = title.fontColor
-        score.fontName = "AvenirNext-DemiBold"
+        score.fontName = LABEL_FONT
         score.position = CGPoint(x: 0, y: -topOrBottom*2/3)
         scene!.addChild(score)
-    }
-    
-    func makeButton(text: String, name: String) -> SKNode {
-        let textNode = SKLabelNode(text: text)
-        textNode.name = name
-        textNode.verticalAlignmentMode = .center
-        textNode.horizontalAlignmentMode = .center
-        textNode.fontColor = .white
-        textNode.fontName = "AvenirNext-DemiBold"
-        textNode.position = CGPoint(x: 0, y: 0)
-        
-        let textSize = NSString(string: text).size(withAttributes: [.font: UIFont(name: textNode.fontName!, size: textNode.fontSize)!])
-        let buttonSize = CGSize(width: textSize.width + (scene?.size.width ?? 0)/20, height: scene!.size.height / 15)
-        let but = SKSpriteNode(color: .black, size: buttonSize)
-        but.name = name
-        but.addChild(textNode)
-        
-        return but
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,6 +54,10 @@ class MenuScene: SKScene {
                 view?.presentScene(
                     GameScene(fileNamed: "GameScene")!,
                     transition: SKTransition.doorsOpenHorizontal(withDuration: 0.2))
+            case CUSTOMIZE_NAME:
+                view?.presentScene(
+                    CustomizeScene(fileNamed: "CustomizeScene")!,
+                    transition: SKTransition.fade(withDuration: 0.2))
             default:
                 break
             }

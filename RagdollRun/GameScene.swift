@@ -23,15 +23,16 @@ class GameScene: SKScene {
         _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
         _worldGenerator!.renderChunk(size: CHUNK_SIZE)
         
-        // initiliaze the avatar
+        // initiliaze the avatar and make it the contact delegate
         _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!, color: .orange)
+        scene?.physicsWorld.contactDelegate = _avatarManager
         
         // add a camera to the scene
         let cameraNode = SKCameraNode()
         cameraNode.position = scene!.anchorPoint
-        
         scene?.addChild(cameraNode)
         scene?.camera = cameraNode
+        
         _activeScene = true
     }
     
@@ -111,7 +112,7 @@ class GameScene: SKScene {
         goText.position.x = cameraX
         goText.position.y = 10
         goText.fontColor = SKColor.red
-        goText.fontName = "AvenirNext-Heavy"
+        goText.fontName = TITLE_FONT
         goText.fontSize = 48
         scene.addChild(goText)
         
@@ -120,7 +121,7 @@ class GameScene: SKScene {
         let scoreText = SKLabelNode(text: "Your score: \(score)")
         scoreText.position.x = cameraX
         scoreText.position.y = -40
-        scoreText.fontName = "AvenirNext-Bold"
+        scoreText.fontName = EMPHASIS_FONT
         // is it a high score? if so, set it and modify the a label
         if score > highScore {
             highScore = Int64(score)
@@ -131,7 +132,7 @@ class GameScene: SKScene {
         
         // menu button
         let menuBut = SKLabelNode(text: "🏠 Menu")
-        menuBut.fontName = "AvenirNext-Bold"
+        menuBut.fontName = EMPHASIS_FONT
         // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
         menuBut.position.x = cameraX - (scene.size.width / 2) + 65
         menuBut.position.y = -(scene.size.height / 2) + 60
@@ -142,7 +143,7 @@ class GameScene: SKScene {
         
         // play again button
         let playBut = SKLabelNode(text: "Play 🏃‍♀️")
-        playBut.fontName = "AvenirNext-Bold"
+        playBut.fontName = EMPHASIS_FONT
         playBut.position.x = cameraX + (scene.size.width / 2) - 60
         playBut.position.y = menuBut.position.y
         playBut.fontColor = .red

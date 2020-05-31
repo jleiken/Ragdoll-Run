@@ -22,11 +22,13 @@ class WorldGenerator {
     
     private var ENEMY_FREQ = 15
     private var PIPE_FREQ = 10
+    private var COIN_FREQ = 20
     /// the percantage likeliness that a hole is generated at each tick, out of 100
     private var HOLE_FREQ = 5
     private let HOLE_SIZE : CGFloat
     
     private let _enemyMovementSequence : SKAction
+    private let _coinMovementSequence : SKAction
     
     init(groundHeight : CGFloat, startingPos : CGFloat, scene : SKScene) {
         _renderedTo = startingPos
@@ -38,6 +40,12 @@ class WorldGenerator {
             SKAction.moveBy(x: _scene.size.width * 0.4, y: 0, duration: 0.4),
             SKAction.wait(forDuration: 0.1),
             SKAction.moveBy(x: -_scene.size.width * 0.4, y: 0, duration: 0.4),
+            SKAction.wait(forDuration: 0.1),
+        ]))
+        _coinMovementSequence = SKAction.repeatForever(SKAction.sequence([
+            SKAction.moveBy(x: _scene.size.height * 0.1, y: 0, duration: 0.2),
+            SKAction.wait(forDuration: 0.1),
+            SKAction.moveBy(x: -_scene.size.height * 0.1, y: 0, duration: 0.2),
             SKAction.wait(forDuration: 0.1),
         ]))
     }
@@ -55,6 +63,7 @@ class WorldGenerator {
             from = -_renderedTo
         }
         generateDangers(from, to)
+        generateCoins(from, to)
         
         _renderedTo = to
     }
@@ -98,7 +107,7 @@ class WorldGenerator {
             ground.name = GROUND_NAME
             ground.zPosition = 0
             ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
-            initializeStaticPhysicsBody(body: ground.physicsBody, GROUND_CONTACT_MASK)
+            initializeStaticPhysicsBody(body: ground.physicsBody)
             _scene.addChild(ground)
         }
     }
@@ -133,6 +142,26 @@ class WorldGenerator {
         }
     }
     
+    func generateCoins(_ from: CGFloat, _ to: CGFloat) {
+        var index = from
+        while index < to {
+            var toIncrement = HOLE_SIZE
+            if _scene.atPoint(CGPoint(x: index, y: _groundHeight-5)).name == GROUND_NAME {
+                // there's ground here, so think about adding a coin if there's no pipe or enemy
+                if _scene.atPoint(CGPoint(x: index, y: _groundHeight+5)).name == nil {
+                    let genCoin = randLessThan(COIN_FREQ)
+                    
+                    if genCoin {
+                        addCoin(x: index)
+                        toIncrement = HOLE_SIZE/2
+                    }
+                }
+            }
+            
+            index += toIncrement
+        }
+    }
+    
     func addEnemy(x: CGFloat) {
         let xSize = _scene.size.width * 0.1
         let ySize = _scene.size.height * 0.1
@@ -143,10 +172,11 @@ class WorldGenerator {
             CGPoint(x: x+(xSize*2), y: _groundHeight+ySize),
         ]
         let enemy = SKShapeNode(points: &enemyPoints, count: enemyPoints.count)
+        enemy.name = ENEMY_NAME
         enemy.fillColor = ENEMY_COLOR
         enemy.lineWidth = 0.0
         enemy.physicsBody = SKPhysicsBody(polygonFrom: enemy.path!)
-        initializeStaticPhysicsBody(body: enemy.physicsBody, ENEMY_CONTACT_MASK)
+        initializeStaticPhysicsBody(body: enemy.physicsBody)
         
         // add enemy movement
         enemy.run(_enemyMovementSequence)
@@ -155,17 +185,35 @@ class WorldGenerator {
     
     func addPipe(x: CGFloat) {
         let pipeBase = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.05, yFactor: 0.12))
+        pipeBase.name = OBSTACLE_NAME
         pipeBase.position = CGPoint(x: x, y: _groundHeight+pipeBase.size.height/2)
         pipeBase.physicsBody = SKPhysicsBody(rectangleOf: pipeBase.size)
-        initializeStaticPhysicsBody(body: pipeBase.physicsBody, OBJECT_CONTACT_MASK)
+        initializeStaticPhysicsBody(body: pipeBase.physicsBody)
         
         let pipeTop = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.06, yFactor: 0.03))
+        pipeTop.name = OBSTACLE_NAME
         pipeTop.position = CGPoint(x: x, y: pipeBase.position.y+pipeBase.size.height/2)
         pipeTop.physicsBody = SKPhysicsBody(rectangleOf: pipeTop.size)
-        initializeStaticPhysicsBody(body: pipeTop.physicsBody, OBJECT_CONTACT_MASK)
+        initializeStaticPhysicsBody(body: pipeTop.physicsBody)
         
         _scene.addChild(pipeBase)
         _scene.addChild(pipeTop)
+    }
+    
+    func addCoin(x: CGFloat) {
+        let squareSize = sizeByScene(_scene, xFactor: 0.02, yFactor: 0.02)
+        let coin = SKShapeNode(circleOfRadius: squareSize.width)
+        coin.lineWidth = 2.0
+        coin.strokeColor = .yellow
+        let coinH = Int(squareSize.height)
+        coin.position = CGPoint(x: x, y: _groundHeight + CGFloat(Int.random(in: coinH*2...coinH*20)))
+        coin.physicsBody = SKPhysicsBody(circleOfRadius: squareSize.width)
+        coin.physicsBody?.isDynamic = false
+        coin.physicsBody?.categoryBitMask = 0
+        coin.physicsBody?.collisionBitMask = 0
+        coin.physicsBody?.contactTestBitMask = COIN_CONTACT_MASK
+        
+        _scene.addChild(coin)
     }
     
     /// Generates a random number from [0, 100) and returns true if it is less than cutoff

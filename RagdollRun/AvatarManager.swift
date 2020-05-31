@@ -11,7 +11,7 @@ import SpriteKit
 let CAMERA_MARGIN = 15
 let VERT_DY = CGFloat(0.01)
 
-class AvatarManager: NSObject {
+class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     private let _scene: SKScene
     private let _fullNode: SKNode
@@ -85,10 +85,18 @@ class AvatarManager: NSObject {
         torso.physicsBody = SKPhysicsBody(rectangleOf: torso.size)
         torso.physicsBody?.isDynamic = false
         torso.physicsBody?.categoryBitMask = 0
+        torso.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        head.physicsBody = SKPhysicsBody(rectangleOf: head.size)
+        head.physicsBody?.isDynamic = false
+        head.physicsBody?.categoryBitMask = 0
+        head.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        
+        
         for part in [armL, armR, legL, legR] {
             part.physicsBody = SKPhysicsBody(rectangleOf: part.size)
             part.physicsBody?.restitution = 0.0
             part.physicsBody?.collisionBitMask = 0
+            part.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
             part.physicsBody?.categoryBitMask = 0
             part.physicsBody?.angularDamping = 0.95
         }
@@ -142,6 +150,20 @@ class AvatarManager: NSObject {
             }
         }
         return false
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var coinOpt: SKNode?
+        if contact.bodyA.contactTestBitMask == COIN_CONTACT_MASK {
+            coinOpt = contact.bodyA.node
+        } else if contact.bodyB.contactTestBitMask == COIN_CONTACT_MASK {
+            coinOpt = contact.bodyB.node
+        }
+        
+        if let coin = coinOpt {
+            coin.removeFromParent()
+            coinCount += 1
+        }
     }
     
     /// Increments the position of the avatar by increment.
