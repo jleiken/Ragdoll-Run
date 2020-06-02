@@ -95,6 +95,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		978EC64D2486EBE400469FC7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
+				9786DDF224844831008FCF6C /* CustomizeScene.sks */,
+				9786DDF424844840008FCF6C /* CustomizeScene.swift */,
+				977CB77B24804F7100FAF268 /* MenuScene.sks */,
+				977CB77F2480553D00FAF268 /* MenuScene.swift */,
+				97961B81246CA29A007F7BE6 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		978EC64E2486EBFF00469FC7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
+				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
+				976256E72485C67C00E3A277 /* StyleApplicator.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		97961B6F246CA29A007F7BE6 = {
 			isa = PBXGroup;
 			children = (
@@ -118,17 +141,10 @@
 		97961B7A246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXGroup;
 			children = (
+				978EC64E2486EBFF00469FC7 /* Managers */,
+				978EC64D2486EBE400469FC7 /* Scenes */,
 				978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */,
 				97961B7B246CA29A007F7BE6 /* AppDelegate.swift */,
-				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
-				9786DDF224844831008FCF6C /* CustomizeScene.sks */,
-				9786DDF424844840008FCF6C /* CustomizeScene.swift */,
-				976256E72485C67C00E3A277 /* StyleApplicator.swift */,
-				977CB77B24804F7100FAF268 /* MenuScene.sks */,
-				977CB77F2480553D00FAF268 /* MenuScene.swift */,
-				97961B81246CA29A007F7BE6 /* GameScene.swift */,
-				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
-				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
 				97961B83246CA29A007F7BE6 /* GameViewController.swift */,
 				97961B88246CA29C007F7BE6 /* Assets.xcassets */,
 				97961B8A246CA29C007F7BE6 /* LaunchScreen.storyboard */,
