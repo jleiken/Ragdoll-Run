@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
+		976256E82485C67C00E3A277 /* StyleApplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleApplicator.swift */; };
 		977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
 		977CB7802480553D00FAF268 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
 		9786DDF324844831008FCF6C /* CustomizeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9786DDF224844831008FCF6C /* CustomizeScene.sks */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
+		976256E72485C67C00E3A277 /* StyleApplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleApplicator.swift; sourceTree = "<group>"; };
 		977CB77B24804F7100FAF268 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		977CB77F2480553D00FAF268 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		9786DDF224844831008FCF6C /* CustomizeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CustomizeScene.sks; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				97961B7D246CA29A007F7BE6 /* GameScene.sks */,
 				9786DDF224844831008FCF6C /* CustomizeScene.sks */,
 				9786DDF424844840008FCF6C /* CustomizeScene.swift */,
+				976256E72485C67C00E3A277 /* StyleApplicator.swift */,
 				977CB77B24804F7100FAF268 /* MenuScene.sks */,
 				977CB77F2480553D00FAF268 /* MenuScene.swift */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
@@ -295,6 +298,7 @@
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
 				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
+				976256E82485C67C00E3A277 /* StyleApplicator.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

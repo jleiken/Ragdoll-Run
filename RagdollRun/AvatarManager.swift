@@ -26,38 +26,30 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         set { _touching = newValue }
     }
     
-    init(scene: SKScene, groundHeight: CGFloat, color: UIColor, textures: [SKTexture]? = nil) {
+    init(scene: SKScene, groundHeight: CGFloat) {
         _touching = false
         _scene = scene
         
         // Create the character avatar rectangles
-        let torso = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.03, yFactor: 0.07))
+        let torso = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.03, yFactor: 0.07))
         torso.name = "torso"
-        let head = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.04))
+        let head = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.04))
         head.name = "head"
-        let armL = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.02))
+        let armL = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.02))
         armL.name = "armL"
-        let armR = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.02))
+        let armR = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.04, yFactor: 0.02))
         armR.name = "armR"
-        let legL = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.02, yFactor: 0.05))
+        let legL = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.02, yFactor: 0.05))
         legL.name = "legL"
-        let legR = SKSpriteNode(color: color, size: sizeByScene(scene, xFactor: 0.02, yFactor: 0.05))
+        let legR = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.02, yFactor: 0.05))
         legR.name = "legR"
         
         // create the collection of parts and note their indices
         // (I'm using firstIndex in case I ever reorder this array)
         let avatarParts = [torso, head, legL, legR, armL, armR]
         
-        // if applicable, set the texture of each body part
-        if let bodyTextures = textures {
-            if bodyTextures.count == avatarParts.count {
-                for i in 0..<avatarParts.count {
-                    avatarParts[i].texture = bodyTextures[i]
-                }
-            } else {
-                print("length of textures array did not match number of avatar body parts")
-            }
-        }
+        // now set the proper, chosen texture of each body part
+        applySelectedStyles(nodes: avatarParts)
         
         // make required initializations of each body part
         _fullNode = SKNode()
@@ -129,7 +121,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         _avatarBody.restitution = 0.0
 
         _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - xPos
-        _jumpForce = scene.size.height / 2.2
+        _jumpForce = (scene.size.height+scene.size.width)/2.3 // TODO: tweak to be similar on all devices
     }
     
     /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)

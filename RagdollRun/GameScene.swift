@@ -24,7 +24,7 @@ class GameScene: SKScene {
         _worldGenerator!.renderChunk(size: CHUNK_SIZE)
         
         // initiliaze the avatar and make it the contact delegate
-        _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!, color: .orange)
+        _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!)
         scene?.physicsWorld.contactDelegate = _avatarManager
         
         // add a camera to the scene
