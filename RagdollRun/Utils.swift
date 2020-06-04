@@ -22,6 +22,7 @@ let BACK_NAME = "backBut"
 let REMOVE_AD_NAME = "removeAddBut"
 let NO_SOUND_NAME = "toggleSoundBut"
 let CUSTOMIZE_NAME = "customizeBut"
+let CI_NAME = "ci"
 
 let ORANGE = UIColor(red: 0.67, green: 0.43, blue: 0.06, alpha: 1.0)
 let TITLE_FONT = "AvenirNext-Heavy"
@@ -30,8 +31,8 @@ let LABEL_FONT = "AvenirNext-DemiBold"
 
 let SCORE_KEY = "highScore"
 let COIN_KEY = "coinCount"
-
-var CAMERA_SPEED = CGFloat(3)
+let STYLE_KEY = "selectedStyle"
+let UNLOCKS_KEY = "unlockedStyles"
 
 /// initializes characteristics of a static physics body (no bounce or movement)
 func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?) {

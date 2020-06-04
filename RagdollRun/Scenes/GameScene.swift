@@ -11,11 +11,13 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var _activeScene : Bool?
+    private var _activeScene: Bool?
+    private var _cameraSpeed: CGFloat?
+    private let DEFAULT_SPEED: CGFloat = 5
     
-    private var _avatarManager : AvatarManager?
-    private var _worldGenerator : WorldGenerator?
-    private var _groundHeight : CGFloat?
+    private var _avatarManager: AvatarManager?
+    private var _worldGenerator: WorldGenerator?
+    private var _groundHeight: CGFloat?
         
     override func didMove(to view: SKView) {
         // render the first part of the world
@@ -32,6 +34,8 @@ class GameScene: SKScene {
         cameraNode.position = scene!.anchorPoint
         scene?.addChild(cameraNode)
         scene?.camera = cameraNode
+        let divisor: CGFloat = 125
+        _cameraSpeed = (scene?.size.width ?? divisor*DEFAULT_SPEED)/divisor
         
         _activeScene = true
     }
@@ -89,8 +93,9 @@ class GameScene: SKScene {
             }
             
             // move the camera one cameraSpeed increment to the right along with the avatar
-            scene?.camera?.position.x += CAMERA_SPEED
-            _avatarManager!.walk(CAMERA_SPEED)
+            let inc = _cameraSpeed ?? DEFAULT_SPEED
+            scene?.camera?.position.x += inc
+            _avatarManager!.walk(inc)
         }
     }
     

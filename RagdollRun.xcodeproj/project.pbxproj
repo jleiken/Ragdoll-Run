@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
-		976256E82485C67C00E3A277 /* StyleApplicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleApplicator.swift */; };
+		976256E82485C67C00E3A277 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleManager.swift */; };
 		977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
 		977CB7802480553D00FAF268 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
 		9786DDF324844831008FCF6C /* CustomizeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9786DDF224844831008FCF6C /* CustomizeScene.sks */; };
@@ -19,8 +19,8 @@
 		97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B83246CA29A007F7BE6 /* GameViewController.swift */; };
 		97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97961B88246CA29C007F7BE6 /* Assets.xcassets */; };
 		97961B8C246CA29C007F7BE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97961B8A246CA29C007F7BE6 /* LaunchScreen.storyboard */; };
-		97961B97246CA29C007F7BE6 /* RegularMariaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */; };
-		97961BA2246CA29C007F7BE6 /* RegularMariaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */; };
+		97961B97246CA29C007F7BE6 /* RagdollRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B96246CA29C007F7BE6 /* RagdollRunTests.swift */; };
+		97961BA2246CA29C007F7BE6 /* RagdollRunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BA1246CA29C007F7BE6 /* RagdollRunUITests.swift */; };
 		97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */; };
 		97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */; };
 		97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB9246DF4C2007F7BE6 /* Utils.swift */; };
@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
-		976256E72485C67C00E3A277 /* StyleApplicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleApplicator.swift; sourceTree = "<group>"; };
+		976256E72485C67C00E3A277 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		977CB77B24804F7100FAF268 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		977CB77F2480553D00FAF268 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		9786DDF224844831008FCF6C /* CustomizeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CustomizeScene.sks; sourceTree = "<group>"; };
@@ -60,10 +60,10 @@
 		97961B8B246CA29C007F7BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97961B8D246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97961B92246CA29C007F7BE6 /* RagdollRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RagdollRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularMariaTests.swift; sourceTree = "<group>"; };
+		97961B96246CA29C007F7BE6 /* RagdollRunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RagdollRunTests.swift; sourceTree = "<group>"; };
 		97961B98246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97961B9D246CA29C007F7BE6 /* RagdollRunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RagdollRunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularMariaUITests.swift; sourceTree = "<group>"; };
+		97961BA1246CA29C007F7BE6 /* RagdollRunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RagdollRunUITests.swift; sourceTree = "<group>"; };
 		97961BA3246CA29C007F7BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			children = (
 				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
 				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
-				976256E72485C67C00E3A277 /* StyleApplicator.swift */,
+				976256E72485C67C00E3A277 /* StyleManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 		97961B95246CA29C007F7BE6 /* RagdollRunTests */ = {
 			isa = PBXGroup;
 			children = (
-				97961B96246CA29C007F7BE6 /* RegularMariaTests.swift */,
+				97961B96246CA29C007F7BE6 /* RagdollRunTests.swift */,
 				97961B98246CA29C007F7BE6 /* Info.plist */,
 			);
 			path = RagdollRunTests;
@@ -167,7 +167,7 @@
 		97961BA0246CA29C007F7BE6 /* RagdollRunUITests */ = {
 			isa = PBXGroup;
 			children = (
-				97961BA1246CA29C007F7BE6 /* RegularMariaUITests.swift */,
+				97961BA1246CA29C007F7BE6 /* RagdollRunUITests.swift */,
 				97961BA3246CA29C007F7BE6 /* Info.plist */,
 			);
 			path = RagdollRunUITests;
@@ -314,7 +314,7 @@
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
 				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
-				976256E82485C67C00E3A277 /* StyleApplicator.swift in Sources */,
+				976256E82485C67C00E3A277 /* StyleManager.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97961B97246CA29C007F7BE6 /* RegularMariaTests.swift in Sources */,
+				97961B97246CA29C007F7BE6 /* RagdollRunTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97961BA2246CA29C007F7BE6 /* RegularMariaUITests.swift in Sources */,
+				97961BA2246CA29C007F7BE6 /* RagdollRunUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,14 +521,14 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMariaTests/Info.plist;
+				INFOPLIST_FILE = RagdollRunTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMariaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRunTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -543,14 +543,14 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMariaTests/Info.plist;
+				INFOPLIST_FILE = RagdollRunTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMariaTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRunTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -564,13 +564,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMariaUITests/Info.plist;
+				INFOPLIST_FILE = RagdollRunUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMariaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRunUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -584,13 +584,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
-				INFOPLIST_FILE = RegularMariaUITests/Info.plist;
+				INFOPLIST_FILE = RagdollRunUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RegularMariaUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRunUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

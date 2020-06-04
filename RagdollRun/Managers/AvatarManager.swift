@@ -78,10 +78,12 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         torso.physicsBody?.isDynamic = false
         torso.physicsBody?.categoryBitMask = 0
         torso.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        torso.physicsBody?.mass *= 2
         head.physicsBody = SKPhysicsBody(rectangleOf: head.size)
         head.physicsBody?.isDynamic = false
         head.physicsBody?.categoryBitMask = 0
         head.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        head.physicsBody?.mass /= 2
         
         
         for part in [armL, armR, legL, legR] {
@@ -121,7 +123,13 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         _avatarBody.restitution = 0.0
 
         _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - xPos
-        _jumpForce = (scene.size.height+scene.size.width)/2.3 // TODO: tweak to be similar on all devices
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            _jumpForce = _avatarBody.mass*torso.size.height*8
+        } else {
+            _jumpForce = _avatarBody.mass*torso.size.height*10
+        }
+        print("jf: \(_jumpForce)")
+        print("hey avatarBody mass is \(_avatarBody.mass) and torso mass is \(torso.physicsBody!.mass)")
     }
     
     /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)
@@ -137,7 +145,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     func touchingSomething() -> Bool {
         for body in _avatarBody.allContactedBodies() {
-            if body.node!.parent != _fullNode {
+            if body.node?.parent != _fullNode {
                 return true
             }
         }
