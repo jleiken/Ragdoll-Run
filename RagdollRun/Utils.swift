@@ -62,7 +62,7 @@ func makeButton(scene: SKScene, text: String, name: String) -> SKNode {
     textNode.position = CGPoint(x: 0, y: 0)
     
     let textSize = NSString(string: text).size(withAttributes: [.font: UIFont(name: textNode.fontName!, size: textNode.fontSize)!])
-    let buttonSize = CGSize(width: textSize.width + scene.size.width/20, height: scene.size.height / 15)
+    let buttonSize = CGSize(width: textSize.width + scene.size.width/20, height: textSize.height)
     let but = SKSpriteNode(color: .black, size: buttonSize)
     but.name = name
     but.addChild(textNode)

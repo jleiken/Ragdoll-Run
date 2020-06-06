@@ -8,7 +8,6 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
 
@@ -26,11 +25,6 @@ class GameViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-            
-            self.navigationController?.popViewController(animated: true)
         }
     }
 

@@ -128,8 +128,6 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         } else {
             _jumpForce = _avatarBody.mass*torso.size.height*10
         }
-        print("jf: \(_jumpForce)")
-        print("hey avatarBody mass is \(_avatarBody.mass) and torso mass is \(torso.physicsBody!.mass)")
     }
     
     /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)

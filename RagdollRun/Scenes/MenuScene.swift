@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MenuScene: SKScene {
+class MenuScene: MessagesScene {
             
     override func didMove(to view: SKView) {
         let topOrBottom = scene!.size.height/2
@@ -51,12 +51,12 @@ class MenuScene: SKScene {
 
             switch touchedNode.name {
             case PLAY_NAME:
-                view?.presentScene(
-                    GameScene(fileNamed: "GameScene")!,
+                presentScene(
+                    view, makeScene(of: GameScene.self, with: "GameScene"),
                     transition: SKTransition.doorsOpenHorizontal(withDuration: 0.2))
             case CUSTOMIZE_NAME:
-                view?.presentScene(
-                    CustomizeScene(fileNamed: "CustomizeScene")!,
+                presentScene(
+                    view, makeScene(of: CustomizeScene.self, with: "CustomizeScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
             default:
                 break

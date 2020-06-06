@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class CustomizeScene: SKScene {
+class CustomizeScene: MessagesScene {
             
     override func didMove(to view: SKView) {
         let topOrBottom = scene!.size.height/2
@@ -149,8 +149,8 @@ class CustomizeScene: SKScene {
             let touchedNode = self.atPoint(pos)
 
             if touchedNode.name == BACK_NAME {
-                view?.presentScene(
-                    MenuScene(fileNamed: "MenuScene")!,
+                presentScene(
+                    view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
             } else if let name = touchedNode.name {
                 // name must be a button, so set that as the new selection if it's unlocked

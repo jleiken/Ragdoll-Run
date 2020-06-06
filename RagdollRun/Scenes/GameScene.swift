@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: MessagesScene {
     
     private var _activeScene: Bool?
     private var _cameraSpeed: CGFloat?
@@ -51,8 +51,8 @@ class GameScene: SKScene {
             
             if touchedNode?.name == MENU_NAME {
                 // touched menu icon, dismiss this popover
-                view?.presentScene(
-                    MenuScene(fileNamed: "MenuScene")!,
+                presentScene(
+                    view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
             } else if touchedNode?.name == PLAY_NAME {
                 // touched play icon

@@ -7,8 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97269ACE248B085200DC0003 /* GameMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269ACD248B085200DC0003 /* GameMessageViewController.swift */; };
+		97269ACF248B0B5900DC0003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97961B88246CA29C007F7BE6 /* Assets.xcassets */; };
+		97269AD1248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
+		97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
+		97269AD3248B148200DC0003 /* RunMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F8E2489A74300F86E4D /* RunMatch.swift */; };
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
 		976256E82485C67C00E3A277 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleManager.swift */; };
+		97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F7C2489A06100F86E4D /* MessagesViewController.swift */; };
+		97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97692F7E2489A06100F86E4D /* MainInterface.storyboard */; };
+		97692F822489A06500F86E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97692F812489A06500F86E4D /* Assets.xcassets */; };
+		97692F862489A06500F86E4D /* Ragdoll Run Messages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		97692F8B2489A08F00F86E4D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97692F792489A06100F86E4D /* Messages.framework */; };
+		97692F8F2489A74300F86E4D /* RunMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F8E2489A74300F86E4D /* RunMatch.swift */; };
+		97692F902489B18100F86E4D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B83246CA29A007F7BE6 /* GameViewController.swift */; };
+		97692F912489B6D000F86E4D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
+		97692F922489B6DA00F86E4D /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
+		97692F932489B6DD00F86E4D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
+		97692F942489B6E100F86E4D /* CustomizeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9786DDF224844831008FCF6C /* CustomizeScene.sks */; };
+		97692F952489B6E300F86E4D /* CustomizeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9786DDF424844840008FCF6C /* CustomizeScene.swift */; };
+		97692F962489B6E600F86E4D /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
+		97692F972489B6F500F86E4D /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
+		97692F982489B6F800F86E4D /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */; };
+		97692F992489B6FA00F86E4D /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleManager.swift */; };
+		97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB9246DF4C2007F7BE6 /* Utils.swift */; };
 		977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 977CB77B24804F7100FAF268 /* MenuScene.sks */; };
 		977CB7802480553D00FAF268 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
 		9786DDF324844831008FCF6C /* CustomizeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9786DDF224844831008FCF6C /* CustomizeScene.sks */; };
@@ -27,6 +49,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		97692F842489A06500F86E4D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97961B70246CA29A007F7BE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97692F762489A06100F86E4D;
+			remoteInfo = "Ragdoll Run";
+		};
 		97961B93246CA29C007F7BE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 97961B70246CA29A007F7BE6 /* Project object */;
@@ -43,9 +72,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		97692F8A2489A06500F86E4D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				97692F862489A06500F86E4D /* Ragdoll Run Messages.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		97269ACD248B085200DC0003 /* GameMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMessageViewController.swift; sourceTree = "<group>"; };
+		97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneMessagesComm.swift; sourceTree = "<group>"; };
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
 		976256E72485C67C00E3A277 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
+		97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ragdoll Run Messages.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97692F792489A06100F86E4D /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		97692F7C2489A06100F86E4D /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		97692F7F2489A06100F86E4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		97692F812489A06500F86E4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97692F832489A06500F86E4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97692F8E2489A74300F86E4D /* RunMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMatch.swift; sourceTree = "<group>"; };
 		977CB77B24804F7100FAF268 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		977CB77F2480553D00FAF268 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		9786DDF224844831008FCF6C /* CustomizeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CustomizeScene.sks; sourceTree = "<group>"; };
@@ -71,6 +123,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		97692F742489A06100F86E4D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97692F8B2489A08F00F86E4D /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97961B75246CA29A007F7BE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +155,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97692F782489A06100F86E4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97692F792489A06100F86E4D /* Messages.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		97692F7B2489A06100F86E4D /* RRMessages */ = {
+			isa = PBXGroup;
+			children = (
+				97692F7C2489A06100F86E4D /* MessagesViewController.swift */,
+				97692F8E2489A74300F86E4D /* RunMatch.swift */,
+				97692F7E2489A06100F86E4D /* MainInterface.storyboard */,
+				97692F812489A06500F86E4D /* Assets.xcassets */,
+				97692F832489A06500F86E4D /* Info.plist */,
+				97269ACD248B085200DC0003 /* GameMessageViewController.swift */,
+			);
+			path = RRMessages;
+			sourceTree = "<group>";
+		};
 		978EC64D2486EBE400469FC7 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +185,7 @@
 				977CB77B24804F7100FAF268 /* MenuScene.sks */,
 				977CB77F2480553D00FAF268 /* MenuScene.swift */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
+				97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -124,6 +206,8 @@
 				97961B7A246CA29A007F7BE6 /* RagdollRun */,
 				97961B95246CA29C007F7BE6 /* RagdollRunTests */,
 				97961BA0246CA29C007F7BE6 /* RagdollRunUITests */,
+				97692F7B2489A06100F86E4D /* RRMessages */,
+				97692F782489A06100F86E4D /* Frameworks */,
 				97961B79246CA29A007F7BE6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,6 +218,7 @@
 				97961B78246CA29A007F7BE6 /* Ragdoll Run.app */,
 				97961B92246CA29C007F7BE6 /* RagdollRunTests.xctest */,
 				97961B9D246CA29C007F7BE6 /* RagdollRunUITests.xctest */,
+				97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,6 +261,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		97692F762489A06100F86E4D /* Ragdoll Run */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97692F872489A06500F86E4D /* Build configuration list for PBXNativeTarget "Ragdoll Run" */;
+			buildPhases = (
+				97692F732489A06100F86E4D /* Sources */,
+				97692F742489A06100F86E4D /* Frameworks */,
+				97692F752489A06100F86E4D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ragdoll Run";
+			productName = "Ragdoll Run";
+			productReference = 97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		97961B77246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97961BA6246CA29C007F7BE6 /* Build configuration list for PBXNativeTarget "RagdollRun" */;
@@ -183,10 +285,12 @@
 				97961B74246CA29A007F7BE6 /* Sources */,
 				97961B75246CA29A007F7BE6 /* Frameworks */,
 				97961B76246CA29A007F7BE6 /* Resources */,
+				97692F8A2489A06500F86E4D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				97692F852489A06500F86E4D /* PBXTargetDependency */,
 			);
 			name = RagdollRun;
 			productName = RegularMaria;
@@ -235,10 +339,13 @@
 		97961B70246CA29A007F7BE6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Jacob Leiken";
 				TargetAttributes = {
+					97692F762489A06100F86E4D = {
+						CreatedOnToolsVersion = 11.5;
+					};
 					97961B77246CA29A007F7BE6 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -268,11 +375,25 @@
 				97961B77246CA29A007F7BE6 /* RagdollRun */,
 				97961B91246CA29C007F7BE6 /* RagdollRunTests */,
 				97961B9C246CA29C007F7BE6 /* RagdollRunUITests */,
+				97692F762489A06100F86E4D /* Ragdoll Run */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		97692F752489A06100F86E4D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97692F932489B6DD00F86E4D /* GameScene.sks in Resources */,
+				97692F822489A06500F86E4D /* Assets.xcassets in Resources */,
+				97692F922489B6DA00F86E4D /* MenuScene.sks in Resources */,
+				97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */,
+				97269ACF248B0B5900DC0003 /* Assets.xcassets in Resources */,
+				97692F942489B6E100F86E4D /* CustomizeScene.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97961B76246CA29A007F7BE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,16 +424,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		97692F732489A06100F86E4D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */,
+				97692F982489B6F800F86E4D /* AvatarManager.swift in Sources */,
+				97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */,
+				97692F992489B6FA00F86E4D /* StyleManager.swift in Sources */,
+				97692F952489B6E300F86E4D /* CustomizeScene.swift in Sources */,
+				97269ACE248B085200DC0003 /* GameMessageViewController.swift in Sources */,
+				97692F902489B18100F86E4D /* GameViewController.swift in Sources */,
+				97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */,
+				97692F962489B6E600F86E4D /* MenuScene.swift in Sources */,
+				97692F972489B6F500F86E4D /* WorldGenerator.swift in Sources */,
+				97692F912489B6D000F86E4D /* GameScene.swift in Sources */,
+				97692F8F2489A74300F86E4D /* RunMatch.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		97961B74246CA29A007F7BE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				9786DDF524844840008FCF6C /* CustomizeScene.swift in Sources */,
 				97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */,
+				97269AD3248B148200DC0003 /* RunMatch.swift in Sources */,
 				97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */,
 				97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */,
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
 				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,
+				97269AD1248B13C300DC0003 /* SceneMessagesComm.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
 				976256E82485C67C00E3A277 /* StyleManager.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
@@ -338,6 +480,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		97692F852489A06500F86E4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97692F762489A06100F86E4D /* Ragdoll Run */;
+			targetProxy = 97692F842489A06500F86E4D /* PBXContainerItemProxy */;
+		};
 		97961B94246CA29C007F7BE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 97961B77246CA29A007F7BE6 /* RagdollRun */;
@@ -351,6 +498,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		97692F7E2489A06100F86E4D /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97692F7F2489A06100F86E4D /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		97961B8A246CA29C007F7BE6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,6 +517,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		97692F882489A06500F86E4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				INFOPLIST_FILE = RRMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun.RRMessages;
+				PRODUCT_NAME = "Ragdoll Run Messages";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97692F892489A06500F86E4D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				INFOPLIST_FILE = RRMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun.RRMessages;
+				PRODUCT_NAME = "Ragdoll Run Messages";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		97961BA4246CA29C007F7BE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -479,6 +676,7 @@
 		97961BA7246CA29C007F7BE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -498,6 +696,7 @@
 		97961BA8246CA29C007F7BE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -601,6 +800,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		97692F872489A06500F86E4D /* Build configuration list for PBXNativeTarget "Ragdoll Run" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97692F882489A06500F86E4D /* Debug */,
+				97692F892489A06500F86E4D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		97961B73246CA29A007F7BE6 /* Build configuration list for PBXProject "RagdollRun" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
