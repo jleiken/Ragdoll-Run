@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,16 +12,28 @@
         <scene sceneID="7MM-of-jgj">
             <objects>
                 <viewController id="ObA-dk-sSI" customClass="MessagesViewController" customModule="Ragdoll_Run_Messages" customModuleProvider="target" sceneMemberID="viewController">
-                    <skView key="view" contentMode="scaleToFill" id="HMa-ky-U2i">
+                    <view key="view" contentMode="scaleToFill" id="RYh-9q-hng">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </skView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="L1u-ti-Fo7">
+                                <rect key="frame" x="0.0" y="-345" width="320" height="1218"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="L1u-ti-Fo7" firstAttribute="centerY" secondItem="RYh-9q-hng" secondAttribute="centerY" id="Fed-DO-G5f"/>
+                            <constraint firstItem="L1u-ti-Fo7" firstAttribute="leading" secondItem="RYh-9q-hng" secondAttribute="leading" id="KZq-Jh-Ifg"/>
+                            <constraint firstItem="L1u-ti-Fo7" firstAttribute="centerX" secondItem="RYh-9q-hng" secondAttribute="centerX" id="tFe-Jb-mKk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mzh-wB-VAC"/>
+                    </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="127"/>
+            <point key="canvasLocation" x="131.8840579710145" y="126.5625"/>
         </scene>
         <!--Game Message View Controller-->
         <scene sceneID="Lqr-B7-QeS">
@@ -35,7 +48,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Cf-B5-w4f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672" y="127"/>
+            <point key="canvasLocation" x="1233" y="127"/>
+        </scene>
+        <!--Score View Controller-->
+        <scene sceneID="K3p-8B-VIs">
+            <objects>
+                <viewController storyboardIdentifier="ScoreViewController" id="UQj-hk-P04" customClass="ScoreViewController" customModule="Ragdoll_Run_Messages" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="sr8-qb-Pcz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj7-yL-9em" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="127"/>
+        </scene>
+        <!--Ready View Controller-->
+        <scene sceneID="j0U-zf-tAo">
+            <objects>
+                <viewController storyboardIdentifier="ReadyViewController" id="f4A-x6-Sjr" customClass="ReadyViewController" customModule="Ragdoll_Run_Messages" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z8E-Kf-ARb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="5KU-LH-1df">
+                                <rect key="frame" x="0.0" y="-345" width="320" height="1218"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhU-EN-RVc">
+                                <rect key="frame" x="88.5" y="163.5" width="143.5" height="55"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="40"/>
+                                <color key="textColor" red="0.6705882353" green="0.43137254899999999" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvz-4E-eOx">
+                                <rect key="frame" x="105" y="238.5" width="110" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
+                                <state key="normal" title=" Start 🏃‍♀️ ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapReady:" destination="f4A-x6-Sjr" eventType="touchUpInside" id="uG7-p8-ihE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5KU-LH-1df" firstAttribute="leading" secondItem="Z8E-Kf-ARb" secondAttribute="leading" id="LU7-HG-ZuX"/>
+                            <constraint firstItem="Wvz-4E-eOx" firstAttribute="centerX" secondItem="Z8E-Kf-ARb" secondAttribute="centerX" id="Maw-G5-Zhx"/>
+                            <constraint firstItem="5KU-LH-1df" firstAttribute="centerY" secondItem="Z8E-Kf-ARb" secondAttribute="centerY" id="Tsk-qS-5oC"/>
+                            <constraint firstItem="Wvz-4E-eOx" firstAttribute="top" secondItem="ZhU-EN-RVc" secondAttribute="bottom" constant="20" id="WbG-CH-8d6"/>
+                            <constraint firstItem="5KU-LH-1df" firstAttribute="centerX" secondItem="Z8E-Kf-ARb" secondAttribute="centerX" id="YtH-jQ-jg2"/>
+                            <constraint firstItem="Wvz-4E-eOx" firstAttribute="centerY" secondItem="Z8E-Kf-ARb" secondAttribute="centerY" id="uU6-ND-sr1"/>
+                            <constraint firstItem="ZhU-EN-RVc" firstAttribute="centerX" secondItem="Z8E-Kf-ARb" secondAttribute="centerX" id="uz8-1i-RRh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eEA-Sg-TEe"/>
+                    </view>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cyd-Ec-azH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundImage" width="562.5" height="1218"/>
+    </resources>
 </document>

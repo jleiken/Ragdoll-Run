@@ -12,6 +12,9 @@ import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
     
+    // MARK: - State
+    var markedReady: Bool = false
+    
     // MARK: - Conversation Handling
     
     override func willBecomeActive(with conversation: MSConversation) {
@@ -49,8 +52,6 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     private func presentViewController(for conversation: MSConversation, with presentationStyle: MSMessagesAppPresentationStyle) {
-        // Remove any child view controllers that have been presented.
-        removeAllChildViewControllers()
         
         var match: RunMatch
         if let activeMatch = RunMatch(message: conversation.selectedMessage) {
@@ -59,12 +60,22 @@ class MessagesViewController: MSMessagesAppViewController {
             match = RunMatch(particpantScores: [], active: false)
         }
         
-        guard let controller = storyboard?.instantiateViewController(
-            withIdentifier: GameMessageViewController.storyboardID)
-            as? GameMessageViewController
-            else { fatalError("Could not instantiate a ViewController") }
-        controller.currentMatch = match
-        controller.delegate = self
+        if match.particpantScores.filter({ $0.participant == conversation.localParticipantIdentifier }).count > 0 {
+            // If we've already played, show scores
+            presentMessagesView(newView: .score, currentMatch: match)
+        } else if markedReady {
+            // This means that we've tapped the ready button and expanded the view,
+            // so start right off
+            presentMessagesView(newView: .play, currentMatch: match)
+        } else {
+            // Otherwise present the ready screen
+            presentMessagesView(newView: .ready, currentMatch: match)
+        }
+    }
+    
+    fileprivate func presentViewController(_ controller: UIViewController) {
+        // Remove any child view controllers that have been presented.
+        removeAllChildViewControllers()
         
         addChild(controller)
         controller.view.frame = view.bounds
@@ -76,7 +87,7 @@ class MessagesViewController: MSMessagesAppViewController {
             controller.view.rightAnchor.constraint(equalTo: view.rightAnchor),
             controller.view.topAnchor.constraint(equalTo: view.topAnchor),
             controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
+        ])
         
         controller.didMove(toParent: self)
     }
@@ -90,12 +101,38 @@ class MessagesViewController: MSMessagesAppViewController {
     }
 }
 
-protocol RRViewControllerDelegate: class {
-    func expandView()
-}
-
-extension MessagesViewController: RRViewControllerDelegate {
-    func expandView() {
-        requestPresentationStyle(.expanded)
+extension MessagesViewController: MessagesViewPresenter {
+    
+    func markReady() {
+        markedReady = true
     }
+    
+    func presentMessagesView(newView: MessagesView, currentMatch: RunMatch?) {
+        var controller: ViewControllerTransferer?
+        switch newView {
+        case .ready:
+            controller = storyboard?.instantiateViewController(
+                withIdentifier: ReadyViewController.storyboardID)
+                as? ReadyViewController
+        case .play:
+            controller = storyboard?.instantiateViewController(
+                withIdentifier: GameMessageViewController.storyboardID)
+                as? GameMessageViewController
+            requestPresentationStyle(.expanded)
+        case .score:
+            controller = storyboard?.instantiateViewController(
+                withIdentifier: ScoreViewController.storyboardID)
+                as? ScoreViewController
+            requestPresentationStyle(.expanded)
+        }
+        
+        if let c = controller {
+            c.presenter = self
+            c.currentMatch = currentMatch
+            presentViewController(c)
+        } else {
+            fatalError("Could not present ViewController")
+        }
+    }
+
 }

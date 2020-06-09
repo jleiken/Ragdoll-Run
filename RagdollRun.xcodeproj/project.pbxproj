@@ -46,6 +46,9 @@
 		97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */; };
 		97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */; };
 		97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB9246DF4C2007F7BE6 /* Utils.swift */; };
+		97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA2928248C6A1A00CF418E /* ReadyViewController.swift */; };
+		97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292B248C6A8500CF418E /* ScoreViewController.swift */; };
+		97EA292E2490385400CF418E /* ViewControllerCommunicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,9 @@
 		97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
 		97961BB9246DF4C2007F7BE6 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		97EA2928248C6A1A00CF418E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
+		97EA292B248C6A8500CF418E /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
+		97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCommunicators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,10 +174,13 @@
 			children = (
 				97692F7C2489A06100F86E4D /* MessagesViewController.swift */,
 				97692F8E2489A74300F86E4D /* RunMatch.swift */,
+				97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */,
 				97692F7E2489A06100F86E4D /* MainInterface.storyboard */,
 				97692F812489A06500F86E4D /* Assets.xcassets */,
 				97692F832489A06500F86E4D /* Info.plist */,
 				97269ACD248B085200DC0003 /* GameMessageViewController.swift */,
+				97EA2928248C6A1A00CF418E /* ReadyViewController.swift */,
+				97EA292B248C6A8500CF418E /* ScoreViewController.swift */,
 			);
 			path = RRMessages;
 			sourceTree = "<group>";
@@ -430,10 +439,13 @@
 			files = (
 				97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */,
 				97692F982489B6F800F86E4D /* AvatarManager.swift in Sources */,
+				97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */,
 				97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */,
 				97692F992489B6FA00F86E4D /* StyleManager.swift in Sources */,
 				97692F952489B6E300F86E4D /* CustomizeScene.swift in Sources */,
+				97EA292E2490385400CF418E /* ViewControllerCommunicators.swift in Sources */,
 				97269ACE248B085200DC0003 /* GameMessageViewController.swift in Sources */,
+				97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */,
 				97692F902489B18100F86E4D /* GameViewController.swift in Sources */,
 				97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */,
 				97692F962489B6E600F86E4D /* MenuScene.swift in Sources */,
