@@ -15,7 +15,7 @@ class ReadyViewController: ViewControllerTransferer {
     
     @IBAction func didTapReady(_: AnyObject) {
         presenter?.markReady()
-        presenter?.presentMessagesView(newView: .play, currentMatch: currentMatch)
+        presenter?.presentMessagesView(newView: .play)
     }
     
 }

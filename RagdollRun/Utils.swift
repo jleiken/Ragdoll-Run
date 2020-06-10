@@ -8,32 +8,6 @@
 
 import SpriteKit
 
-let AVATAR_CONTACT_MASK = UInt32(0x0000000F)
-let COIN_CONTACT_MASK = UInt32(0b1)
-
-let AVATAR_NAME = "avatar"
-let GROUND_NAME = "ground"
-let OBSTACLE_NAME = "obstacle"
-let ENEMY_NAME = "enemy"
-
-let MENU_NAME = "menuBut"
-let PLAY_NAME = "playBut"
-let BACK_NAME = "backBut"
-let REMOVE_AD_NAME = "removeAddBut"
-let NO_SOUND_NAME = "toggleSoundBut"
-let CUSTOMIZE_NAME = "customizeBut"
-let CI_NAME = "ci"
-
-let ORANGE = UIColor(red: 0.67, green: 0.43, blue: 0.06, alpha: 1.0)
-let TITLE_FONT = "AvenirNext-Heavy"
-let EMPHASIS_FONT = "AvenirNext-Bold"
-let LABEL_FONT = "AvenirNext-DemiBold"
-
-let SCORE_KEY = "highScore"
-let COIN_KEY = "coinCount"
-let STYLE_KEY = "selectedStyle"
-let UNLOCKS_KEY = "unlockedStyles"
-
 /// initializes characteristics of a static physics body (no bounce or movement)
 func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?) {
     if let body = cBody {
@@ -44,7 +18,9 @@ func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?) {
 
 /// returns true if the node is part of the "world", that is ground, obstacle, or enemy, rather than avatar or camera
 func nodeIsWorld(node: SKNode) -> Bool {
-    return node.name == GROUND_NAME || node.name == OBSTACLE_NAME || node.name == ENEMY_NAME
+    return node.name == SpriteNames.GROUND_NAME
+        || node.name == SpriteNames.OBSTACLE_NAME
+        || node.name == SpriteNames.ENEMY_NAME
 }
 
 /// generates a CGSize that is a factor the scene's size, scaled by xFactor and yFactor
@@ -76,9 +52,32 @@ func makeLabel(text: String) -> SKLabelNode {
     textNode.verticalAlignmentMode = .center
     textNode.horizontalAlignmentMode = .center
     textNode.fontColor = .white
-    textNode.fontName = LABEL_FONT
+    textNode.fontName = Formats.LABEL_FONT
     
     return textNode
+}
+
+/// from https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
+func hexStringToUIColor(hex: String) -> UIColor {
+    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+    if (cString.hasPrefix("#")) {
+        cString.remove(at: cString.startIndex)
+    }
+
+    if ((cString.count) != 6) {
+        return UIColor.gray
+    }
+
+    var rgbValue:UInt64 = 0
+    Scanner(string: cString).scanHexInt64(&rgbValue)
+
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
 }
 
 var _highScore: Int64 = -1
@@ -87,30 +86,13 @@ var highScore: Int64 {
     get {
         if _highScore == -1 {
             // may not exist, but default is 0 anyway
-            _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: SCORE_KEY)
+            _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: CloudKeys.SCORE_KEY)
         }
         return _highScore
     }
     /// sets in CloudKit and locally
     set {
         _highScore = newValue
-        NSUbiquitousKeyValueStore.default.set(newValue, forKey: SCORE_KEY)
-    }
-}
-
-var _coinCount: Int64 = -1
-var coinCount: Int64 {
-    /// checks with CloudKit if the coin count has been pulled or set yet
-    get {
-        if _coinCount == -1 {
-            // may not exist, but default is 0 anyway
-            _coinCount = NSUbiquitousKeyValueStore.default.longLong(forKey: COIN_KEY)
-        }
-        return _coinCount
-    }
-    /// sets in CloudKit and locally
-    set {
-        _coinCount = newValue
-        NSUbiquitousKeyValueStore.default.set(newValue, forKey: COIN_KEY)
+        NSUbiquitousKeyValueStore.default.set(newValue, forKey: CloudKeys.SCORE_KEY)
     }
 }

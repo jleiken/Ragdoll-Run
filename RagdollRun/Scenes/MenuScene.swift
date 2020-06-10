@@ -22,24 +22,31 @@ class MenuScene: MessagesScene {
         // add a title
         let title = SKLabelNode(text: "Ragdoll Run")
         title.fontSize = 42.0
-        title.fontColor = ORANGE
-        title.fontName = TITLE_FONT
+        title.fontColor = Formats.HIGHLIGHT
+        title.fontName = Formats.TITLE_FONT
         title.position = CGPoint(x: 0, y: topOrBottom*2/3)
         scene!.addChild(title)
         
         // add the buttons
-        let playBut = makeButton(scene: scene!, text: "Play 🏃‍♀️", name: PLAY_NAME)
+        let playBut = makeButton(scene: scene!, text: "Play 🏃‍♀️", name: SpriteNames.PLAY_NAME)
         playBut.position = CGPoint(x: 0, y: topOrBottom/4)
         scene!.addChild(playBut)
         
-        let customizeBut = makeButton(scene: scene!, text: "Customize 🎨", name: CUSTOMIZE_NAME)
+        let customizeBut = makeButton(scene: scene!, text: "Customize 🎨", name: SpriteNames.CUSTOMIZE_NAME)
         customizeBut.position = .zero
         scene!.addChild(customizeBut)
+        
+        // Only let the user remove ads if they're authorized to pay
+        if StoreObserver.shared.isAuthorizedForPayments {
+            let adsBut = makeButton(scene: scene!, text: "Remove ads", name: SpriteNames.REMOVE_AD_NAME)
+            adsBut.position = CGPoint(x: 0, y: -topOrBottom/4)
+            scene!.addChild(adsBut)
+        }
         
         // add score counter
         let score = SKLabelNode(text: "High Score: \(highScore)")
         score.fontColor = title.fontColor
-        score.fontName = LABEL_FONT
+        score.fontName = Formats.LABEL_FONT
         score.position = CGPoint(x: 0, y: -topOrBottom*2/3)
         scene!.addChild(score)
     }
@@ -50,14 +57,16 @@ class MenuScene: MessagesScene {
             let touchedNode = self.atPoint(pos)
 
             switch touchedNode.name {
-            case PLAY_NAME:
+            case SpriteNames.PLAY_NAME:
                 presentScene(
                     view, makeScene(of: GameScene.self, with: "GameScene"),
                     transition: SKTransition.doorsOpenHorizontal(withDuration: 0.2))
-            case CUSTOMIZE_NAME:
+            case SpriteNames.CUSTOMIZE_NAME:
                 presentScene(
                     view, makeScene(of: CustomizeScene.self, with: "CustomizeScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
+            case SpriteNames.REMOVE_AD_NAME:
+                StoreManager.shared.paymentRequest(matchingIdentifier: touchedNode.name!)
             default:
                 break
             }

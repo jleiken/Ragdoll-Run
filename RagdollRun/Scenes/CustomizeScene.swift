@@ -17,31 +17,75 @@ class CustomizeScene: MessagesScene {
         let background = SKSpriteNode(imageNamed: "BackgroundImage")
         background.size = scene!.size
         background.zPosition = -1.0
-        scene!.addChild(background)
+        scene?.addChild(background)
         
         // add a title
         let title = SKLabelNode(text: "Customize your avatar")
         title.fontSize = 28.0
-        title.fontColor = ORANGE
-        title.fontName = TITLE_FONT
-        title.position = CGPoint(x: 0, y: topOrBottom*2/3)
-        scene!.addChild(title)
+        title.fontColor = Formats.HIGHLIGHT
+        title.fontName = Formats.TITLE_FONT
+        title.position = CGPoint(x: 0, y: topOrBottom*0.7)
+        scene?.addChild(title)
         
         // back button
         let backBut = makeLabel(text: "< Back")
         backBut.fontColor = .black
         backBut.fontSize = 20.0
-        backBut.name = BACK_NAME
-        backBut.position = CGPoint(x: -scene!.size.width*3/8, y: topOrBottom - scene!.size.height/15)
-        scene!.addChild(backBut)
+        backBut.name = SpriteNames.BACK_NAME
+        backBut.position = CGPoint(x: -scene!.size.width*3/8, y: topOrBottom - scene!.size.height/20)
+        scene?.addChild(backBut)
         
         // coin count indicator
         let coinIndicator = makeLabel(text: "💰 \(coinCount)")
-        coinIndicator.name = CI_NAME
+        coinIndicator.name = SpriteNames.CI_NAME
         coinIndicator.fontColor = .black
         coinIndicator.fontSize = 20.0
         coinIndicator.position = CGPoint(x: scene!.size.width*1/3, y: backBut.position.y)
-        scene!.addChild(coinIndicator)
+        scene?.addChild(coinIndicator)
+        
+        // purchase coins section, only shown if the user is authorized for in-app purchases
+        if StoreObserver.shared.isAuthorizedForPayments {
+            let purchaseLabel = makeLabel(text: "Purchase 💰")
+            purchaseLabel.fontColor = Formats.HIGHLIGHT
+            purchaseLabel.fontName = Formats.TITLE_FONT
+            purchaseLabel.fontSize = title.fontSize
+            purchaseLabel.position = CGPoint(x: 0, y: -topOrBottom*0.63)
+            scene?.addChild(purchaseLabel)
+            
+            let y = -topOrBottom*4/5
+            var col = 0
+            for coins in COIN_OPTIONS {
+                let button = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.08, yFactor: 0.06))
+                button.position = CGPoint(x: xCoordMod3(scene!, col), y: y)
+                button.color = .black
+                let name = "\(SpriteNames.COIN_NAME)\(coins)"
+                button.name = name
+                
+                let cLabel = makeLabel(text: "💰\(coins)")
+                cLabel.horizontalAlignmentMode = .center
+                cLabel.name = name
+                cLabel.fontColor = .white
+                cLabel.fontSize = 18.0
+                cLabel.position.x = 0
+                cLabel.position.y = button.size.height/4
+                
+                // Only if this is a valid transaction should we add it
+                if let price = StoreManager.shared.price(matchingIdentifier: name), let symbol = NSLocale.current.currencySymbol {
+                    let pLabel = makeLabel(text: "\(symbol)\(price)")
+                    pLabel.horizontalAlignmentMode = .center
+                    pLabel.name = name
+                    pLabel.fontColor = .white
+                    pLabel.fontSize = 18.0
+                    pLabel.position.x = 0
+                    pLabel.position.y = -button.size.height/4
+                    
+                    button.addChild(cLabel)
+                    button.addChild(pLabel)
+                    scene?.addChild(button)
+                    col += 1
+                }
+            }
+        }
         
         // grid of skins that can be unlocked
         makeGrid(scene: scene!)
@@ -62,7 +106,7 @@ class CustomizeScene: MessagesScene {
             avatar.children.forEach({body in body.name = name})
             let button = SKSpriteNode(color: .black, size: sizeByScene(scene, xFactor: 0.08, yFactor: 0.1))
             let buttonOffset = CGFloat(yPos)*button.size.height*1.3
-            let y = scene.size.height/2.5 - buttonOffset
+            let y = scene.size.height/2.3 - buttonOffset
             button.position = CGPoint(x: xCoordMod3(scene, xPos), y: y)
             
             // style based on unlock status
@@ -73,9 +117,9 @@ class CustomizeScene: MessagesScene {
                 
                 // if the button's not unlocked, add a cost indicator below it
                 let cost = SKLabelNode(text: "💰\(STYLES_PRICES[name]!)")
-                cost.name = name + CI_NAME
+                cost.name = name + SpriteNames.CI_NAME
                 cost.fontColor = .black
-                cost.fontName = LABEL_FONT
+                cost.fontName = Formats.LABEL_FONT
                 cost.fontSize = 16.0
                 cost.position = CGPoint(x: button.position.x, y: button.position.y - button.size.height*2/3)
                 scene.addChild(cost)
@@ -115,7 +159,7 @@ class CustomizeScene: MessagesScene {
         let head = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.013, yFactor: 0.013))
         style[1](head)
         fullNode.addChild(head)
-        head.position = CGPoint(x: 0, y: torso.size.height*2/3)
+        head.position = CGPoint(x: 0, y: torso.size.height*3/4)
         let armL = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.013, yFactor: 0.007))
         style[2](armL)
         fullNode.addChild(armL)
@@ -135,7 +179,7 @@ class CustomizeScene: MessagesScene {
         
         let label = SKLabelNode(text: name)
         label.fontColor = .white
-        label.fontName = LABEL_FONT
+        label.fontName = Formats.LABEL_FONT
         label.fontSize = 16.0
         label.position = CGPoint(x: 0, y: -torso.size.height)
         fullNode.addChild(label)
@@ -148,38 +192,46 @@ class CustomizeScene: MessagesScene {
             let pos = touch.location(in: scene!)
             let touchedNode = self.atPoint(pos)
 
-            if touchedNode.name == BACK_NAME {
+            if touchedNode.name == SpriteNames.BACK_NAME {
                 presentScene(
                     view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
             } else if let name = touchedNode.name {
-                // name must be a button, so set that as the new selection if it's unlocked
-                if unlockedStyles.contains(name) {
-                    // set the previously selected button to be black, the new one to be darkGray
-                    getButton(ofName: selectedStyle, scene!)?.color = .black
-                    selectedStyle = name
-                    getButton(ofName: selectedStyle, scene!)?.color = .darkGray
-                } else if let button = getButton(ofName: name, scene!) {
-                    // check if we can pay for this, if we can unlock it and activate it
-                    if coinCount >= STYLES_PRICES[name]! {
-                        // remove the price from the coin count and update the coin count indicator
-                        coinCount -= STYLES_PRICES[name]!
-                        if let ciLabel = scene?.childNode(withName: CI_NAME) as? SKLabelNode {
-                            ciLabel.text = "💰 \(coinCount)"
+                // name must be a button
+                // check if it's an in-app puchase button
+                if name.contains(SpriteNames.COIN_NAME) {
+                    // If it is, submit a request for payment
+                    StoreManager.shared.paymentRequest(matchingIdentifier: name)
+                } else {
+                    // if it's not an in-app purchase button it's a theme button
+                    // so set that as the new selection if it's unlocked
+                    if unlockedStyles.contains(name) {
+                        // set the previously selected button to be black, the new one to be darkGray
+                        getButton(ofName: selectedStyle, scene!)?.color = .black
+                        selectedStyle = name
+                        getButton(ofName: selectedStyle, scene!)?.color = .darkGray
+                    } else if let button = getButton(ofName: name, scene!) {
+                        // check if we can pay for this, if we can unlock it and activate it
+                        if coinCount >= STYLES_PRICES[name]! {
+                            // remove the price from the coin count and update the coin count indicator
+                            coinCount -= STYLES_PRICES[name]!
+                            if let ciLabel = scene?.childNode(withName: SpriteNames.CI_NAME) as? SKLabelNode {
+                                ciLabel.text = "💰 \(coinCount)"
+                            }
+                            // add it as an unlocked style
+                            unlockedStyles.append(name)
+                            // remove the cost indicator
+                            scene?.childNode(withName: name + SpriteNames.CI_NAME)?.removeFromParent()
+                            // recursively call this function to do the actual selection
+                            touchesEnded(touches, with: event)
+                        } else {
+                            // not yet unlocked, flash red
+                            let prevColor = button.color
+                            button.run(SKAction.sequence([
+                                SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.2),
+                                SKAction.colorize(with: prevColor, colorBlendFactor: 1.0, duration: 0.2),
+                            ]))
                         }
-                        // add it as an unlocked style
-                        unlockedStyles.append(name)
-                        // remove the cost indicator
-                        scene?.childNode(withName: name + CI_NAME)?.removeFromParent()
-                        // recursively call this function to do the actual selection
-                        touchesEnded(touches, with: event)
-                    } else {
-                        // not yet unlocked, flash red
-                        let prevColor = button.color
-                        button.run(SKAction.sequence([
-                            SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.2),
-                            SKAction.colorize(with: prevColor, colorBlendFactor: 1.0, duration: 0.2),
-                        ]))
                     }
                 }
             }

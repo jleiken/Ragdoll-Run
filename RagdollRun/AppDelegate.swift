@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,15 +23,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // instance of your app wasn't running
         NSUbiquitousKeyValueStore.default.synchronize()
         
+        // for StoreKit
+        // Attach an observer to the payment queue.
+        SKPaymentQueue.default().add(StoreObserver.shared)
+        
         return true
     }
     
     @objc func storeDidChange(notification: Notification) {
         if let changedKey = notification.userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as? String {
-            if changedKey == SCORE_KEY {
+            if changedKey == CloudKeys.SCORE_KEY {
                 _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: changedKey)
-            } else if changedKey == COIN_KEY {
+            } else if changedKey == CloudKeys.COIN_KEY {
                 _coinCount = NSUbiquitousKeyValueStore.default.longLong(forKey: changedKey)
+            } else if changedKey == CloudKeys.STYLE_KEY {
+                _selectedStyle = NSUbiquitousKeyValueStore.default.string(forKey: changedKey)
+            } else if changedKey == CloudKeys.UNLOCKS_KEY {
+                if let newUnlocks = NSUbiquitousKeyValueStore.default.array(forKey: changedKey) as? [String] {
+                    _unlockedStyles = newUnlocks
+                }
             }
         }
     }
@@ -44,6 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         NSUbiquitousKeyValueStore.default.synchronize()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Remove the observer.
+        SKPaymentQueue.default().remove(StoreObserver.shared)
     }
 }
 

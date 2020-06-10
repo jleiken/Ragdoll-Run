@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BackgroundImage" translatesAutoresizingMaskIntoConstraints="NO" id="paT-aZ-KOP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright Jacob Leiken 2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDu-H5-KAb">
@@ -28,20 +28,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ragdoll Run" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioM-XR-CgF">
                                 <rect key="frame" x="74.333333333333343" y="419" width="265.33333333333326" height="58"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="42"/>
-                                <color key="textColor" red="0.66890862568985998" green="0.4295955385722775" blue="0.061349526041667823" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.95686274509803915" green="0.67450980392156867" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.6470588235294118" green="0.90980392156862744" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="paT-aZ-KOP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="5R8-En-ocl"/>
                             <constraint firstItem="ioM-XR-CgF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="9Y2-FD-79x"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="paT-aZ-KOP" secondAttribute="bottom" id="Ax7-oM-ZRD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="paT-aZ-KOP" secondAttribute="trailing" id="EjQ-fr-X1F"/>
-                            <constraint firstItem="paT-aZ-KOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JP2-ny-gso"/>
+                            <constraint firstItem="paT-aZ-KOP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kgp-Nz-I3M"/>
                             <constraint firstItem="MDu-H5-KAb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Paj-36-gCf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MDu-H5-KAb" secondAttribute="bottom" constant="20" id="Q6u-cn-dnX"/>
                             <constraint firstItem="ioM-XR-CgF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZV0-X9-vb6"/>
+                            <constraint firstItem="paT-aZ-KOP" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ohh-DJ-A6G"/>
+                            <constraint firstItem="paT-aZ-KOP" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="z01-jL-iLA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Regular Maria Cloud Icon-2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Regular Maria Cloud Icon-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Regular Maria Cloud Icon.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

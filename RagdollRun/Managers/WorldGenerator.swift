@@ -104,7 +104,7 @@ class WorldGenerator {
             let ground = SKSpriteNode(color: GROUND_COLOR, size: CGSize(width: HOLE_SIZE+2, height: abs(_groundHeight)))
             // position is x: nextStart, y: bottom of the screen
             ground.position = CGPoint(x: CGFloat(i) * HOLE_SIZE, y: _groundHeight * 1.5)
-            ground.name = GROUND_NAME
+            ground.name = SpriteNames.GROUND_NAME
             ground.zPosition = 0
             ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
             initializeStaticPhysicsBody(body: ground.physicsBody)
@@ -117,7 +117,7 @@ class WorldGenerator {
         var index = from
         while index < to {
             var toIncrement = HOLE_SIZE
-            if _scene.atPoint(CGPoint(x: index, y: _groundHeight-5)).name == GROUND_NAME {
+            if _scene.atPoint(CGPoint(x: index, y: _groundHeight-5)).name == SpriteNames.GROUND_NAME {
                 // there's ground here, so think about adding a pipe or enemy
                 let genEnemy = randLessThan(ENEMY_FREQ)
                 var genPipe = randLessThan(PIPE_FREQ)
@@ -146,7 +146,7 @@ class WorldGenerator {
         var index = from
         while index < to {
             var toIncrement = HOLE_SIZE
-            if _scene.atPoint(CGPoint(x: index, y: _groundHeight-5)).name == GROUND_NAME {
+            if _scene.atPoint(CGPoint(x: index, y: _groundHeight-5)).name == SpriteNames.GROUND_NAME {
                 // there's ground here, so think about adding a coin if there's no pipe or enemy
                 if _scene.atPoint(CGPoint(x: index, y: _groundHeight+5)).name == nil {
                     let genCoin = randLessThan(COIN_FREQ)
@@ -172,7 +172,7 @@ class WorldGenerator {
             CGPoint(x: x+(xSize*2), y: _groundHeight+ySize),
         ]
         let enemy = SKShapeNode(points: &enemyPoints, count: enemyPoints.count)
-        enemy.name = ENEMY_NAME
+        enemy.name = SpriteNames.ENEMY_NAME
         enemy.fillColor = ENEMY_COLOR
         enemy.lineWidth = 0.0
         enemy.physicsBody = SKPhysicsBody(polygonFrom: enemy.path!)
@@ -185,13 +185,13 @@ class WorldGenerator {
     
     func addPipe(x: CGFloat) {
         let pipeBase = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.05, yFactor: 0.12))
-        pipeBase.name = OBSTACLE_NAME
+        pipeBase.name = SpriteNames.OBSTACLE_NAME
         pipeBase.position = CGPoint(x: x, y: _groundHeight+pipeBase.size.height/2)
         pipeBase.physicsBody = SKPhysicsBody(rectangleOf: pipeBase.size)
         initializeStaticPhysicsBody(body: pipeBase.physicsBody)
         
         let pipeTop = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.06, yFactor: 0.03))
-        pipeTop.name = OBSTACLE_NAME
+        pipeTop.name = SpriteNames.OBSTACLE_NAME
         pipeTop.position = CGPoint(x: x, y: pipeBase.position.y+pipeBase.size.height/2)
         pipeTop.physicsBody = SKPhysicsBody(rectangleOf: pipeTop.size)
         initializeStaticPhysicsBody(body: pipeTop.physicsBody)

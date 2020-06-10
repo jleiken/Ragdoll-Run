@@ -18,6 +18,7 @@ class GameMessageViewController: ViewControllerTransferer {
         
         if let view = self.view as! SKView? {
             if let scene = GameScene(fileNamed: "GameScene") {
+                scene.messageVC = self
                 setAndPresent(view, scene)
             }
             
@@ -32,6 +33,14 @@ class GameMessageViewController: ViewControllerTransferer {
         scene.translator = self
         // Present the scene
         view.presentScene(scene)
+    }
+    
+    func sendScore(_ score: Int) {
+        presenter?.sendScore(score)
+    }
+    
+    func toScores() {
+        presenter?.presentMessagesView(newView: .score)
     }
 }
 

@@ -13,6 +13,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        StoreObserver.shared.delegate = self
+        StoreManager.shared.delegate = self
+        StoreManager.shared.startProductRequest()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'MenuScene.sks'
@@ -38,5 +41,11 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension GameViewController: StoreAlertDelegate {
+    func present(_ alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
     }
 }

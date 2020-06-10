@@ -1,103 +1,103 @@
 {
   "images" : [
     {
-      "filename" : "Regular Maria App Icon-14.png",
+      "filename" : "icon-40-40.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Regular Maria App Icon-10.png",
+      "filename" : "icon-60-60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "Regular Maria App Icon-12.png",
+      "filename" : "icon-58-58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Regular Maria App Icon-6.png",
+      "filename" : "icon-87-87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Regular Maria App Icon-8.png",
+      "filename" : "icon-80-80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Regular Maria App Icon-4.png",
+      "filename" : "icon-120-120.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "Regular Maria App Icon-5.png",
+      "filename" : "icon-120-121.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Regular Maria App Icon-1.png",
+      "filename" : "icon-180-180.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "Regular Maria App Icon-17.png",
+      "filename" : "icon-20-22.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "Regular Maria App Icon-13.png",
+      "filename" : "icon-40-41.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Regular Maria App Icon-16.png",
+      "filename" : "icon-29-29.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "Regular Maria App Icon-11.png",
+      "filename" : "icon-58-59.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Regular Maria App Icon-15.png",
+      "filename" : "icon-40-42.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "Regular Maria App Icon-7.png",
+      "filename" : "icon-80-81.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Regular Maria App Icon-9.png",
+      "filename" : "icon-76-76.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
-      "filename" : "Regular Maria App Icon-3.png",
+      "filename" : "icon-152-152.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "Regular Maria App Icon-2.png",
+      "filename" : "icon-167-167.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"

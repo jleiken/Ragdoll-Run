@@ -46,6 +46,18 @@
 		97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */; };
 		97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */; };
 		97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961BB9246DF4C2007F7BE6 /* Utils.swift */; };
+		97DA343524904AF200C565EA /* GameMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269ACD248B085200DC0003 /* GameMessageViewController.swift */; };
+		97DA343624904AF900C565EA /* ViewControllerCommunicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */; };
+		97DA3438249168F000C565EA /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA3437249168F000C565EA /* CoinManager.swift */; };
+		97DA343924916AED00C565EA /* CoinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA3437249168F000C565EA /* CoinManager.swift */; };
+		97DA343B2491840D00C565EA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DA343A2491840D00C565EA /* StoreKit.framework */; };
+		97DA343E2491844B00C565EA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97DA343D2491844B00C565EA /* CloudKit.framework */; };
+		97DA344024918E3E00C565EA /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA343F24918E3E00C565EA /* StoreObserver.swift */; };
+		97DA344124918E3E00C565EA /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA343F24918E3E00C565EA /* StoreObserver.swift */; };
+		97DA34432491918100C565EA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA34422491918100C565EA /* Data.swift */; };
+		97DA34442491918100C565EA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA34422491918100C565EA /* Data.swift */; };
+		97DA34472491953C00C565EA /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA34462491953C00C565EA /* StoreManager.swift */; };
+		97DA34482491953C00C565EA /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DA34462491953C00C565EA /* StoreManager.swift */; };
 		97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA2928248C6A1A00CF418E /* ReadyViewController.swift */; };
 		97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292B248C6A8500CF418E /* ScoreViewController.swift */; };
 		97EA292E2490385400CF418E /* ViewControllerCommunicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */; };
@@ -123,6 +135,13 @@
 		97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarManager.swift; sourceTree = "<group>"; };
 		97961BB9246DF4C2007F7BE6 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		97DA3437249168F000C565EA /* CoinManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinManager.swift; sourceTree = "<group>"; };
+		97DA343A2491840D00C565EA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		97DA343C2491843700C565EA /* Ragdoll Run Messages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ragdoll Run Messages.entitlements"; sourceTree = "<group>"; };
+		97DA343D2491844B00C565EA /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		97DA343F24918E3E00C565EA /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
+		97DA34422491918100C565EA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		97DA34462491953C00C565EA /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		97EA2928248C6A1A00CF418E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		97EA292B248C6A8500CF418E /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCommunicators.swift; sourceTree = "<group>"; };
@@ -134,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97692F8B2489A08F00F86E4D /* Messages.framework in Frameworks */,
+				97DA343E2491844B00C565EA /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DA343B2491840D00C565EA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +185,8 @@
 		97692F782489A06100F86E4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97DA343D2491844B00C565EA /* CloudKit.framework */,
+				97DA343A2491840D00C565EA /* StoreKit.framework */,
 				97692F792489A06100F86E4D /* Messages.framework */,
 			);
 			name = Frameworks;
@@ -205,6 +228,7 @@
 				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
 				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
 				976256E72485C67C00E3A277 /* StyleManager.swift */,
+				97DA3437249168F000C565EA /* CoinManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -212,6 +236,7 @@
 		97961B6F246CA29A007F7BE6 = {
 			isa = PBXGroup;
 			children = (
+				97DA343C2491843700C565EA /* Ragdoll Run Messages.entitlements */,
 				97961B7A246CA29A007F7BE6 /* RagdollRun */,
 				97961B95246CA29C007F7BE6 /* RagdollRunTests */,
 				97961BA0246CA29C007F7BE6 /* RagdollRunUITests */,
@@ -235,6 +260,7 @@
 		97961B7A246CA29A007F7BE6 /* RagdollRun */ = {
 			isa = PBXGroup;
 			children = (
+				97DA34452491951100C565EA /* Purchases */,
 				978EC64E2486EBFF00469FC7 /* Managers */,
 				978EC64D2486EBE400469FC7 /* Scenes */,
 				978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */,
@@ -245,6 +271,7 @@
 				97961B8D246CA29C007F7BE6 /* Info.plist */,
 				97961BB5246CA7AF007F7BE6 /* Main_iPhone.storyboard */,
 				97961BB9246DF4C2007F7BE6 /* Utils.swift */,
+				97DA34422491918100C565EA /* Data.swift */,
 			);
 			path = RagdollRun;
 			sourceTree = "<group>";
@@ -265,6 +292,15 @@
 				97961BA3246CA29C007F7BE6 /* Info.plist */,
 			);
 			path = RagdollRunUITests;
+			sourceTree = "<group>";
+		};
+		97DA34452491951100C565EA /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				97DA343F24918E3E00C565EA /* StoreObserver.swift */,
+				97DA34462491953C00C565EA /* StoreManager.swift */,
+			);
+			path = Purchases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,20 +473,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DA343924916AED00C565EA /* CoinManager.swift in Sources */,
 				97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */,
 				97692F982489B6F800F86E4D /* AvatarManager.swift in Sources */,
 				97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */,
 				97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */,
 				97692F992489B6FA00F86E4D /* StyleManager.swift in Sources */,
 				97692F952489B6E300F86E4D /* CustomizeScene.swift in Sources */,
+				97DA34442491918100C565EA /* Data.swift in Sources */,
 				97EA292E2490385400CF418E /* ViewControllerCommunicators.swift in Sources */,
 				97269ACE248B085200DC0003 /* GameMessageViewController.swift in Sources */,
+				97DA34482491953C00C565EA /* StoreManager.swift in Sources */,
 				97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */,
 				97692F902489B18100F86E4D /* GameViewController.swift in Sources */,
 				97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */,
 				97692F962489B6E600F86E4D /* MenuScene.swift in Sources */,
 				97692F972489B6F500F86E4D /* WorldGenerator.swift in Sources */,
 				97692F912489B6D000F86E4D /* GameScene.swift in Sources */,
+				97DA344124918E3E00C565EA /* StoreObserver.swift in Sources */,
 				97692F8F2489A74300F86E4D /* RunMatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DA3438249168F000C565EA /* CoinManager.swift in Sources */,
 				9786DDF524844840008FCF6C /* CustomizeScene.swift in Sources */,
 				97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */,
 				97269AD3248B148200DC0003 /* RunMatch.swift in Sources */,
@@ -467,9 +508,14 @@
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
 				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,
 				97269AD1248B13C300DC0003 /* SceneMessagesComm.swift in Sources */,
+				97DA343524904AF200C565EA /* GameMessageViewController.swift in Sources */,
+				97DA34472491953C00C565EA /* StoreManager.swift in Sources */,
 				97961B84246CA29A007F7BE6 /* GameViewController.swift in Sources */,
+				97DA344024918E3E00C565EA /* StoreObserver.swift in Sources */,
+				97DA343624904AF900C565EA /* ViewControllerCommunicators.swift in Sources */,
 				976256E82485C67C00E3A277 /* StyleManager.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
+				97DA34432491918100C565EA /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +579,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Ragdoll Run Messages.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
 				INFOPLIST_FILE = RRMessages/Info.plist;
@@ -554,6 +601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Ragdoll Run Messages.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
 				INFOPLIST_FILE = RRMessages/Info.plist;

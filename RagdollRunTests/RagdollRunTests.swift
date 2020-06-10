@@ -32,6 +32,13 @@ class RagdollRunTests: XCTestCase {
             XCTAssert(Ragdoll_Run.STYLES.keys.contains(style))
         }
     }
+    
+    func testConsistentCoinArrays() throws {
+        XCTAssert(Ragdoll_Run.COIN_PRICES.count == Ragdoll_Run.COIN_OPTIONS.count)
+        for coins in Ragdoll_Run.COIN_OPTIONS {
+            XCTAssert(Ragdoll_Run.COIN_PRICES.keys.contains(coins))
+        }
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

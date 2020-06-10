@@ -1,70 +1,83 @@
 {
   "images" : [
     {
+      "filename" : "icon-58-58.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "icon-87-87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "icon-120-90-imessage.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x45"
     },
     {
+      "filename" : "icon-180-135-imessage.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x45"
     },
     {
+      "filename" : "icon-58-59.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "icon-134-100-imessage.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "67x50"
     },
     {
+      "filename" : "icon-148-110-imessage.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "74x55"
     },
     {
+      "filename" : "Regular Maria App Icon.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
     },
     {
+      "filename" : "icon-54-40-imessage.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "27x20"
     },
     {
+      "filename" : "icon-81-60-imessage.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "27x20"
     },
     {
+      "filename" : "icon-64-48-imessage.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "32x24"
     },
     {
+      "filename" : "icon-96-72-imessage.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "32x24"
     },
     {
+      "filename" : "Regular Maria iMessage App Icon.png",
       "idiom" : "ios-marketing",
       "platform" : "ios",
       "scale" : "1x",

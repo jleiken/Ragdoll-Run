@@ -18,8 +18,13 @@ class GameScene: MessagesScene {
     private var _avatarManager: AvatarManager?
     private var _worldGenerator: WorldGenerator?
     private var _groundHeight: CGFloat?
+    
+    var messageVC: GameMessageViewController?
         
     override func didMove(to view: SKView) {
+        // use our nice blue background
+        scene?.backgroundColor = Formats.BACKGROUND
+        
         // render the first part of the world
         _groundHeight = -self.size.height / 3
         _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
@@ -49,15 +54,17 @@ class GameScene: MessagesScene {
             // the node they touched
             let touchedNode = self.nodes(at: positionInScene).first
             
-            if touchedNode?.name == MENU_NAME {
+            if touchedNode?.name == SpriteNames.MENU_NAME {
                 // touched menu icon, dismiss this popover
                 presentScene(
                     view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
-            } else if touchedNode?.name == PLAY_NAME {
+            } else if touchedNode?.name == SpriteNames.PLAY_NAME {
                 // touched play icon
                 scene?.removeAllChildren()
                 didMove(to: self.view!)
+            } else if touchedNode?.name == SpriteNames.SCORE_NAME {
+                messageVC?.toScores()
             }
         }
     }
@@ -117,7 +124,7 @@ class GameScene: MessagesScene {
         goText.position.x = cameraX
         goText.position.y = 10
         goText.fontColor = SKColor.red
-        goText.fontName = TITLE_FONT
+        goText.fontName = Formats.TITLE_FONT
         goText.fontSize = 48
         scene.addChild(goText)
         
@@ -126,7 +133,7 @@ class GameScene: MessagesScene {
         let scoreText = SKLabelNode(text: "Your score: \(score)")
         scoreText.position.x = cameraX
         scoreText.position.y = -40
-        scoreText.fontName = EMPHASIS_FONT
+        scoreText.fontName = Formats.EMPHASIS_FONT
         // is it a high score? if so, set it and modify the a label
         if score > highScore {
             highScore = Int64(score)
@@ -135,25 +142,41 @@ class GameScene: MessagesScene {
         }
         scene.addChild(scoreText)
         
-        // menu button
-        let menuBut = SKLabelNode(text: "🏠 Menu")
-        menuBut.fontName = EMPHASIS_FONT
-        // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
-        menuBut.position.x = cameraX - (scene.size.width / 2) + 65
-        menuBut.position.y = -(scene.size.height / 2) + 60
-        menuBut.fontSize = 28
-        menuBut.fontColor = .red
-        menuBut.name = MENU_NAME
-        scene.addChild(menuBut)
-        
-        // play again button
-        let playBut = SKLabelNode(text: "Play 🏃‍♀️")
-        playBut.fontName = EMPHASIS_FONT
-        playBut.position.x = cameraX + (scene.size.width / 2) - 60
-        playBut.position.y = menuBut.position.y
-        playBut.fontColor = .red
-        playBut.fontSize = 28
-        playBut.name = PLAY_NAME
-        scene.addChild(playBut)
+        // if we're in the messages version, send the score message to the chat and show a button to go to the scores view
+        // if we're not, have replay and menu buttons
+        if let vc = messageVC {
+            vc.sendScore(score)
+            
+            let scoreBut = SKLabelNode(text: "See scores")
+            scoreBut.fontName = Formats.EMPHASIS_FONT
+            // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
+            scoreBut.position.x = cameraX
+            scoreBut.position.y = -(scene.size.height / 2) + 60
+            scoreBut.fontSize = 28
+            scoreBut.fontColor = .red
+            scoreBut.name = SpriteNames.SCORE_NAME
+            scene.addChild(scoreBut)
+        } else {
+            // menu button
+            let menuBut = SKLabelNode(text: "🏠 Menu")
+            menuBut.fontName = Formats.EMPHASIS_FONT
+            // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
+            menuBut.position.x = cameraX - (scene.size.width / 2) + 65
+            menuBut.position.y = -(scene.size.height / 2) + 60
+            menuBut.fontSize = 28
+            menuBut.fontColor = .red
+            menuBut.name = SpriteNames.MENU_NAME
+            scene.addChild(menuBut)
+            
+            // play again button
+            let playBut = SKLabelNode(text: "Play 🏃‍♀️")
+            playBut.fontName = Formats.EMPHASIS_FONT
+            playBut.position.x = cameraX + (scene.size.width / 2) - 60
+            playBut.position.y = menuBut.position.y
+            playBut.fontColor = .red
+            playBut.fontSize = 28
+            playBut.name = SpriteNames.PLAY_NAME
+            scene.addChild(playBut)
+        }
     }
 }

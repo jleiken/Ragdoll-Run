@@ -53,6 +53,22 @@ class MessagesViewController: MSMessagesAppViewController {
     
     private func presentViewController(for conversation: MSConversation, with presentationStyle: MSMessagesAppPresentationStyle) {
         
+        let match = matchFromConvo(from: conversation)
+        
+        if match.particpantScores.filter({ $0.participant == conversation.localParticipantIdentifier }).count > 0 {
+            // If we've already played, show scores
+            presentMessagesView(newView: .score)
+        } else if markedReady {
+            // This means that we've tapped the ready button and expanded the view,
+            // so start right off
+            presentMessagesView(newView: .play)
+        } else {
+            // Otherwise present the ready screen
+            presentMessagesView(newView: .ready)
+        }
+    }
+    
+    fileprivate func matchFromConvo(from conversation: MSConversation) -> RunMatch {
         var match: RunMatch
         if let activeMatch = RunMatch(message: conversation.selectedMessage) {
             match = activeMatch
@@ -60,17 +76,7 @@ class MessagesViewController: MSMessagesAppViewController {
             match = RunMatch(particpantScores: [], active: false)
         }
         
-        if match.particpantScores.filter({ $0.participant == conversation.localParticipantIdentifier }).count > 0 {
-            // If we've already played, show scores
-            presentMessagesView(newView: .score, currentMatch: match)
-        } else if markedReady {
-            // This means that we've tapped the ready button and expanded the view,
-            // so start right off
-            presentMessagesView(newView: .play, currentMatch: match)
-        } else {
-            // Otherwise present the ready screen
-            presentMessagesView(newView: .ready, currentMatch: match)
-        }
+        return match
     }
     
     fileprivate func presentViewController(_ controller: UIViewController) {
@@ -107,7 +113,7 @@ extension MessagesViewController: MessagesViewPresenter {
         markedReady = true
     }
     
-    func presentMessagesView(newView: MessagesView, currentMatch: RunMatch?) {
+    func presentMessagesView(newView: MessagesView) {
         var controller: ViewControllerTransferer?
         switch newView {
         case .ready:
@@ -128,10 +134,33 @@ extension MessagesViewController: MessagesViewPresenter {
         
         if let c = controller {
             c.presenter = self
-            c.currentMatch = currentMatch
             presentViewController(c)
         } else {
             fatalError("Could not present ViewController")
+        }
+    }
+    
+    func sendScore(_ score: Int) {
+        var match = matchFromConvo(from: activeConversation!)
+        match.particpantScores.append(
+            Outcome(participant: activeConversation!.localParticipantIdentifier, score: score))
+        
+        var components = URLComponents()
+        components.queryItems = match.queryItems
+        
+        let layout = MSMessageTemplateLayout()
+        guard let image = UIImage(named: "Message Icon") else { fatalError("Could not load Message Icon image asset") }
+        layout.image = image
+        layout.caption = NSLocalizedString("I scored \(score) points in Ragdoll Run", comment: "")
+        
+        let message = MSMessage(session: activeConversation!.selectedMessage?.session ?? MSSession())
+        message.url = components.url!
+        message.layout = layout
+        
+        activeConversation?.insert(message) { error in
+            if let error = error {
+                print(error)
+            }
         }
     }
 
