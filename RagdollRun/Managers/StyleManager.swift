@@ -61,43 +61,12 @@ func characterToStyleAppArray(_ character: String) -> [StyleApplicator] {
 }
 
 func applySelectedStyles(nodes: [SKSpriteNode]) {
-    if selectedStyle.count != nodes.count {
+    if (STYLES[CloudVars.selectedStyle]?.count ?? -1) != nodes.count {
         print("node and style count mismatch, exiting")
         return
     }
     
     for i in 0..<nodes.count {
-        STYLES[selectedStyle]![i](nodes[i])
-    }
-}
-
-var _selectedStyle: String?
-var selectedStyle: String {
-    get {
-        if _selectedStyle == nil {
-            _selectedStyle = NSUbiquitousKeyValueStore.default.string(forKey: CloudKeys.STYLE_KEY)
-            if _selectedStyle == nil {
-                _selectedStyle = STYLES_ORDERING.first!
-            } 
-        }
-        return _selectedStyle!
-    }
-    set {
-        _selectedStyle = newValue
-        NSUbiquitousKeyValueStore.default.set(_selectedStyle, forKey: CloudKeys.STYLE_KEY)
-    }
-}
-
-var _unlockedStyles: [String] = [STYLES_ORDERING.first!]
-var unlockedStyles: [String] {
-    get {
-        if let cloudStyles = NSUbiquitousKeyValueStore.default.array(forKey: CloudKeys.UNLOCKS_KEY) as? [String] {
-            _unlockedStyles = cloudStyles
-        }
-        return _unlockedStyles
-    }
-    set {
-        _unlockedStyles = newValue
-        NSUbiquitousKeyValueStore.default.set(_unlockedStyles, forKey: CloudKeys.UNLOCKS_KEY)
+        STYLES[CloudVars.selectedStyle]![i](nodes[i])
     }
 }

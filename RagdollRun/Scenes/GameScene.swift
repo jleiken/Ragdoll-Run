@@ -28,7 +28,7 @@ class GameScene: MessagesScene {
         // render the first part of the world
         _groundHeight = -self.size.height / 3
         _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
-        _worldGenerator!.renderChunk(size: CHUNK_SIZE)
+        _worldGenerator!.renderChunk(size: WorldGenerator.CHUNK_SIZE)
         
         // initiliaze the avatar and make it the contact delegate
         _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!)
@@ -96,7 +96,7 @@ class GameScene: MessagesScene {
             
             // render the next section of the level if we're close to the end
             if _worldGenerator?.shouldRenderNextChunk(scene?.camera?.position.x) ?? false {
-                _worldGenerator!.renderChunk(size: CHUNK_SIZE)
+                _worldGenerator!.renderChunk(size: WorldGenerator.CHUNK_SIZE)
             }
             
             // move the camera one cameraSpeed increment to the right along with the avatar
@@ -135,8 +135,8 @@ class GameScene: MessagesScene {
         scoreText.position.y = -40
         scoreText.fontName = Formats.EMPHASIS_FONT
         // is it a high score? if so, set it and modify the a label
-        if score > highScore {
-            highScore = Int64(score)
+        if score > CloudVars.highScore {
+            CloudVars.highScore = Int64(score)
             scoreText.text = "New high score: \(score)!"
             scoreText.fontColor = .green
         }

@@ -32,17 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     @objc func storeDidChange(notification: Notification) {
         if let changedKey = notification.userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as? String {
-            if changedKey == CloudKeys.SCORE_KEY {
-                _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: changedKey)
-            } else if changedKey == CloudKeys.COIN_KEY {
-                _coinCount = NSUbiquitousKeyValueStore.default.longLong(forKey: changedKey)
-            } else if changedKey == CloudKeys.STYLE_KEY {
-                _selectedStyle = NSUbiquitousKeyValueStore.default.string(forKey: changedKey)
-            } else if changedKey == CloudKeys.UNLOCKS_KEY {
-                if let newUnlocks = NSUbiquitousKeyValueStore.default.array(forKey: changedKey) as? [String] {
-                    _unlockedStyles = newUnlocks
-                }
-            }
+            CloudVars.storeDidChange(forKey: changedKey)
         }
     }
 

@@ -79,20 +79,3 @@ func hexStringToUIColor(hex: String) -> UIColor {
         alpha: CGFloat(1.0)
     )
 }
-
-var _highScore: Int64 = -1
-var highScore: Int64 {
-    /// checks with CloudKit if highScore has been pulled or set yet
-    get {
-        if _highScore == -1 {
-            // may not exist, but default is 0 anyway
-            _highScore = NSUbiquitousKeyValueStore.default.longLong(forKey: CloudKeys.SCORE_KEY)
-        }
-        return _highScore
-    }
-    /// sets in CloudKit and locally
-    set {
-        _highScore = newValue
-        NSUbiquitousKeyValueStore.default.set(newValue, forKey: CloudKeys.SCORE_KEY)
-    }
-}

@@ -64,12 +64,11 @@ class StoreObserver: NSObject {
     /// Handles successful purchase transactions.
     fileprivate func handlePurchased(_ transaction: SKPaymentTransaction) {
         purchased.append(transaction)
-        let message = "\(Messages.deliverContent) \(transaction.payment.productIdentifier)."
-        print(message)
-        let alert = UIAlertController(title: "Purchase Completed", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString(Messages.okButton, comment: "Default action"), style: .default))
-        self.delegate?.present(alert)
+        print("\(Messages.deliverContent) \(transaction.payment.productIdentifier).")
+        // have the coin manager deal with the transaction
         registerPurchase(transaction)
+        // if we're on the customize scene, update coin count. We might not be which would be fine
+        CustomizeScene.updateCoinCount()
         
         // Finish the successful transaction.
         SKPaymentQueue.default().finishTransaction(transaction)

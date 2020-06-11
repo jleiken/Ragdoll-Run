@@ -9,8 +9,11 @@
 import SpriteKit
 
 class CustomizeScene: MessagesScene {
+    
+    private static var _staticScene: SKScene?
             
     override func didMove(to view: SKView) {
+        CustomizeScene._staticScene = scene
         let topOrBottom = scene!.size.height/2
         
         // set the background
@@ -36,7 +39,7 @@ class CustomizeScene: MessagesScene {
         scene?.addChild(backBut)
         
         // coin count indicator
-        let coinIndicator = makeLabel(text: "💰 \(coinCount)")
+        let coinIndicator = makeLabel(text: "💰 \(CloudVars.coinCount)")
         coinIndicator.name = SpriteNames.CI_NAME
         coinIndicator.fontColor = .black
         coinIndicator.fontSize = 20.0
@@ -110,9 +113,9 @@ class CustomizeScene: MessagesScene {
             button.position = CGPoint(x: xCoordMod3(scene, xPos), y: y)
             
             // style based on unlock status
-            if name == selectedStyle {
+            if name == CloudVars.selectedStyle {
                 button.color = .darkGray
-            } else if !unlockedStyles.contains(name) {
+            } else if !CloudVars.unlockedStyles.contains(name) {
                 button.color = .lightGray
                 
                 // if the button's not unlocked, add a cost indicator below it
@@ -205,21 +208,19 @@ class CustomizeScene: MessagesScene {
                 } else {
                     // if it's not an in-app purchase button it's a theme button
                     // so set that as the new selection if it's unlocked
-                    if unlockedStyles.contains(name) {
+                    if CloudVars.unlockedStyles.contains(name) {
                         // set the previously selected button to be black, the new one to be darkGray
-                        getButton(ofName: selectedStyle, scene!)?.color = .black
-                        selectedStyle = name
-                        getButton(ofName: selectedStyle, scene!)?.color = .darkGray
+                        getButton(ofName: CloudVars.selectedStyle, scene!)?.color = .black
+                        CloudVars.selectedStyle = name
+                        getButton(ofName: CloudVars.selectedStyle, scene!)?.color = .darkGray
                     } else if let button = getButton(ofName: name, scene!) {
                         // check if we can pay for this, if we can unlock it and activate it
-                        if coinCount >= STYLES_PRICES[name]! {
+                        if CloudVars.coinCount >= STYLES_PRICES[name]! {
                             // remove the price from the coin count and update the coin count indicator
-                            coinCount -= STYLES_PRICES[name]!
-                            if let ciLabel = scene?.childNode(withName: SpriteNames.CI_NAME) as? SKLabelNode {
-                                ciLabel.text = "💰 \(coinCount)"
-                            }
-                            // add it as an unlocked style
-                            unlockedStyles.append(name)
+                            CloudVars.coinCount -= STYLES_PRICES[name]!
+                            CustomizeScene.updateCoinCount()
+                            // add this as an unlocked style
+                            CloudVars.unlockedStyles.append(name)
                             // remove the cost indicator
                             scene?.childNode(withName: name + SpriteNames.CI_NAME)?.removeFromParent()
                             // recursively call this function to do the actual selection
@@ -235,6 +236,12 @@ class CustomizeScene: MessagesScene {
                     }
                 }
             }
+        }
+    }
+    
+    static func updateCoinCount() {
+        if let ciLabel = _staticScene?.childNode(withName: SpriteNames.CI_NAME) as? SKLabelNode {
+            ciLabel.text = "💰 \(CloudVars.coinCount)"
         }
     }
     

@@ -29,22 +29,29 @@ class MenuScene: MessagesScene {
         
         // add the buttons
         let playBut = makeButton(scene: scene!, text: "Play 🏃‍♀️", name: SpriteNames.PLAY_NAME)
-        playBut.position = CGPoint(x: 0, y: topOrBottom/4)
+        playBut.position = CGPoint(x: 0, y: topOrBottom/2)
         scene!.addChild(playBut)
         
         let customizeBut = makeButton(scene: scene!, text: "Customize 🎨", name: SpriteNames.CUSTOMIZE_NAME)
-        customizeBut.position = .zero
+        customizeBut.position = CGPoint(x: 0, y: topOrBottom/4)
         scene!.addChild(customizeBut)
         
         // Only let the user remove ads if they're authorized to pay
         if StoreObserver.shared.isAuthorizedForPayments {
             let adsBut = makeButton(scene: scene!, text: "Remove ads", name: SpriteNames.REMOVE_AD_NAME)
-            adsBut.position = CGPoint(x: 0, y: -topOrBottom/4)
+            adsBut.position = .zero
             scene!.addChild(adsBut)
+            
+            let restoreBut = makeButton(scene: scene!, text: "Restore purchases", name: SpriteNames.RESTORE_NAME)
+            restoreBut.position = CGPoint(x: 0, y: -topOrBottom/4)
+            scene!.addChild(restoreBut)
         }
         
+        // mute button, draw for the first time
+        redrawMuteButton()
+        
         // add score counter
-        let score = SKLabelNode(text: "High Score: \(highScore)")
+        let score = SKLabelNode(text: "High Score: \(CloudVars.highScore)")
         score.fontColor = title.fontColor
         score.fontName = Formats.LABEL_FONT
         score.position = CGPoint(x: 0, y: -topOrBottom*2/3)
@@ -67,9 +74,29 @@ class MenuScene: MessagesScene {
                     transition: SKTransition.fade(withDuration: 0.2))
             case SpriteNames.REMOVE_AD_NAME:
                 StoreManager.shared.paymentRequest(matchingIdentifier: touchedNode.name!)
+            case SpriteNames.RESTORE_NAME:
+                StoreObserver.shared.restore()
+            case SpriteNames.MUTE_NAME:
+                CloudVars.muted = !CloudVars.muted
+                redrawMuteButton()
             default:
                 break
             }
         }
+    }
+    
+    /// Removes the mute button from the scene if it exists and replaces it with a button reflecting the new value
+    func redrawMuteButton() {
+        if let existing = scene?.childNode(withName: SpriteNames.MUTE_NAME) {
+            existing.removeFromParent()
+        }
+        
+        var text = "🔈"
+        if CloudVars.muted {
+            text = "🔇"
+        }
+        let muteBut = makeButton(scene: scene!, text: text, name: SpriteNames.MUTE_NAME)
+        muteBut.position = CGPoint(x: 0, y: -scene!.size.height/4)
+        scene!.addChild(muteBut)
     }
 }

@@ -18,7 +18,7 @@ class ScoreViewController: ViewControllerTransferer {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // TODO: customize, not game
+            // TODO: scores, not game
             if let scene = GameScene(fileNamed: "GameScene") {
                 scene.scaleMode = .resizeFill
                 view.presentScene(scene)

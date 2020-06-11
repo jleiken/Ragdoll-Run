@@ -20,6 +20,8 @@ struct SpriteNames {
     static let MENU_NAME = "menuBut"
     static let PLAY_NAME = "playBut"
     static let BACK_NAME = "backBut"
+    static let RESTORE_NAME = "restoreBut"
+    static let MUTE_NAME = "muteBut"
     static let COIN_NAME = "coins"
     static let SCORE_NAME = "scoreBut"
     static let REMOVE_AD_NAME = "remove_ads"
@@ -34,13 +36,6 @@ struct Formats {
     static let TITLE_FONT = "AvenirNext-Heavy"
     static let EMPHASIS_FONT = "AvenirNext-Bold"
     static let LABEL_FONT = "AvenirNext-DemiBold"
-}
-
-struct CloudKeys {
-    static let SCORE_KEY = "highScore"
-    static let COIN_KEY = "coinCount"
-    static let STYLE_KEY = "selectedStyle"
-    static let UNLOCKS_KEY = "unlockedStyles"
 }
 
 /// A structure of messages that will be displayed to users, from Apple's StoreKit demo

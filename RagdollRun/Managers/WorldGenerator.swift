@@ -9,13 +9,13 @@
 import SpriteKit
 import GameplayKit
 
-let CHUNK_SIZE = CGFloat(7500)
-let GROUND_COLOR = SKColor.white
-
-let ENEMY_COLOR = SKColor.red
-let PIPE_COLOR = SKColor.green
-
 class WorldGenerator {
+    static let CHUNK_SIZE = CGFloat(7500)
+    
+    private static let GROUND_COLOR = hexStringToUIColor(hex: "645244")
+    private static let ENEMY_COLOR = hexStringToUIColor(hex: "fe5f55")
+    private static let PIPE_COLOR = hexStringToUIColor(hex: "157f1f")
+    
     private var _renderedTo : CGFloat
     private var _groundHeight : CGFloat
     private var _scene : SKScene
@@ -58,6 +58,7 @@ class WorldGenerator {
         deleteOldChunk()
         
         generateGroundWithHoles(from, to)
+        generateClouds(from, to)
         if from < 0 {
             // if we're starting out now, don't generate dangers right away
             from = -_renderedTo
@@ -69,8 +70,8 @@ class WorldGenerator {
     }
     
     /// Deletes everything a chunk behind the camera's position
-    func deleteOldChunk() {
-        let deleteBefore = (_scene.camera?.position.x ?? CHUNK_SIZE) - CHUNK_SIZE
+    private func deleteOldChunk() {
+        let deleteBefore = (_scene.camera?.position.x ?? WorldGenerator.CHUNK_SIZE) - WorldGenerator.CHUNK_SIZE
         for child in _scene.children {
             if nodeIsWorld(node: child) && child.position.x < deleteBefore {
                 child.removeFromParent()
@@ -79,7 +80,7 @@ class WorldGenerator {
     }
     
     /// Generate ground from-to with holes placed at HOLE_FREQ%
-    func generateGroundWithHoles(_ from: CGFloat, _ to: CGFloat) {
+    private func generateGroundWithHoles(_ from: CGFloat, _ to: CGFloat) {
         // go from from to to and at each point that's more than HOLE_SIZE ticks away from a hole,
         // give it HOLE_FREQ% chance of generating a new hole
         // (because we don't want two holes in a row)
@@ -101,7 +102,7 @@ class WorldGenerator {
             }
             
             // if it shouldn't be a whole, make a rectangle for the ground
-            let ground = SKSpriteNode(color: GROUND_COLOR, size: CGSize(width: HOLE_SIZE+2, height: abs(_groundHeight)))
+            let ground = SKSpriteNode(color: WorldGenerator.GROUND_COLOR, size: CGSize(width: HOLE_SIZE+2, height: abs(_groundHeight)))
             // position is x: nextStart, y: bottom of the screen
             ground.position = CGPoint(x: CGFloat(i) * HOLE_SIZE, y: _groundHeight * 1.5)
             ground.name = SpriteNames.GROUND_NAME
@@ -111,9 +112,13 @@ class WorldGenerator {
             _scene.addChild(ground)
         }
     }
+    
+    private func generateClouds(_ from: CGFloat, _ to: CGFloat) {
+        // TODO: clouds in multiple layers for parallax effect
+    }
 
     /// Once the ground is generated, generate enemies and obstacles from-to based on ENEMY_FREQ and PIPE_FREQ
-    func generateDangers(_ from: CGFloat, _ to: CGFloat) {
+    private func generateDangers(_ from: CGFloat, _ to: CGFloat) {
         var index = from
         while index < to {
             var toIncrement = HOLE_SIZE
@@ -142,7 +147,7 @@ class WorldGenerator {
         }
     }
     
-    func generateCoins(_ from: CGFloat, _ to: CGFloat) {
+    private func generateCoins(_ from: CGFloat, _ to: CGFloat) {
         var index = from
         while index < to {
             var toIncrement = HOLE_SIZE
@@ -162,7 +167,7 @@ class WorldGenerator {
         }
     }
     
-    func addEnemy(x: CGFloat) {
+    private func addEnemy(x: CGFloat) {
         let xSize = _scene.size.width * 0.1
         let ySize = _scene.size.height * 0.1
         var enemyPoints = [
@@ -173,7 +178,7 @@ class WorldGenerator {
         ]
         let enemy = SKShapeNode(points: &enemyPoints, count: enemyPoints.count)
         enemy.name = SpriteNames.ENEMY_NAME
-        enemy.fillColor = ENEMY_COLOR
+        enemy.fillColor = WorldGenerator.ENEMY_COLOR
         enemy.lineWidth = 0.0
         enemy.physicsBody = SKPhysicsBody(polygonFrom: enemy.path!)
         initializeStaticPhysicsBody(body: enemy.physicsBody)
@@ -183,14 +188,14 @@ class WorldGenerator {
         _scene.addChild(enemy)
     }
     
-    func addPipe(x: CGFloat) {
-        let pipeBase = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.05, yFactor: 0.12))
+    private func addPipe(x: CGFloat) {
+        let pipeBase = SKSpriteNode(color: WorldGenerator.PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.05, yFactor: 0.12))
         pipeBase.name = SpriteNames.OBSTACLE_NAME
         pipeBase.position = CGPoint(x: x, y: _groundHeight+pipeBase.size.height/2)
         pipeBase.physicsBody = SKPhysicsBody(rectangleOf: pipeBase.size)
         initializeStaticPhysicsBody(body: pipeBase.physicsBody)
         
-        let pipeTop = SKSpriteNode(color: PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.06, yFactor: 0.03))
+        let pipeTop = SKSpriteNode(color: WorldGenerator.PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.06, yFactor: 0.03))
         pipeTop.name = SpriteNames.OBSTACLE_NAME
         pipeTop.position = CGPoint(x: x, y: pipeBase.position.y+pipeBase.size.height/2)
         pipeTop.physicsBody = SKPhysicsBody(rectangleOf: pipeTop.size)
@@ -200,7 +205,7 @@ class WorldGenerator {
         _scene.addChild(pipeTop)
     }
     
-    func addCoin(x: CGFloat) {
+    private func addCoin(x: CGFloat) {
         let squareSize = sizeByScene(_scene, xFactor: 0.02, yFactor: 0.02)
         let coin = SKShapeNode(circleOfRadius: squareSize.width)
         coin.lineWidth = 2.0
@@ -223,6 +228,6 @@ class WorldGenerator {
     
     /// true if curX is within a quarter chunk of the position we've rendered up to
     func shouldRenderNextChunk(_ curX: CGFloat?) -> Bool {
-        return (_renderedTo - (curX ?? 0)) < CHUNK_SIZE / 2
+        return (_renderedTo - (curX ?? 0)) < WorldGenerator.CHUNK_SIZE / 2
     }
 }

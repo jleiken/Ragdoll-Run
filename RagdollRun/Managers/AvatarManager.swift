@@ -160,7 +160,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         if let coin = coinOpt {
             coin.removeFromParent()
-            coinCount += 1
+            CloudVars.coinCount += 1
         }
     }
     
