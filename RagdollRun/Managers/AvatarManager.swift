@@ -119,15 +119,27 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         // create the physics body of the whole thing for ease of reference
         _fullNode.physicsBody = SKPhysicsBody(rectangleOf: sizeByScene(scene, xFactor: 0.05, yFactor: 0.16))
-        // TODO: make the base heavier for balancing
         _avatarBody = _fullNode.physicsBody!
         _avatarBody.restitution = 0.0
+        
+        // add a heavier base for balancing
+        let base = SKSpriteNode(color: .clear, size: sizeByScene(scene, xFactor: 0.05, yFactor: 0.04))
+        base.position = scene.convert(CGPoint(x: xPos, y: groundHeight+(base.size.height/2)), to: _fullNode)
+        _fullNode.addChild(base)
+        base.physicsBody = SKPhysicsBody(rectangleOf: base.size)
+        base.physicsBody?.density /= 2
+        base.physicsBody?.restitution = 0.0
+        base.physicsBody?.collisionBitMask = 0
+        base.physicsBody?.categoryBitMask = 0
+        let baseJoint = SKPhysicsJointFixed.joint(withBodyA: _avatarBody, bodyB: base.physicsBody!,
+                                                  anchor: CGPoint(x: xPos, y: groundHeight+base.size.height))
+        scene.physicsWorld.add(baseJoint)
 
         _cameraToAvatarOffset = (scene.camera?.position.x ?? 0) - xPos
         if UIDevice.current.userInterfaceIdiom == .pad {
-            _jumpForce = _avatarBody.mass*torso.size.height*8
+            _jumpForce = _avatarBody.mass*torso.size.height*8.5
         } else {
-            _jumpForce = _avatarBody.mass*torso.size.height*10
+            _jumpForce = _avatarBody.mass*torso.size.height*10.5
         }
     }
     

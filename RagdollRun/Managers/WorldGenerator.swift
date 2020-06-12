@@ -12,9 +12,9 @@ import GameplayKit
 class WorldGenerator {
     static let CHUNK_SIZE = CGFloat(7500)
     
-    private static let GROUND_COLOR = hexStringToUIColor(hex: "645244")
-    private static let ENEMY_COLOR = hexStringToUIColor(hex: "fe5f55")
-    private static let PIPE_COLOR = hexStringToUIColor(hex: "157f1f")
+    static let GROUND_COLOR = hexStringToUIColor(hex: "645244")
+    static let ENEMY_COLOR = hexStringToUIColor(hex: "fe5f55")
+    static let PIPE_COLOR = hexStringToUIColor(hex: "157f1f")
     
     private var _renderedTo: CGFloat
     private var _firstRender: Bool = true

@@ -128,7 +128,7 @@ class GameScene: MessagesScene {
         goText.position.x = cameraX
         goText.position.y = 10
         goText.zPosition = Physics.TOP_Z
-        goText.fontColor = SKColor.red
+        goText.fontColor = .red
         goText.fontName = Formats.TITLE_FONT
         goText.fontSize = 48
         scene.addChild(goText)
@@ -145,7 +145,7 @@ class GameScene: MessagesScene {
         if score > CloudVars.highScore {
             CloudVars.highScore = Int64(score)
             scoreText.text = "New high score: \(score)!"
-            scoreText.fontColor = .green
+            scoreText.fontColor = WorldGenerator.PIPE_COLOR
         }
         scene.addChild(scoreText)
         
