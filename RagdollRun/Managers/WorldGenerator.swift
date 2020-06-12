@@ -16,25 +16,31 @@ class WorldGenerator {
     private static let ENEMY_COLOR = hexStringToUIColor(hex: "fe5f55")
     private static let PIPE_COLOR = hexStringToUIColor(hex: "157f1f")
     
-    private var _renderedTo : CGFloat
-    private var _groundHeight : CGFloat
-    private var _scene : SKScene
+    private var _renderedTo: CGFloat
+    private var _firstRender: Bool = true
+    private var _groundHeight: CGFloat
+    private var _scene: SKScene
+    private let _cloudHeightGenerator: GKGaussianDistribution
     
-    private var ENEMY_FREQ = 15
-    private var PIPE_FREQ = 10
+    private var ENEMY_FREQ = 20
+    private var PIPE_FREQ = 15
     private var COIN_FREQ = 20
+    private var CLOUD_FREQ = 30
     /// the percantage likeliness that a hole is generated at each tick, out of 100
     private var HOLE_FREQ = 5
-    private let HOLE_SIZE : CGFloat
+    private let HOLE_SIZE: CGFloat
     
-    private let _enemyMovementSequence : SKAction
-    private let _coinMovementSequence : SKAction
+    private let _enemyMovementSequence: SKAction
+    private let _coinMovementSequence: SKAction
     
-    init(groundHeight : CGFloat, startingPos : CGFloat, scene : SKScene) {
+    init(groundHeight: CGFloat, startingPos: CGFloat, scene: SKScene) {
         _renderedTo = startingPos
         _groundHeight = groundHeight
         HOLE_SIZE = abs(_groundHeight / 1.4)
         _scene = scene
+        _cloudHeightGenerator = GKGaussianDistribution(randomSource: GKRandomSource(),
+                                                       lowestValue: Int(_groundHeight),
+                                                       highestValue: Int(_scene.size.height/2))
         
         _enemyMovementSequence = SKAction.repeatForever(SKAction.sequence([
             SKAction.moveBy(x: _scene.size.width * 0.4, y: 0, duration: 0.4),
@@ -62,6 +68,12 @@ class WorldGenerator {
         if from < 0 {
             // if we're starting out now, don't generate dangers right away
             from = -_renderedTo
+        }
+        
+        if _firstRender {
+            // if it's our first render, don't let obstacles be generated too early
+            from = _scene.size.width
+            _firstRender = false
         }
         generateDangers(from, to)
         generateCoins(from, to)
@@ -106,7 +118,7 @@ class WorldGenerator {
             // position is x: nextStart, y: bottom of the screen
             ground.position = CGPoint(x: CGFloat(i) * HOLE_SIZE, y: _groundHeight * 1.5)
             ground.name = SpriteNames.GROUND_NAME
-            ground.zPosition = 0
+            ground.zPosition = Physics.WORLD_Z
             ground.physicsBody = SKPhysicsBody(rectangleOf: ground.size)
             initializeStaticPhysicsBody(body: ground.physicsBody)
             _scene.addChild(ground)
@@ -114,7 +126,33 @@ class WorldGenerator {
     }
     
     private func generateClouds(_ from: CGFloat, _ to: CGFloat) {
-        // TODO: clouds in multiple layers for parallax effect
+        var index = from
+        let toIncrement = HOLE_SIZE/4
+        
+        while index < to {
+            if randLessThan(CLOUD_FREQ) {
+                // pick a type of cloud
+                let cloudType = Int.random(in: 1...3)
+                
+                // add the cloud at a low z index
+                let cloud = cloudFrom(fileNamed: "Cloud\(cloudType)")
+                cloud.position = CGPoint(x: index, y: CGFloat(_cloudHeightGenerator.nextInt()))
+                cloud.zPosition = CGFloat(cloudType)
+                _scene.addChild(cloud)
+            }
+            
+            index += toIncrement
+        }
+    }
+    
+    private func cloudFrom(fileNamed: String) -> SKSpriteNode {
+        let cloud = SKSpriteNode(imageNamed: fileNamed)
+        
+        // pick a random size
+        let scaleFactor = CGFloat.random(in: 0.06...0.12)
+        cloud.size = sizeByScene(_scene, xFactor: scaleFactor, yFactor: scaleFactor)
+        
+        return cloud
     }
 
     /// Once the ground is generated, generate enemies and obstacles from-to based on ENEMY_FREQ and PIPE_FREQ
@@ -180,6 +218,7 @@ class WorldGenerator {
         enemy.name = SpriteNames.ENEMY_NAME
         enemy.fillColor = WorldGenerator.ENEMY_COLOR
         enemy.lineWidth = 0.0
+        enemy.zPosition = Physics.WORLD_Z
         enemy.physicsBody = SKPhysicsBody(polygonFrom: enemy.path!)
         initializeStaticPhysicsBody(body: enemy.physicsBody)
         
@@ -192,12 +231,14 @@ class WorldGenerator {
         let pipeBase = SKSpriteNode(color: WorldGenerator.PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.05, yFactor: 0.12))
         pipeBase.name = SpriteNames.OBSTACLE_NAME
         pipeBase.position = CGPoint(x: x, y: _groundHeight+pipeBase.size.height/2)
+        pipeBase.zPosition = Physics.WORLD_Z
         pipeBase.physicsBody = SKPhysicsBody(rectangleOf: pipeBase.size)
         initializeStaticPhysicsBody(body: pipeBase.physicsBody)
         
         let pipeTop = SKSpriteNode(color: WorldGenerator.PIPE_COLOR, size: sizeByScene(_scene, xFactor: 0.06, yFactor: 0.03))
         pipeTop.name = SpriteNames.OBSTACLE_NAME
         pipeTop.position = CGPoint(x: x, y: pipeBase.position.y+pipeBase.size.height/2)
+        pipeTop.zPosition = Physics.WORLD_Z
         pipeTop.physicsBody = SKPhysicsBody(rectangleOf: pipeTop.size)
         initializeStaticPhysicsBody(body: pipeTop.physicsBody)
         
@@ -212,11 +253,12 @@ class WorldGenerator {
         coin.strokeColor = .yellow
         let coinH = Int(squareSize.height)
         coin.position = CGPoint(x: x, y: _groundHeight + CGFloat(Int.random(in: coinH*2...coinH*20)))
+        coin.zPosition = Physics.WORLD_Z
         coin.physicsBody = SKPhysicsBody(circleOfRadius: squareSize.width)
         coin.physicsBody?.isDynamic = false
         coin.physicsBody?.categoryBitMask = 0
         coin.physicsBody?.collisionBitMask = 0
-        coin.physicsBody?.contactTestBitMask = COIN_CONTACT_MASK
+        coin.physicsBody?.contactTestBitMask = Physics.COIN_CONTACT_MASK
         
         _scene.addChild(coin)
     }

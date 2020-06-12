@@ -12,8 +12,8 @@ import GameplayKit
 class GameScene: MessagesScene {
     
     private var _activeScene: Bool?
-    private var _cameraSpeed: CGFloat?
-    private let DEFAULT_SPEED: CGFloat = 5
+    private var _cameraSpeed: CGFloat = 5
+    private var _speedIncrement: CGFloat = 1
     
     private var _avatarManager: AvatarManager?
     private var _worldGenerator: WorldGenerator?
@@ -40,7 +40,10 @@ class GameScene: MessagesScene {
         scene?.addChild(cameraNode)
         scene?.camera = cameraNode
         let divisor: CGFloat = 125
-        _cameraSpeed = (scene?.size.width ?? divisor*DEFAULT_SPEED)/divisor
+        if let sceneWidth = scene?.size.width {
+            _cameraSpeed = sceneWidth/divisor
+            _speedIncrement = _cameraSpeed/5
+        }
         
         _activeScene = true
     }
@@ -48,31 +51,31 @@ class GameScene: MessagesScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if sceneActive() {
             _avatarManager?.isTouching = true
-        } else {
-            let touch = touches.first
-            let positionInScene = touch!.location(in: self)
-            // the node they touched
-            let touchedNode = self.nodes(at: positionInScene).first
-            
-            if touchedNode?.name == SpriteNames.MENU_NAME {
-                // touched menu icon, dismiss this popover
-                presentScene(
-                    view, makeScene(of: MenuScene.self, with: "MenuScene"),
-                    transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
-            } else if touchedNode?.name == SpriteNames.PLAY_NAME {
-                // touched play icon
-                scene?.removeAllChildren()
-                didMove(to: self.view!)
-            } else if touchedNode?.name == SpriteNames.SCORE_NAME {
-                messageVC?.toScores()
-            }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if sceneActive() {
             _avatarManager?.isTouching = false
-        }
+        } else {
+           let touch = touches.first
+           let positionInScene = touch!.location(in: self)
+           // the node they touched
+           let touchedNode = self.nodes(at: positionInScene).first
+           
+           if touchedNode?.name == SpriteNames.MENU_NAME {
+               // touched menu icon, dismiss this popover
+               presentScene(
+                   view, makeScene(of: MenuScene.self, with: "MenuScene"),
+                   transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
+           } else if touchedNode?.name == SpriteNames.PLAY_NAME {
+               // touched play icon
+               scene?.removeAllChildren()
+               didMove(to: self.view!)
+           } else if touchedNode?.name == SpriteNames.SCORE_NAME {
+               messageVC?.toScores()
+           }
+       }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -97,12 +100,13 @@ class GameScene: MessagesScene {
             // render the next section of the level if we're close to the end
             if _worldGenerator?.shouldRenderNextChunk(scene?.camera?.position.x) ?? false {
                 _worldGenerator!.renderChunk(size: WorldGenerator.CHUNK_SIZE)
+                // also when we render the chunk increase the speed
+                _cameraSpeed += _speedIncrement
             }
             
             // move the camera one cameraSpeed increment to the right along with the avatar
-            let inc = _cameraSpeed ?? DEFAULT_SPEED
-            scene?.camera?.position.x += inc
-            _avatarManager!.walk(inc)
+            scene?.camera?.position.x += _cameraSpeed
+            _avatarManager!.walk(_cameraSpeed)
         }
     }
     
@@ -114,7 +118,7 @@ class GameScene: MessagesScene {
         return Int(scene!.camera!.position.x / 100)
     }
     
-    func gameOver(_ scene : SKScene) {
+    func gameOver(_ scene: SKScene) {
         _activeScene = false
         
         let cameraX = scene.camera!.position.x
@@ -123,6 +127,7 @@ class GameScene: MessagesScene {
         let goText = SKLabelNode(text: "GAME OVER")
         goText.position.x = cameraX
         goText.position.y = 10
+        goText.zPosition = Physics.TOP_Z
         goText.fontColor = SKColor.red
         goText.fontName = Formats.TITLE_FONT
         goText.fontSize = 48
@@ -133,7 +138,9 @@ class GameScene: MessagesScene {
         let scoreText = SKLabelNode(text: "Your score: \(score)")
         scoreText.position.x = cameraX
         scoreText.position.y = -40
+        scoreText.zPosition = Physics.TOP_Z
         scoreText.fontName = Formats.EMPHASIS_FONT
+        scoreText.fontColor = Formats.HIGHLIGHT
         // is it a high score? if so, set it and modify the a label
         if score > CloudVars.highScore {
             CloudVars.highScore = Int64(score)
@@ -152,6 +159,7 @@ class GameScene: MessagesScene {
             // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
             scoreBut.position.x = cameraX
             scoreBut.position.y = -(scene.size.height / 2) + 60
+            scoreBut.zPosition = Physics.TOP_Z
             scoreBut.fontSize = 28
             scoreBut.fontColor = .red
             scoreBut.name = SpriteNames.SCORE_NAME
@@ -163,8 +171,9 @@ class GameScene: MessagesScene {
             // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
             menuBut.position.x = cameraX - (scene.size.width / 2) + 65
             menuBut.position.y = -(scene.size.height / 2) + 60
+            menuBut.zPosition = Physics.TOP_Z
             menuBut.fontSize = 28
-            menuBut.fontColor = .red
+            menuBut.fontColor = Formats.HIGHLIGHT
             menuBut.name = SpriteNames.MENU_NAME
             scene.addChild(menuBut)
             
@@ -173,7 +182,8 @@ class GameScene: MessagesScene {
             playBut.fontName = Formats.EMPHASIS_FONT
             playBut.position.x = cameraX + (scene.size.width / 2) - 60
             playBut.position.y = menuBut.position.y
-            playBut.fontColor = .red
+            playBut.zPosition = Physics.TOP_Z
+            playBut.fontColor = Formats.HIGHLIGHT
             playBut.fontSize = 28
             playBut.name = SpriteNames.PLAY_NAME
             scene.addChild(playBut)

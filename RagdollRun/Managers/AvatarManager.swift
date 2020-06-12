@@ -62,7 +62,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         let nodePos = CGPoint(x: xPos, y: groundHeight+legL.size.height+(torso.size.height*3/7))
         _fullNode.position = nodePos
         // we always want it to be at the front
-        _fullNode.zPosition = 100
+        _fullNode.zPosition = Physics.TOP_Z
         scene.addChild(_fullNode)
         
         // set the position of the body parts based on the parent node
@@ -77,12 +77,12 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         torso.physicsBody = SKPhysicsBody(rectangleOf: torso.size)
         torso.physicsBody?.isDynamic = false
         torso.physicsBody?.categoryBitMask = 0
-        torso.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        torso.physicsBody?.contactTestBitMask = Physics.AVATAR_CONTACT_MASK
         torso.physicsBody?.mass *= 2
         head.physicsBody = SKPhysicsBody(rectangleOf: head.size)
         head.physicsBody?.isDynamic = false
         head.physicsBody?.categoryBitMask = 0
-        head.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+        head.physicsBody?.contactTestBitMask = Physics.AVATAR_CONTACT_MASK
         head.physicsBody?.mass /= 2
         
         
@@ -90,7 +90,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
             part.physicsBody = SKPhysicsBody(rectangleOf: part.size)
             part.physicsBody?.restitution = 0.0
             part.physicsBody?.collisionBitMask = 0
-            part.physicsBody?.contactTestBitMask = AVATAR_CONTACT_MASK
+            part.physicsBody?.contactTestBitMask = Physics.AVATAR_CONTACT_MASK
             part.physicsBody?.categoryBitMask = 0
             part.physicsBody?.angularDamping = 0.95
         }
@@ -119,6 +119,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         // create the physics body of the whole thing for ease of reference
         _fullNode.physicsBody = SKPhysicsBody(rectangleOf: sizeByScene(scene, xFactor: 0.05, yFactor: 0.16))
+        // TODO: make the base heavier for balancing
         _avatarBody = _fullNode.physicsBody!
         _avatarBody.restitution = 0.0
 
@@ -152,9 +153,9 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         var coinOpt: SKNode?
-        if contact.bodyA.contactTestBitMask == COIN_CONTACT_MASK {
+        if contact.bodyA.contactTestBitMask == Physics.COIN_CONTACT_MASK {
             coinOpt = contact.bodyA.node
-        } else if contact.bodyB.contactTestBitMask == COIN_CONTACT_MASK {
+        } else if contact.bodyB.contactTestBitMask == Physics.COIN_CONTACT_MASK {
             coinOpt = contact.bodyB.node
         }
         

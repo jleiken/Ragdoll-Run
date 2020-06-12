@@ -7,9 +7,15 @@
 //
 
 import Foundation
+import SpriteKit
 
-let AVATAR_CONTACT_MASK = UInt32(0x0000000F)
-let COIN_CONTACT_MASK = UInt32(0b1)
+struct Physics {
+    static let AVATAR_CONTACT_MASK = UInt32(0x0000000F)
+    static let COIN_CONTACT_MASK = UInt32(0b1)
+    
+    static let WORLD_Z = CGFloat(5.0)
+    static let TOP_Z = CGFloat(10.0)
+}
 
 struct SpriteNames {
     static let AVATAR_NAME = "avatar"
