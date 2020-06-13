@@ -35,6 +35,10 @@
 		977CB7802480553D00FAF268 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977CB77F2480553D00FAF268 /* MenuScene.swift */; };
 		9786DDF324844831008FCF6C /* CustomizeScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9786DDF224844831008FCF6C /* CustomizeScene.sks */; };
 		9786DDF524844840008FCF6C /* CustomizeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9786DDF424844840008FCF6C /* CustomizeScene.swift */; };
+		97931AB62494286B00520897 /* ScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97931AB52494286A00520897 /* ScoreScene.sks */; };
+		97931AB72494286B00520897 /* ScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97931AB52494286A00520897 /* ScoreScene.sks */; };
+		97931AB92494287400520897 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97931AB82494287400520897 /* ScoreScene.swift */; };
+		97931ABA2494287400520897 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97931AB82494287400520897 /* ScoreScene.swift */; };
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
@@ -120,6 +124,8 @@
 		9786DDF224844831008FCF6C /* CustomizeScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CustomizeScene.sks; sourceTree = "<group>"; };
 		9786DDF424844840008FCF6C /* CustomizeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeScene.swift; sourceTree = "<group>"; };
 		978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ragdoll Run.entitlements"; sourceTree = "<group>"; };
+		97931AB52494286A00520897 /* ScoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreScene.sks; sourceTree = "<group>"; };
+		97931AB82494287400520897 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		97961B78246CA29A007F7BE6 /* Ragdoll Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ragdoll Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -222,6 +228,8 @@
 				977CB77F2480553D00FAF268 /* MenuScene.swift */,
 				97961B81246CA29A007F7BE6 /* GameScene.swift */,
 				97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */,
+				97931AB52494286A00520897 /* ScoreScene.sks */,
+				97931AB82494287400520897 /* ScoreScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 				97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */,
 				97269ACF248B0B5900DC0003 /* Assets.xcassets in Resources */,
 				97692F942489B6E100F86E4D /* CustomizeScene.sks in Resources */,
+				97931AB72494286B00520897 /* ScoreScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +462,7 @@
 				97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */,
 				977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */,
 				97961B8C246CA29C007F7BE6 /* LaunchScreen.storyboard in Resources */,
+				97931AB62494286B00520897 /* ScoreScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +502,7 @@
 				97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */,
 				97692F902489B18100F86E4D /* GameViewController.swift in Sources */,
 				97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */,
+				97931ABA2494287400520897 /* ScoreScene.swift in Sources */,
 				97692F962489B6E600F86E4D /* MenuScene.swift in Sources */,
 				97692F972489B6F500F86E4D /* WorldGenerator.swift in Sources */,
 				97692F912489B6D000F86E4D /* GameScene.swift in Sources */,
@@ -522,6 +533,7 @@
 				97DA344A2492DC6600C565EA /* CloudVars.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
 				97DA34432491918100C565EA /* Data.swift in Sources */,
+				97931AB92494287400520897 /* ScoreScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

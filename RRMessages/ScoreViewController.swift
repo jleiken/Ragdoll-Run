@@ -14,12 +14,17 @@ class ScoreViewController: ViewControllerTransferer {
     
     static let storyboardID = "ScoreViewController"
     
+    var currentMatch: RunMatch?
+    var localID: UUID?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // TODO: scores, not game
-            if let scene = GameScene(fileNamed: "GameScene") {
+            if let scene = ScoreScene(fileNamed: "ScoreScene") {
+                scene.currentMatch = currentMatch
+                scene.localID = localID
+                scene.presenter = presenter
                 scene.scaleMode = .resizeFill
                 view.presentScene(scene)
             }

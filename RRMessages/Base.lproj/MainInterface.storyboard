@@ -50,20 +50,6 @@
             </objects>
             <point key="canvasLocation" x="1233" y="127"/>
         </scene>
-        <!--Score View Controller-->
-        <scene sceneID="K3p-8B-VIs">
-            <objects>
-                <viewController storyboardIdentifier="ScoreViewController" id="UQj-hk-P04" customClass="ScoreViewController" customModule="Ragdoll_Run_Messages" customModuleProvider="target" sceneMemberID="viewController">
-                    <skView key="view" contentMode="scaleToFill" id="sr8-qb-Pcz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </skView>
-                    <size key="freeformSize" width="320" height="528"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yj7-yL-9em" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1777" y="127"/>
-        </scene>
         <!--Ready View Controller-->
         <scene sceneID="j0U-zf-tAo">
             <objects>
@@ -110,6 +96,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyd-Ec-azH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="681" y="127"/>
+        </scene>
+        <!--Score View Controller-->
+        <scene sceneID="RlI-rV-uQa">
+            <objects>
+                <viewController storyboardIdentifier="ScoreViewController" id="FJE-B0-Dhw" customClass="ScoreViewController" customModule="Ragdoll_Run_Messages" customModuleProvider="target" sceneMemberID="viewController">
+                    <skView key="view" contentMode="scaleToFill" id="SYE-D9-kjY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </skView>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j69-7z-sVK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="127"/>
         </scene>
     </scenes>
     <resources>

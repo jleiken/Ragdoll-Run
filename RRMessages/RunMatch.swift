@@ -14,6 +14,12 @@ struct Outcome {
     var score: Int
 }
 
+extension Outcome: Comparable {
+    static func < (lhs: Outcome, rhs: Outcome) -> Bool {
+        return lhs.score < rhs.score
+    }
+}
+
 /// `URLQueryItem` extension for Outcome
 extension Outcome {
     var queryItem: URLQueryItem{
@@ -31,9 +37,12 @@ extension Outcome {
 
 struct RunMatch {
     var particpantScores: [Outcome]
-    var active: Bool
-    
-    let activeKey = "active"
+}
+
+extension RunMatch {
+    init() {
+        self.init(particpantScores: [])
+    }
 }
 
 /// `URLQueryItem` extension for RunMatch
@@ -44,25 +53,18 @@ extension RunMatch {
         for outcome in particpantScores {
             items.append(outcome.queryItem)
         }
-        items.append(URLQueryItem(name: self.activeKey, value: "\(active)"))
         
         return items
     }
     
     init?(queryItems: [URLQueryItem]) {
         self.particpantScores = []
-        var active = false
         
         for queryItem in queryItems {
             if let decodedOutcome = Outcome(queryItem) {
                 self.particpantScores.append(decodedOutcome)
-            } else if queryItem.name == self.activeKey {
-                guard let newActive = Bool(queryItem.value!) else { fatalError("Invalid Query Item for active key: \(String(describing: queryItem.value))") }
-                active = newActive
             }
         }
-        
-        self.active = active
     }
 }
 

@@ -14,7 +14,7 @@ class ReadyViewController: ViewControllerTransferer {
     static let storyboardID = "ReadyViewController"
     
     @IBAction func didTapReady(_: AnyObject) {
-        presenter?.markReady()
+        presenter?.markReady(true)
         presenter?.presentMessagesView(newView: .play)
     }
     

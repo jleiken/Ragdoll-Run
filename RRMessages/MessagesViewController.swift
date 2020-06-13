@@ -14,6 +14,8 @@ class MessagesViewController: MSMessagesAppViewController {
     
     // MARK: - State
     var markedReady: Bool = false
+    private var _currentMatch: RunMatch? = nil
+    private weak var _currentSession: MSSession? = nil
     
     // MARK: - Conversation Handling
     
@@ -53,9 +55,10 @@ class MessagesViewController: MSMessagesAppViewController {
     
     private func presentViewController(for conversation: MSConversation, with presentationStyle: MSMessagesAppPresentationStyle) {
         
-        let match = matchFromConvo(from: conversation)
+        _currentSession = conversation.selectedMessage?.session
+        _currentMatch = matchFromConvo(from: conversation)
         
-        if match.particpantScores.filter({ $0.participant == conversation.localParticipantIdentifier }).count > 0 {
+        if (_currentMatch?.particpantScores.filter({ $0.participant == conversation.localParticipantIdentifier }).count ?? 0) > 0 {
             // If we've already played, show scores
             presentMessagesView(newView: .score)
         } else if markedReady {
@@ -73,7 +76,7 @@ class MessagesViewController: MSMessagesAppViewController {
         if let activeMatch = RunMatch(message: conversation.selectedMessage) {
             match = activeMatch
         } else {
-            match = RunMatch(particpantScores: [], active: false)
+            match = RunMatch()
         }
         
         return match
@@ -102,6 +105,11 @@ class MessagesViewController: MSMessagesAppViewController {
         for child in children {
             child.willMove(toParent: nil)
             child.view.removeFromSuperview()
+            // for some god forsaken reason iMessage asks us to present twice then doesn't
+            // actually destroy the scene, so set it to inactive
+            if let view = child.view as? SKView {
+                view.scene?.isPaused = true
+            }
             child.removeFromParent()
         }
     }
@@ -109,8 +117,13 @@ class MessagesViewController: MSMessagesAppViewController {
 
 extension MessagesViewController: MessagesViewPresenter {
     
-    func markReady() {
-        markedReady = true
+    func markReady(_ ready: Bool) {
+        markedReady = ready
+    }
+    
+    func clearConversation() {
+        _currentMatch = RunMatch()
+        _currentSession = nil
     }
     
     func presentMessagesView(newView: MessagesView) {
@@ -126,9 +139,12 @@ extension MessagesViewController: MessagesViewPresenter {
                 as? GameMessageViewController
             requestPresentationStyle(.expanded)
         case .score:
-            controller = storyboard?.instantiateViewController(
+            let sController = storyboard?.instantiateViewController(
                 withIdentifier: ScoreViewController.storyboardID)
                 as? ScoreViewController
+            sController?.currentMatch = _currentMatch
+            sController?.localID = activeConversation?.localParticipantIdentifier
+            controller = sController
             requestPresentationStyle(.expanded)
         }
         
@@ -141,9 +157,12 @@ extension MessagesViewController: MessagesViewPresenter {
     }
     
     func sendScore(_ score: Int) {
-        var match = matchFromConvo(from: activeConversation!)
-        match.particpantScores.append(
-            Outcome(participant: activeConversation!.localParticipantIdentifier, score: score))
+        var match = _currentMatch ?? RunMatch()
+        if let localID = activeConversation?.localParticipantIdentifier {
+            match.particpantScores.append(Outcome(participant: localID, score: score))
+        } else {
+            return
+        }
         
         var components = URLComponents()
         components.queryItems = match.queryItems
@@ -151,9 +170,9 @@ extension MessagesViewController: MessagesViewPresenter {
         let layout = MSMessageTemplateLayout()
         guard let image = UIImage(named: "Message Icon") else { fatalError("Could not load Message Icon image asset") }
         layout.image = image
-        layout.caption = NSLocalizedString("I scored \(score) points in Ragdoll Run", comment: "")
+        layout.caption = NSLocalizedString("$\(activeConversation!.localParticipantIdentifier) scored \(score) points in Ragdoll Run", comment: "")
         
-        let message = MSMessage(session: activeConversation!.selectedMessage?.session ?? MSSession())
+        let message = MSMessage(session: _currentSession ?? MSSession())
         message.url = components.url!
         message.layout = layout
         
@@ -161,6 +180,11 @@ extension MessagesViewController: MessagesViewPresenter {
             if let error = error {
                 print(error)
             }
+        }
+        
+        // if we just started the match we probably don't need to see the scores, dismiss this window
+        if match.particpantScores.count == 1 {
+            dismiss()
         }
     }
 

@@ -18,7 +18,10 @@ enum MessagesView {
 protocol MessagesViewPresenter {
     
     /// mark the user as having pressed a ready button
-    func markReady()
+    func markReady(_ ready: Bool)
+    
+    /// clears the current match so that a new one can be started
+    func clearConversation()
     
     /// send a score message in the current conversation
     func sendScore(_ score: Int)
