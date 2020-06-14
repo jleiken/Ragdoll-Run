@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "head-64.png",
+      "filename" : "armr-8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "head-256.png",
+      "filename" : "armr-3.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Head.png",
+      "filename" : "ArmR-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

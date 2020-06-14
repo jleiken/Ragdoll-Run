@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "legr-8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "legr-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "LegR.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

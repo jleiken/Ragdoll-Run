@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "torso-8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "torso-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Torso.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

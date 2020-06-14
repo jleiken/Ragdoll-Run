@@ -52,7 +52,7 @@ func colorToStyleAppArray(_ color: UIColor) -> [StyleApplicator] {
 /// creates a style applicator array from images of the names "\\(character)Torso", "\\(character)Head", and so on
 func characterToStyleAppArray(_ character: String) -> [StyleApplicator] {
     var arr = [StyleApplicator]()
-    let parts = ["Torso", "Head", "Leg", "Leg", "Arm", "Arm"].map({ character + $0 })
+    let parts = ["Torso", "Head", "ArmL", "ArmR", "LegL", "LegR"].map({ character + $0 })
     for part in parts {
         arr.append({ $0.texture = SKTexture(imageNamed: part) })
     }

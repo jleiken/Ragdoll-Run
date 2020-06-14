@@ -46,7 +46,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         
         // create the collection of parts and note their indices
         // (I'm using firstIndex in case I ever reorder this array)
-        let avatarParts = [torso, head, legL, legR, armL, armR]
+        let avatarParts = [torso, head, armL, armR, legL, legR]
         
         // now set the proper, chosen texture of each body part
         applySelectedStyles(nodes: avatarParts)

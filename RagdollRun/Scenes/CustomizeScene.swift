@@ -155,36 +155,36 @@ class CustomizeScene: MessagesScene {
     
     func makeModelAvatar(_ scene: SKScene, _ name: String, _ style: [StyleApplicator]) -> SKNode {
         let fullNode = SKNode()
-        let torso = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.01, yFactor: 0.04))
+        let torso = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.01, yFactor: 0.03))
         style[0](torso)
         fullNode.addChild(torso)
         torso.position = CGPoint(x: 0, y: torso.size.height/3)
         let head = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.013, yFactor: 0.013))
         style[1](head)
         fullNode.addChild(head)
-        head.position = CGPoint(x: 0, y: torso.size.height*3/4)
+        head.position = CGPoint(x: 0, y: torso.size.height)
         let armL = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.013, yFactor: 0.007))
         style[2](armL)
         fullNode.addChild(armL)
-        armL.position = CGPoint(x: -torso.size.width*3/4, y: torso.size.height/3)
+        armL.position = CGPoint(x: -torso.size.width, y: torso.size.height/2)
         let armR = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.013, yFactor: 0.007))
         style[3](armR)
         fullNode.addChild(armR)
-        armR.position = CGPoint(x: torso.size.width*3/4, y: torso.size.height/3)
+        armR.position = CGPoint(x: torso.size.width, y: torso.size.height/2)
         let legL = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.007, yFactor: 0.023))
         style[4](legL)
         fullNode.addChild(legL)
-        legL.position = CGPoint(x: -torso.size.width/2, y: -torso.size.height/3)
+        legL.position = CGPoint(x: -torso.size.width/2, y: -torso.size.height/6-legL.size.height/2)
         let legR = SKSpriteNode(color: .white, size: sizeByScene(scene, xFactor: 0.007, yFactor: 0.023))
         style[5](legR)
         fullNode.addChild(legR)
-        legR.position = CGPoint(x: torso.size.width/2, y: -torso.size.height/3)
+        legR.position = CGPoint(x: torso.size.width/2, y: -torso.size.height/6-legL.size.height/2)
         
         let label = SKLabelNode(text: name)
         label.fontColor = .white
         label.fontName = Formats.LABEL_FONT
         label.fontSize = 16.0
-        label.position = CGPoint(x: 0, y: -torso.size.height)
+        label.position = CGPoint(x: 0, y: legL.position.y-legL.size.height-8)
         fullNode.addChild(label)
         
         return fullNode

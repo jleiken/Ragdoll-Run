@@ -56,7 +56,7 @@ class CloudVars {
         }
     }
 
-    static private var _unlockedStyles: [String] = [STYLES_ORDERING.first!]
+    static private var _unlockedStyles: [String] = ["Steve"]
     /// The array of styles the user has unlocked so far. Default contains HIGHLIGHT color
     static var unlockedStyles: [String] {
         get {
