@@ -79,3 +79,7 @@ func hexStringToUIColor(hex: String) -> UIColor {
         alpha: CGFloat(1.0)
     )
 }
+
+func playSound(node: SKNode, fileNamed file: String) {
+    node.run(SKAction.playSoundFileNamed(file, waitForCompletion: false))
+}

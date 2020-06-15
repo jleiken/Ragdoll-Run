@@ -47,7 +47,7 @@ class ScoreScene: MessagesScene {
                 if outcome.participant == localID {
                     isYou = " (You)"
                 }
-                let text = NSAttributedString(string: "\(i)\(isYou): \(outcome.score) pts",
+                let text = NSAttributedString(string: "\(i+1)\(isYou): \(outcome.score) pts",
                     attributes: [
                         .font: UIFont(name: Formats.LABEL_FONT, size: 28.0)!
                 ])

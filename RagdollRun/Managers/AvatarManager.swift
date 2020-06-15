@@ -20,6 +20,9 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
     private let _cameraToAvatarOffset: CGFloat
     private let _jumpForce: CGFloat
     
+    private let _jumpSound: String = "jump.mp3"
+    private let _coinSound: String = "coin.mp3"
+    
     private var _touching: Bool
     var isTouching: Bool {
         get { return _touching }
@@ -141,11 +144,15 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         } else {
             _jumpForce = _avatarBody.mass*torso.size.height*10.5
         }
+        
+        // because it takes maybe half a second to play the first audio file, do this before the game starts
+        playSound(node: _fullNode, fileNamed: "silence.mp3")
     }
     
     /// only let the avatar jump if the user's finger is on the screen and the avatar is touching the ground or barely moving (on top of an enemy or pip)
     func letAvatarJump() {
         if _touching && belowVerticalMovement(VERT_DY) && touchingSomething() {
+            playSound(node: _fullNode, fileNamed: _jumpSound)
             _avatarBody.applyImpulse(CGVector(dx: 0, dy: _jumpForce))
         }
     }
@@ -172,6 +179,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         }
         
         if let coin = coinOpt {
+            playSound(node: _fullNode, fileNamed: _coinSound)
             coin.removeFromParent()
             CloudVars.coinCount += 1
         }

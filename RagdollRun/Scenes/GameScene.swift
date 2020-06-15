@@ -15,6 +15,8 @@ class GameScene: MessagesScene {
     private var _cameraSpeed: CGFloat = 5
     private var _speedIncrement: CGFloat = 1
     
+    private let _deathSound: String = "death.mp3"
+    
     private var _avatarManager: AvatarManager?
     private var _worldGenerator: WorldGenerator?
     private var _groundHeight: CGFloat?
@@ -132,6 +134,8 @@ class GameScene: MessagesScene {
         goText.fontName = Formats.TITLE_FONT
         goText.fontSize = 48
         scene.addChild(goText)
+        
+        playSound(node: goText, fileNamed: _deathSound)
         
         // score label
         let score = calcScore()

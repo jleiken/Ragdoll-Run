@@ -20,12 +20,12 @@ let STYLES: [String: [StyleApplicator]] = [
     "Black": colorToStyleAppArray(.black),
     "White": colorToStyleAppArray(.white),
     "Purple": colorToStyleAppArray(hexStringToUIColor(hex: "63458a")),
-    "Steve": characterToStyleAppArray("Steve"),
-    "Chief": characterToStyleAppArray("Chief"),
+    "Blocky": characterToStyleAppArray("Blocky"),
+    "Alien": characterToStyleAppArray("Alien"),
     "Sherlock": characterToStyleAppArray("Sherlock"),
 ]
 
-let STYLES_ORDERING: [String] = ["Orange", "Green", "Blue", "Black", "White", "Purple", "Steve", "Chief", "Sherlock"]
+let STYLES_ORDERING: [String] = ["Orange", "Green", "Blue", "Black", "White", "Purple", "Blocky", "Alien", "Sherlock"]
 
 let STYLES_PRICES: [String: Int64] = [
     "Orange": 100,
@@ -34,8 +34,8 @@ let STYLES_PRICES: [String: Int64] = [
     "Black": 200,
     "White": 200,
     "Purple": 200,
-    "Steve": 500,
-    "Chief": 500,
+    "Blocky": 500,
+    "Alien": 500,
     "Sherlock": 500,
 ]
 

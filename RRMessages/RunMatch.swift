@@ -16,7 +16,7 @@ struct Outcome {
 
 extension Outcome: Comparable {
     static func < (lhs: Outcome, rhs: Outcome) -> Bool {
-        return lhs.score < rhs.score
+        return lhs.score >= rhs.score
     }
 }
 

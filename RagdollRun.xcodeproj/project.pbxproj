@@ -12,6 +12,14 @@
 		97269AD1248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
 		97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
 		97269AD3248B148200DC0003 /* RunMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F8E2489A74300F86E4D /* RunMatch.swift */; };
+		973C06A42498225900B05407 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A32498225900B05407 /* jump.mp3 */; };
+		973C06A52498225900B05407 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A32498225900B05407 /* jump.mp3 */; };
+		973C06A724982A3500B05407 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A624982A3500B05407 /* death.mp3 */; };
+		973C06A824982A3500B05407 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A624982A3500B05407 /* death.mp3 */; };
+		973C06AA24982A3A00B05407 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A924982A3A00B05407 /* coin.mp3 */; };
+		973C06AB24982A3A00B05407 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A924982A3A00B05407 /* coin.mp3 */; };
+		973C06AE249836AA00B05407 /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06AD249836A900B05407 /* silence.mp3 */; };
+		973C06AF249836AA00B05407 /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06AD249836A900B05407 /* silence.mp3 */; };
 		974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */; };
 		976256E82485C67C00E3A277 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976256E72485C67C00E3A277 /* StyleManager.swift */; };
 		97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F7C2489A06100F86E4D /* MessagesViewController.swift */; };
@@ -110,6 +118,10 @@
 /* Begin PBXFileReference section */
 		97269ACD248B085200DC0003 /* GameMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMessageViewController.swift; sourceTree = "<group>"; };
 		97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneMessagesComm.swift; sourceTree = "<group>"; };
+		973C06A32498225900B05407 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
+		973C06A624982A3500B05407 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death.mp3; sourceTree = "<group>"; };
+		973C06A924982A3A00B05407 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		973C06AD249836A900B05407 /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 		974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldGenerator.swift; sourceTree = "<group>"; };
 		976256E72485C67C00E3A277 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Ragdoll Run Messages.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,6 +252,10 @@
 				974AF65D2475D50F00A1EC30 /* WorldGenerator.swift */,
 				97961BB7246DEDAA007F7BE6 /* AvatarManager.swift */,
 				976256E72485C67C00E3A277 /* StyleManager.swift */,
+				973C06A32498225900B05407 /* jump.mp3 */,
+				973C06A624982A3500B05407 /* death.mp3 */,
+				973C06A924982A3A00B05407 /* coin.mp3 */,
+				973C06AD249836A900B05407 /* silence.mp3 */,
 				97DA3437249168F000C565EA /* CoinManager.swift */,
 				97DA34492492DC6600C565EA /* CloudVars.swift */,
 			);
@@ -447,8 +463,12 @@
 				97692F922489B6DA00F86E4D /* MenuScene.sks in Resources */,
 				97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */,
 				97269ACF248B0B5900DC0003 /* Assets.xcassets in Resources */,
+				973C06A824982A3500B05407 /* death.mp3 in Resources */,
+				973C06A52498225900B05407 /* jump.mp3 in Resources */,
+				973C06AB24982A3A00B05407 /* coin.mp3 in Resources */,
 				97692F942489B6E100F86E4D /* CustomizeScene.sks in Resources */,
 				97931AB72494286B00520897 /* ScoreScene.sks in Resources */,
+				973C06AF249836AA00B05407 /* silence.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,8 +481,12 @@
 				97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */,
 				97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */,
 				977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */,
+				973C06A724982A3500B05407 /* death.mp3 in Resources */,
+				973C06A42498225900B05407 /* jump.mp3 in Resources */,
+				973C06AA24982A3A00B05407 /* coin.mp3 in Resources */,
 				97961B8C246CA29C007F7BE6 /* LaunchScreen.storyboard in Resources */,
 				97931AB62494286B00520897 /* ScoreScene.sks in Resources */,
+				973C06AE249836AA00B05407 /* silence.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
