@@ -8,8 +8,11 @@
 
 import UIKit
 import SpriteKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController {
+    
+    var bannerView: GADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,28 @@ class GameViewController: UIViewController {
             
             view.ignoresSiblingOrder = true
         }
+        
+        // In this case, we instantiate the banner with desired ad size.
+        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+        addBannerViewToView(bannerView)
+        #if DEBUG
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        #else
+        bannerView.adUnitID = "ca-app-pub-1525379522124593~5875700211"
+        #endif
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        let guide = view.layoutMarginsGuide
+        NSLayoutConstraint.activate([
+            bannerView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
+            bannerView.leftAnchor.constraint(equalTo: guide.leftAnchor),
+            bannerView.rightAnchor.constraint(equalTo: guide.rightAnchor),
+        ])
     }
 
     override var shouldAutorotate: Bool {

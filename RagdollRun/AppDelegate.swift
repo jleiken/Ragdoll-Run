@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // for StoreKit
         // Attach an observer to the payment queue.
         SKPaymentQueue.default().add(StoreObserver.shared)
+        
+        // for Google Ads
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         return true
     }

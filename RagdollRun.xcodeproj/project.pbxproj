@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,16 @@
 		97269AD1248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
 		97269AD2248B13C300DC0003 /* SceneMessagesComm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */; };
 		97269AD3248B148200DC0003 /* RunMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F8E2489A74300F86E4D /* RunMatch.swift */; };
+		97369FAC2498405600FBE9DD /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FA92498405400FBE9DD /* GoogleMobileAds.framework */; };
+		97369FAD2498405600FBE9DD /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FA92498405400FBE9DD /* GoogleMobileAds.framework */; };
+		97369FAE2498405600FBE9DD /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FAA2498405400FBE9DD /* GoogleUtilities.xcframework */; };
+		97369FAF2498405600FBE9DD /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FAA2498405400FBE9DD /* GoogleUtilities.xcframework */; };
+		97369FB02498405600FBE9DD /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FAB2498405500FBE9DD /* GoogleAppMeasurement.framework */; };
+		97369FB12498405600FBE9DD /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FAB2498405500FBE9DD /* GoogleAppMeasurement.framework */; };
+		97369FB32498406500FBE9DD /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FB22498406500FBE9DD /* nanopb.xcframework */; };
+		97369FB42498406500FBE9DD /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FB22498406500FBE9DD /* nanopb.xcframework */; };
+		97369FB62498412600FBE9DD /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FB52498412600FBE9DD /* PromisesObjC.xcframework */; };
+		97369FB72498412600FBE9DD /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97369FB52498412600FBE9DD /* PromisesObjC.xcframework */; };
 		973C06A42498225900B05407 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A32498225900B05407 /* jump.mp3 */; };
 		973C06A52498225900B05407 /* jump.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A32498225900B05407 /* jump.mp3 */; };
 		973C06A724982A3500B05407 /* death.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 973C06A624982A3500B05407 /* death.mp3 */; };
@@ -118,6 +128,11 @@
 /* Begin PBXFileReference section */
 		97269ACD248B085200DC0003 /* GameMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMessageViewController.swift; sourceTree = "<group>"; };
 		97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneMessagesComm.swift; sourceTree = "<group>"; };
+		97369FA92498405400FBE9DD /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
+		97369FAA2498405400FBE9DD /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
+		97369FAB2498405500FBE9DD /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		97369FB22498406500FBE9DD /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
+		97369FB52498412600FBE9DD /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
 		973C06A32498225900B05407 /* jump.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jump.mp3; sourceTree = "<group>"; };
 		973C06A624982A3500B05407 /* death.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = death.mp3; sourceTree = "<group>"; };
 		973C06A924982A3A00B05407 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -173,7 +188,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97369FAF2498405600FBE9DD /* GoogleUtilities.xcframework in Frameworks */,
+				97369FB12498405600FBE9DD /* GoogleAppMeasurement.framework in Frameworks */,
 				97692F8B2489A08F00F86E4D /* Messages.framework in Frameworks */,
+				97369FB72498412600FBE9DD /* PromisesObjC.xcframework in Frameworks */,
+				97369FB42498406500FBE9DD /* nanopb.xcframework in Frameworks */,
+				97369FAD2498405600FBE9DD /* GoogleMobileAds.framework in Frameworks */,
 				97DA343E2491844B00C565EA /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +202,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97369FAC2498405600FBE9DD /* GoogleMobileAds.framework in Frameworks */,
 				97DA343B2491840D00C565EA /* StoreKit.framework in Frameworks */,
+				97369FB02498405600FBE9DD /* GoogleAppMeasurement.framework in Frameworks */,
+				97369FB62498412600FBE9DD /* PromisesObjC.xcframework in Frameworks */,
+				97369FB32498406500FBE9DD /* nanopb.xcframework in Frameworks */,
+				97369FAE2498405600FBE9DD /* GoogleUtilities.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +231,11 @@
 		97692F782489A06100F86E4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				97369FB52498412600FBE9DD /* PromisesObjC.xcframework */,
+				97369FB22498406500FBE9DD /* nanopb.xcframework */,
+				97369FAB2498405500FBE9DD /* GoogleAppMeasurement.framework */,
+				97369FA92498405400FBE9DD /* GoogleMobileAds.framework */,
+				97369FAA2498405400FBE9DD /* GoogleUtilities.xcframework */,
 				97DA343D2491844B00C565EA /* CloudKit.framework */,
 				97DA343A2491840D00C565EA /* StoreKit.framework */,
 				97692F792489A06100F86E4D /* Messages.framework */,
@@ -624,6 +654,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RRMessages/Ragdoll Run Messages.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RRMessages/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -631,6 +665,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun.RRMessages;
 				PRODUCT_NAME = "Ragdoll Run Messages";
 				SKIP_INSTALL = YES;
@@ -646,6 +681,10 @@
 				CODE_SIGN_ENTITLEMENTS = "RRMessages/Ragdoll Run Messages.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = RRMessages/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -653,6 +692,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun.RRMessages;
 				PRODUCT_NAME = "Ragdoll Run Messages";
 				SKIP_INSTALL = YES;
@@ -783,11 +823,16 @@
 				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
 				PRODUCT_NAME = "Ragdoll Run";
 				SWIFT_VERSION = 5.0;
@@ -803,11 +848,16 @@
 				CODE_SIGN_ENTITLEMENTS = "RagdollRun/Ragdoll Run.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4BBGK69C2R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/RagdollRun/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
 				PRODUCT_NAME = "Ragdoll Run";
 				SWIFT_VERSION = 5.0;

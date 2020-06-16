@@ -1,3 +1,5 @@
 Build/
 **/xcshareddata/
 **/xcuserdata/
+
+**/.DS_Store
