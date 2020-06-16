@@ -12,10 +12,13 @@ import GoogleMobileAds
 
 class GameViewController: UIViewController {
     
-    var bannerView: GADBannerView!
+    private var _bannerView: GADBannerView?
+    
+    private static var _sharedSelf: GameViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        GameViewController._sharedSelf = self
         StoreObserver.shared.delegate = self
         StoreManager.shared.delegate = self
         StoreManager.shared.startProductRequest()
@@ -25,7 +28,7 @@ class GameViewController: UIViewController {
             if let scene = MenuScene(fileNamed: "MenuScene") {
                 // Set the scale mode to resize to fit the window
                 scene.scaleMode = .resizeFill
-                
+                scene.controller = self
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -33,16 +36,18 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
         }
         
-        // In this case, we instantiate the banner with desired ad size.
-        bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-        addBannerViewToView(bannerView)
-        #if DEBUG
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        #else
-        bannerView.adUnitID = "ca-app-pub-1525379522124593~5875700211"
-        #endif
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        if !CloudVars.hideAds {
+            // In this case, we instantiate the banner with desired ad size.
+            _bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
+            addBannerViewToView(_bannerView!)
+            #if DEBUG
+            _bannerView?.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            #else
+            _bannerView?.adUnitID = "ca-app-pub-1525379522124593/1839912973"
+            #endif
+            _bannerView?.rootViewController = self
+            _bannerView?.load(GADRequest())
+        }
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -54,6 +59,12 @@ class GameViewController: UIViewController {
             bannerView.leftAnchor.constraint(equalTo: guide.leftAnchor),
             bannerView.rightAnchor.constraint(equalTo: guide.rightAnchor),
         ])
+    }
+    
+    static func hideAdsIfNecessary() {
+        if let controller = _sharedSelf {
+            controller._bannerView?.removeFromSuperview()
+        }
     }
 
     override var shouldAutorotate: Bool {

@@ -10,15 +10,13 @@ import Foundation
 import SpriteKit
 
 class MessagesScene: SKScene {
-    var _translator: MessagesSceneTranslator?
-    var translator: MessagesSceneTranslator? {
-        get { return _translator }
-        set { _translator = newValue }
-    }
+    var translator: MessagesSceneTranslator?
+    var controller: UIViewController?
     
-    func presentScene(_ view: SKView?, _ scene: SKScene, transition: SKTransition) {
-        if let t = translator, let mScene = scene as? MessagesScene {
-            t.toScene(to: mScene, with: transition)
+    func presentScene(_ view: SKView?, _ scene: MessagesScene, transition: SKTransition) {
+        scene.controller = controller
+        if let t = translator {
+            t.toScene(to: scene, with: transition)
         } else {
             view?.presentScene(scene, transition: transition)
         }
@@ -26,7 +24,7 @@ class MessagesScene: SKScene {
     
     func makeScene(of sceneClass: MessagesScene.Type, with file: String) -> MessagesScene {
         guard let newScene = sceneClass.init(fileNamed: file) else { fatalError("Could not initialize \(sceneClass)") }
-        newScene.translator = _translator
+        newScene.translator = translator
         return newScene
     }
 }

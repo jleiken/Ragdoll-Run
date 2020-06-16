@@ -174,7 +174,7 @@ class GameScene: MessagesScene {
             menuBut.fontName = Formats.EMPHASIS_FONT
             // the position of the button should be the bottom left plus an offset from the sides of 10 pixels
             menuBut.position.x = cameraX - (scene.size.width / 2) + 65
-            menuBut.position.y = -(scene.size.height / 2) + 60
+            menuBut.position.y = (_groundHeight ?? scene.size.height/4) - 40
             menuBut.zPosition = Physics.TOP_Z
             menuBut.fontSize = 28
             menuBut.fontColor = Formats.HIGHLIGHT

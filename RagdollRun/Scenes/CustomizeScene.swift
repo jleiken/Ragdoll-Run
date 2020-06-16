@@ -7,14 +7,19 @@
 //
 
 import SpriteKit
+import GoogleMobileAds
 
-class CustomizeScene: MessagesScene {
+class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
     
     private static var _staticScene: SKScene?
+    
+    private var _rewardedAd: GADRewardedAd?
             
     override func didMove(to view: SKView) {
         CustomizeScene._staticScene = scene
         let topOrBottom = scene!.size.height/2
+        
+        loadRewardedAd()
         
         // set the background
         let background = SKSpriteNode(imageNamed: "BackgroundImage")
@@ -27,7 +32,7 @@ class CustomizeScene: MessagesScene {
         title.fontSize = 28.0
         title.fontColor = Formats.HIGHLIGHT
         title.fontName = Formats.TITLE_FONT
-        title.position = CGPoint(x: 0, y: topOrBottom*0.7)
+        title.position = CGPoint(x: 0, y: topOrBottom*0.78)
         scene?.addChild(title)
         
         // back button
@@ -46,29 +51,39 @@ class CustomizeScene: MessagesScene {
         coinIndicator.position = CGPoint(x: scene!.size.width*1/3, y: backBut.position.y)
         scene?.addChild(coinIndicator)
         
+        // watch ad for coins button
+        let adBut = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.25, yFactor: 0.03))
+        adBut.position = CGPoint(x: 0, y: -topOrBottom*0.8)
+        adBut.name = SpriteNames.REWARD_AD_NAME
+        let adLabel = makeLabel(text: "Watch an ad for up to 💰50")
+        adLabel.name = SpriteNames.REWARD_AD_NAME
+        adLabel.fontSize = 16.0
+        adLabel.position = .zero
+        
+        adBut.addChild(adLabel)
+        scene?.addChild(adBut)
+        
         // purchase coins section, only shown if the user is authorized for in-app purchases
         if StoreObserver.shared.isAuthorizedForPayments {
             let purchaseLabel = makeLabel(text: "Purchase 💰")
             purchaseLabel.fontColor = Formats.HIGHLIGHT
             purchaseLabel.fontName = Formats.TITLE_FONT
             purchaseLabel.fontSize = title.fontSize
-            purchaseLabel.position = CGPoint(x: 0, y: -topOrBottom*0.63)
+            purchaseLabel.position = CGPoint(x: 0, y: -topOrBottom*0.5)
             scene?.addChild(purchaseLabel)
             
-            let y = -topOrBottom*4/5
+            let y = -topOrBottom*0.64
             var col = 0
             for coins in COIN_OPTIONS {
-                let button = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.08, yFactor: 0.06))
+                let button = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.08, yFactor: 0.045))
                 button.position = CGPoint(x: xCoordMod3(scene!, col), y: y)
                 button.color = .black
                 let name = "\(SpriteNames.COIN_NAME)\(coins)"
                 button.name = name
                 
                 let cLabel = makeLabel(text: "💰\(coins)")
-                cLabel.horizontalAlignmentMode = .center
                 cLabel.name = name
-                cLabel.fontColor = .white
-                cLabel.fontSize = 18.0
+                cLabel.fontSize = 16.0
                 cLabel.position.x = 0
                 cLabel.position.y = button.size.height/4
                 
@@ -78,7 +93,7 @@ class CustomizeScene: MessagesScene {
                     pLabel.horizontalAlignmentMode = .center
                     pLabel.name = name
                     pLabel.fontColor = .white
-                    pLabel.fontSize = 18.0
+                    pLabel.fontSize = 16.0
                     pLabel.position.x = 0
                     pLabel.position.y = -button.size.height/4
                     
@@ -107,9 +122,13 @@ class CustomizeScene: MessagesScene {
             let avatar = makeModelAvatar(scene, name, textures)
             avatar.name = name
             avatar.children.forEach({body in body.name = name})
-            let button = SKSpriteNode(color: .black, size: sizeByScene(scene, xFactor: 0.08, yFactor: 0.1))
+            var yFactor: CGFloat = 0.1
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                yFactor = 0.09
+            }
+            let button = SKSpriteNode(color: .black, size: sizeByScene(scene, xFactor: 0.08, yFactor: yFactor))
             let buttonOffset = CGFloat(yPos)*button.size.height*1.3
-            let y = scene.size.height/2.3 - buttonOffset
+            let y = scene.size.height/2 - buttonOffset
             button.position = CGPoint(x: xCoordMod3(scene, xPos), y: y)
             
             // style based on unlock status
@@ -199,6 +218,12 @@ class CustomizeScene: MessagesScene {
                 presentScene(
                     view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
+            } else if touchedNode.name == SpriteNames.REWARD_AD_NAME {
+                if _rewardedAd?.isReady ?? false {
+                    if let controller = controller {
+                        _rewardedAd?.present(fromRootViewController: controller, delegate: self)
+                    }
+                }
             } else if let name = touchedNode.name {
                 // name must be a button
                 // check if it's an in-app puchase button
@@ -252,5 +277,31 @@ class CustomizeScene: MessagesScene {
             return scene.children[i] as? SKSpriteNode
         }
         return nil
+    }
+
+    func loadRewardedAd() {
+        #if DEBUG
+        let adUnitID = "ca-app-pub-3940256099942544/1712485313"
+        #else
+        let adUnitID = "ca-app-pub-1525379522124593/9818840300"
+        #endif
+        _rewardedAd = GADRewardedAd(adUnitID: adUnitID)
+        _rewardedAd?.load(GADRequest()) { error in
+            if let error = error {
+                print("Rewarded ad failed to load with error: \(error)")
+            } else {
+                print("Rewarded ad loaded")
+            }
+        }
+    }
+    
+    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+        loadRewardedAd()
+    }
+    
+    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+        CloudVars.coinCount += Int64(NSInteger(truncating: reward.amount))
+        CustomizeScene.updateCoinCount()
     }
 }

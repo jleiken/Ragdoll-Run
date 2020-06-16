@@ -30,6 +30,7 @@ struct SpriteNames {
     static let MUTE_NAME = "muteBut"
     static let COIN_NAME = "coins"
     static let SCORE_NAME = "scoreBut"
+    static let REWARD_AD_NAME = "adBut"
     static let REMOVE_AD_NAME = "remove_ads"
     static let NO_SOUND_NAME = "toggleSoundBut"
     static let CUSTOMIZE_NAME = "customizeBut"

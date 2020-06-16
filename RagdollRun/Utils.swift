@@ -81,5 +81,7 @@ func hexStringToUIColor(hex: String) -> UIColor {
 }
 
 func playSound(node: SKNode, fileNamed file: String) {
-    node.run(SKAction.playSoundFileNamed(file, waitForCompletion: false))
+    if !CloudVars.muted {
+        node.run(SKAction.playSoundFileNamed(file, waitForCompletion: false))
+    }
 }
