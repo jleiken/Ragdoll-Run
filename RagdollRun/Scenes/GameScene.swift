@@ -19,6 +19,7 @@ class GameScene: MessagesScene {
     
     private var _avatarManager: AvatarManager?
     private var _worldGenerator: WorldGenerator?
+    private var _counter: SKLabelNode?
     private var _groundHeight: CGFloat?
     
     var messageVC: GameMessageViewController?
@@ -31,6 +32,15 @@ class GameScene: MessagesScene {
         _groundHeight = -self.size.height / 3
         _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
         _worldGenerator!.renderChunk(size: WorldGenerator.CHUNK_SIZE)
+        
+        // add a score counter
+        _counter = SKLabelNode(text: "0")
+        _counter?.horizontalAlignmentMode = .right
+        _counter?.fontName = Formats.EMPHASIS_FONT
+        _counter?.fontColor = .white
+        _counter?.fontSize = 24.0
+        _counter?.position = CGPoint(x: scene!.size.width*0.45, y: scene!.size.height*0.45)
+        scene?.addChild(_counter!)
         
         // initiliaze the avatar and make it the contact delegate
         _avatarManager = AvatarManager(scene: self.scene!, groundHeight: _groundHeight!)
@@ -109,6 +119,10 @@ class GameScene: MessagesScene {
             // move the camera one cameraSpeed increment to the right along with the avatar
             scene?.camera?.position.x += _cameraSpeed
             _avatarManager!.walk(_cameraSpeed)
+            
+            // update the score counter
+            _counter?.position.x += _cameraSpeed
+            _counter?.text = "\(calcScore())"
         }
     }
     

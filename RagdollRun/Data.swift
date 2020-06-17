@@ -22,6 +22,7 @@ struct SpriteNames {
     static let GROUND_NAME = "ground"
     static let OBSTACLE_NAME = "obstacle"
     static let ENEMY_NAME = "enemy"
+    static let COUNTER_NAME = "counter"
 
     static let MENU_NAME = "menuBut"
     static let PLAY_NAME = "playBut"
