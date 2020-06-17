@@ -27,5 +27,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.message-payload-provider</string>
 	</dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-1525379522124593~5875700211</string>
 </dict>
 </plist>

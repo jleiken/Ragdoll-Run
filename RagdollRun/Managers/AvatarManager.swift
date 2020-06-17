@@ -121,7 +121,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         scene.physicsWorld.add(legJointR)
         
         // create the physics body of the whole thing for ease of reference
-        _fullNode.physicsBody = SKPhysicsBody(rectangleOf: sizeByScene(scene, xFactor: 0.05, yFactor: 0.16))
+        _fullNode.physicsBody = SKPhysicsBody(rectangleOf: sizeByScene(scene, xFactor: 0.04, yFactor: 0.16))
         _avatarBody = _fullNode.physicsBody!
         _avatarBody.restitution = 0.0
         
@@ -142,7 +142,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         if UIDevice.current.userInterfaceIdiom == .pad {
             _jumpForce = _avatarBody.mass*torso.size.height*8.5
         } else {
-            _jumpForce = _avatarBody.mass*torso.size.height*10.5
+            _jumpForce = _avatarBody.mass*torso.size.height*11
         }
         
         // because it takes maybe half a second to play the first audio file, do this before the game starts

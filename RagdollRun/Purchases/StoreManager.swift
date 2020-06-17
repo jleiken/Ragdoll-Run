@@ -117,9 +117,7 @@ extension StoreManager: SKRequestDelegate {
     /// Called when the product request failed.
     func request(_ request: SKRequest, didFailWithError error: Error) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Request Failed", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString(Messages.okButton, comment: "Default action"), style: .default))
-            self.delegate?.present(alert)
+            print(error)
         }
     }
 }

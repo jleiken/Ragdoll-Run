@@ -108,9 +108,12 @@ class WorldGenerator {
             }
             
             if shouldBeHole {
-                // if the current chunk should be a hole, mark that it was and continue
-                prevWasHole = true
-                continue
+                // if it's the first render don't put a hole right at the beginning
+                if !(_firstRender && i < Int(_scene.size.width)) {
+                    // if the current chunk should be a hole, mark that it was and continue
+                    prevWasHole = true
+                    continue
+                }
             }
             
             // if it shouldn't be a whole, make a rectangle for the ground
@@ -251,6 +254,16 @@ class WorldGenerator {
         let coin = SKShapeNode(circleOfRadius: squareSize.width)
         coin.lineWidth = 2.0
         coin.strokeColor = .yellow
+        coin.fillColor = .yellow
+        let dLabel = SKLabelNode(text: "$")
+        dLabel.horizontalAlignmentMode = .center
+        dLabel.verticalAlignmentMode = .center
+        dLabel.fontName = Formats.EMPHASIS_FONT
+        dLabel.fontColor = .black
+        dLabel.fontSize = 24.0
+        dLabel.position = .zero
+        coin.addChild(dLabel)
+        
         let coinH = Int(squareSize.height)
         coin.position = CGPoint(x: x, y: _groundHeight + CGFloat(Int.random(in: coinH*2...coinH*20)))
         coin.zPosition = Physics.WORLD_Z
