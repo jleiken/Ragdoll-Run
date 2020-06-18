@@ -93,7 +93,7 @@ class GameScene: MessagesScene {
                 didMove(to: self.view!)
             } else if touchedNode?.name == SpriteNames.SCORE_NAME {
                 // give them a 50/50 chance of getting an interstitial
-                if randLessThan(50) && (_interstitial?.isReady ?? false) {
+                if !CloudVars.hideAds && randLessThan(50) && (_interstitial?.isReady ?? false) {
                     if let vc = messageVC {
                         _interstitial?.present(fromRootViewController: vc)
                     }
