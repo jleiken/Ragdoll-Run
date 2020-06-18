@@ -280,12 +280,7 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
     }
 
     func loadRewardedAd() {
-        #if DEBUG
-        let adUnitID = "ca-app-pub-3940256099942544/1712485313"
-        #else
-        let adUnitID = "ca-app-pub-1525379522124593/9818840300"
-        #endif
-        _rewardedAd = GADRewardedAd(adUnitID: adUnitID)
+        _rewardedAd = GADRewardedAd(adUnitID: AdMob.rewardUnitID)
         _rewardedAd?.load(GADRequest()) { error in
             if let error = error {
                 print("Rewarded ad failed to load with error: \(error)")

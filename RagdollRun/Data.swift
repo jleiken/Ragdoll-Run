@@ -46,6 +46,18 @@ struct Formats {
     static let LABEL_FONT = "AvenirNext-DemiBold"
 }
 
+struct AdMob {
+    #if DEBUG
+    static let bannerUnitID = "ca-app-pub-3940256099942544/2934735716"
+    static let rewardUnitID = "ca-app-pub-3940256099942544/1712485313"
+    static let intersUnitID = "ca-app-pub-3940256099942544/4411468910"
+    #else
+    static let bannerUnitID = "ca-app-pub-1525379522124593/1839912973"
+    static let rewardUnitID = "ca-app-pub-1525379522124593/9818840300"
+    static let intersUnitID = "ca-app-pub-1525379522124593/4269950402"
+    #endif
+}
+
 /// A structure of messages that will be displayed to users, from Apple's StoreKit demo
 struct Messages {
     static let cannotMakePayments = "\(notAuthorized) \(installing)"

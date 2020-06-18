@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import GoogleMobileAds
 
 class GameScene: MessagesScene {
     
@@ -22,8 +23,10 @@ class GameScene: MessagesScene {
     private var _counter: SKLabelNode?
     private var _groundHeight: CGFloat?
     
+    private var _interstitial: GADInterstitial?
+    
     var messageVC: GameMessageViewController?
-        
+    
     override func didMove(to view: SKView) {
         // use our nice blue background
         scene?.backgroundColor = Formats.BACKGROUND
@@ -58,6 +61,10 @@ class GameScene: MessagesScene {
         }
         
         _activeScene = true
+        
+        _interstitial = GADInterstitial(adUnitID: AdMob.intersUnitID)
+        let request = GADRequest()
+        _interstitial?.load(request)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,24 +77,30 @@ class GameScene: MessagesScene {
         if sceneActive() {
             _avatarManager?.isTouching = false
         } else {
-           let touch = touches.first
-           let positionInScene = touch!.location(in: self)
-           // the node they touched
-           let touchedNode = self.nodes(at: positionInScene).first
-           
-           if touchedNode?.name == SpriteNames.MENU_NAME {
-               // touched menu icon, dismiss this popover
-               presentScene(
-                   view, makeScene(of: MenuScene.self, with: "MenuScene"),
-                   transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
-           } else if touchedNode?.name == SpriteNames.PLAY_NAME {
-               // touched play icon
-               scene?.removeAllChildren()
-               didMove(to: self.view!)
-           } else if touchedNode?.name == SpriteNames.SCORE_NAME {
-               messageVC?.toScores()
-           }
-       }
+            let touch = touches.first
+            let positionInScene = touch!.location(in: self)
+            // the node they touched
+            let touchedNode = self.nodes(at: positionInScene).first
+            
+            if touchedNode?.name == SpriteNames.MENU_NAME {
+                // touched menu icon, dismiss this popover
+                presentScene(
+                    view, makeScene(of: MenuScene.self, with: "MenuScene"),
+                    transition: SKTransition.doorsCloseHorizontal(withDuration: 0.2))
+            } else if touchedNode?.name == SpriteNames.PLAY_NAME {
+                // touched play icon
+                scene?.removeAllChildren()
+                didMove(to: self.view!)
+            } else if touchedNode?.name == SpriteNames.SCORE_NAME {
+                // give them a 50/50 chance of getting an interstitial
+                if randLessThan(50) && (_interstitial?.isReady ?? false) {
+                    if let vc = messageVC {
+                        _interstitial?.present(fromRootViewController: vc)
+                    }
+                }
+                messageVC?.toScores()
+            }
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {

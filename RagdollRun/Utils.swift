@@ -85,3 +85,8 @@ func playSound(node: SKNode, fileNamed file: String) {
         node.run(SKAction.playSoundFileNamed(file, waitForCompletion: false))
     }
 }
+
+/// Generates a random number from [0, 100) and returns true if it is less than cutoff
+func randLessThan(_ cutoff: Int) -> Bool {
+    return Int.random(in: 0..<100) < cutoff
+}

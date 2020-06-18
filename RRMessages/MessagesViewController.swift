@@ -160,6 +160,7 @@ extension MessagesViewController: MessagesViewPresenter {
         var match = _currentMatch ?? RunMatch()
         if let localID = activeConversation?.localParticipantIdentifier {
             match.particpantScores.append(Outcome(participant: localID, score: score))
+            _currentMatch = match
         } else {
             return
         }

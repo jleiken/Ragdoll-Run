@@ -252,15 +252,11 @@ class WorldGenerator {
     private func addCoin(x: CGFloat) {
         let squareSize = sizeByScene(_scene, xFactor: 0.02, yFactor: 0.02)
         let coin = SKShapeNode(circleOfRadius: squareSize.width)
-        coin.lineWidth = 2.0
-        coin.strokeColor = .yellow
-        coin.fillColor = .yellow
-        let dLabel = SKLabelNode(text: "$")
+        coin.fillColor = Formats.HIGHLIGHT
+        coin.strokeColor = .black
+        let dLabel = SKLabelNode(text: "💰")
         dLabel.horizontalAlignmentMode = .center
         dLabel.verticalAlignmentMode = .center
-        dLabel.fontName = Formats.EMPHASIS_FONT
-        dLabel.fontColor = .black
-        dLabel.fontSize = 24.0
         dLabel.position = .zero
         coin.addChild(dLabel)
         
@@ -274,11 +270,6 @@ class WorldGenerator {
         coin.physicsBody?.contactTestBitMask = Physics.COIN_CONTACT_MASK
         
         _scene.addChild(coin)
-    }
-    
-    /// Generates a random number from [0, 100) and returns true if it is less than cutoff
-    func randLessThan(_ cutoff: Int) -> Bool {
-        return Int.random(in: 0..<100) < cutoff
     }
     
     /// true if curX is within a quarter chunk of the position we've rendered up to

@@ -40,11 +40,7 @@ class GameViewController: UIViewController {
             // In this case, we instantiate the banner with desired ad size.
             _bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
             addBannerViewToView(_bannerView!)
-            #if DEBUG
-            _bannerView?.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-            #else
-            _bannerView?.adUnitID = "ca-app-pub-1525379522124593/1839912973"
-            #endif
+            _bannerView?.adUnitID = AdMob.bannerUnitID
             _bannerView?.rootViewController = self
             _bannerView?.load(GADRequest())
         }
