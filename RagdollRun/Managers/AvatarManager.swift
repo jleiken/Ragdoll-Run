@@ -142,7 +142,7 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         if UIDevice.current.userInterfaceIdiom == .pad {
             _jumpForce = _avatarBody.mass*torso.size.height*8.5
         } else {
-            _jumpForce = _avatarBody.mass*torso.size.height*11
+            _jumpForce = _avatarBody.mass*torso.size.height*10
         }
         
         // because it takes maybe half a second to play the first audio file, do this before the game starts

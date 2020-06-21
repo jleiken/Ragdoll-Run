@@ -35,7 +35,9 @@ class MessagesViewController: MSMessagesAppViewController {
         // Use this method to release shared resources, save user data, invalidate timers,
         // and store enough state information to restore your extension to its current state
         // in case it is terminated later.
+        super.didResignActive(with: conversation)
         NSUbiquitousKeyValueStore.default.synchronize()
+        removeAllChildViewControllers()
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
