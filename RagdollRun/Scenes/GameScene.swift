@@ -191,7 +191,7 @@ class GameScene: MessagesScene {
             scene.addChild(scoreBut)
             
             // give them a 50/50 chance of getting an interstitial
-            if !CloudVars.hideAds && randLessThan(50) && (_interstitial?.isReady ?? false) {
+            if !CloudVars.hideAds && _interstitial?.isReady ?? false {
                 if let vc = messageVC {
                     _interstitial?.present(fromRootViewController: vc)
                 }

@@ -55,7 +55,7 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         let adBut = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.25, yFactor: 0.03))
         adBut.position = CGPoint(x: 0, y: -topOrBottom*0.8)
         adBut.name = SpriteNames.REWARD_AD_NAME
-        let adLabel = makeLabel(text: "Watch an ad for up to 💰50")
+        let adLabel = makeLabel(text: "Watch an ad for up to 💰25")
         adLabel.name = SpriteNames.REWARD_AD_NAME
         adLabel.fontSize = 16.0
         adLabel.position = .zero

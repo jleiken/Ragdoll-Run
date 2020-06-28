@@ -184,11 +184,6 @@ extension MessagesViewController: MessagesViewPresenter {
                 print(error)
             }
         }
-        
-        // if we just started the match we probably don't need to see the scores, dismiss this window
-        if match.particpantScores.count == 1 {
-            dismiss()
-        }
     }
 
 }
