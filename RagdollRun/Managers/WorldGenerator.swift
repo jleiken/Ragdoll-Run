@@ -65,10 +65,6 @@ class WorldGenerator {
         
         generateGroundWithHoles(from, to)
         generateClouds(from, to)
-        if from < 0 {
-            // if we're starting out now, don't generate dangers right away
-            from = -_renderedTo
-        }
         
         if _firstRender {
             // if it's our first render, don't let obstacles be generated too early
@@ -137,11 +133,22 @@ class WorldGenerator {
                 // pick a type of cloud
                 let cloudType = Int.random(in: 1...3)
                 
+                let cloudFileName = "Cloud\(cloudType)"
+                
                 // add the cloud at a low z index
-                let cloud = cloudFrom(fileNamed: "Cloud\(cloudType)")
+                let cloud = cloudFrom(fileNamed: cloudFileName)
                 cloud.position = CGPoint(x: index, y: CGFloat(_cloudHeightGenerator.nextInt()))
                 cloud.zPosition = CGFloat(cloudType)
                 _scene.addChild(cloud)
+                
+                // add the cloud shadow
+                let cloudShadow = cloud.copy() as! SKSpriteNode
+                cloudShadow.position.x += 5
+                cloudShadow.position.y -= 3
+                cloudShadow.zPosition -= 1
+                cloudShadow.colorBlendFactor = 0.9
+                cloudShadow.color = .darkGray
+                _scene.addChild(cloudShadow)
             }
             
             index += toIncrement

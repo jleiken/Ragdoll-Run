@@ -72,9 +72,13 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         torso.position = scene.convert(CGPoint(x: xPos, y: groundHeight+legL.size.height+(torso.size.height/2)), to: _fullNode)
         head.position = scene.convert(CGPoint(x: xPos, y: groundHeight+legL.size.height+torso.size.height+(head.size.height/2)), to: _fullNode)
         armL.position = scene.convert(CGPoint(x: xPos-(torso.size.width/2+armL.size.width/2), y: groundHeight+legL.size.height+(torso.size.height*2/3)), to: _fullNode)
+        armL.zPosition = torso.zPosition + 1
         armR.position = scene.convert(CGPoint(x: xPos+(torso.size.width/2+armR.size.width/2), y: groundHeight+legL.size.height+(torso.size.height*2/3)), to: _fullNode)
+        armR.zPosition = torso.zPosition + 1
         legL.position = scene.convert(CGPoint(x: xPos-(torso.size.width/2), y: groundHeight+(legL.size.height/2)), to: _fullNode)
+        legL.zPosition = torso.zPosition + 1
         legR.position = scene.convert(CGPoint(x: xPos+(torso.size.width/2), y: groundHeight+(legL.size.height/2)), to: _fullNode)
+        legR.zPosition = torso.zPosition + 1
         
         // define part-specific physics: arms and legs literally don't do anything
         torso.physicsBody = SKPhysicsBody(rectangleOf: torso.size)

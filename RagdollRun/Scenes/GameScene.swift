@@ -33,7 +33,7 @@ class GameScene: MessagesScene {
         
         // render the first part of the world
         _groundHeight = -self.size.height / 3
-        _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width/2, scene: scene!)
+        _worldGenerator = WorldGenerator(groundHeight: _groundHeight!, startingPos: -self.size.width, scene: scene!)
         _worldGenerator!.renderChunk(size: WorldGenerator.CHUNK_SIZE)
         
         // add a score counter
