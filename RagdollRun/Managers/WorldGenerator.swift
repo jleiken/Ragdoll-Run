@@ -12,9 +12,9 @@ import GameplayKit
 class WorldGenerator {
     static let CHUNK_SIZE = CGFloat(7500)
     
-    static let GROUND_COLOR = hexStringToUIColor(hex: "645244")
-    static let ENEMY_COLOR = hexStringToUIColor(hex: "fe5f55")
-    static let PIPE_COLOR = hexStringToUIColor(hex: "157f1f")
+    static let GROUND_COLOR = hexStringToUIColor("645244")
+    static let ENEMY_COLOR = hexStringToUIColor("fe5f55")
+    static let PIPE_COLOR = hexStringToUIColor("157f1f")
     
     private var _renderedTo: CGFloat
     private var _firstRender: Bool = true
@@ -79,7 +79,7 @@ class WorldGenerator {
     private func deleteOldChunk() {
         let deleteBefore = (_scene.camera?.position.x ?? WorldGenerator.CHUNK_SIZE) - WorldGenerator.CHUNK_SIZE
         for child in _scene.children {
-            if nodeIsWorld(node: child) && child.position.x < deleteBefore {
+            if nodeIsWorld(child) && child.position.x < deleteBefore {
                 child.removeFromParent()
             }
         }

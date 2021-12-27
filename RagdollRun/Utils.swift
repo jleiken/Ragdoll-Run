@@ -17,7 +17,7 @@ func initializeStaticPhysicsBody(body cBody: SKPhysicsBody?) {
 }
 
 /// returns true if the node is part of the "world", that is ground, obstacle, or enemy, rather than avatar or camera
-func nodeIsWorld(node: SKNode) -> Bool {
+func nodeIsWorld(_ node: SKNode) -> Bool {
     return node.name == SpriteNames.GROUND_NAME
         || node.name == SpriteNames.OBSTACLE_NAME
         || node.name == SpriteNames.ENEMY_NAME
@@ -32,14 +32,23 @@ func sizeByScene(_ scene: SKScene, xFactor: CGFloat, yFactor: CGFloat) -> CGSize
 }
 
 /// makes a button based on the given scene
-func makeButton(scene: SKScene, text: String, name: String) -> SKNode {
-    let textNode = makeLabel(text: text)
+func makeScaledTextButton(scene: SKScene, text: String, name: String) -> SKNode {
+    let textNode = makeLabel(text)
     textNode.name = name
-    textNode.position = CGPoint(x: 0, y: 0)
+    textNode.position = CGPoint.zero
     
     let textSize = NSString(string: text).size(withAttributes: [.font: UIFont(name: textNode.fontName!, size: textNode.fontSize)!])
     let buttonSize = CGSize(width: textSize.width + scene.size.width/20, height: textSize.height)
-    let but = SKSpriteNode(color: .black, size: buttonSize)
+    
+    let buttonPath = CGPath(
+        roundedRect: CGRect(origin: CGPoint.zero, size: buttonSize),
+        cornerWidth: 7,
+        cornerHeight: 7,
+        transform: nil)
+    let but = SKShapeNode(path: buttonPath, centered: true)
+    
+    but.fillColor = .black
+    but.strokeColor = .black
     but.name = name
     but.addChild(textNode)
     
@@ -47,7 +56,7 @@ func makeButton(scene: SKScene, text: String, name: String) -> SKNode {
 }
 
 /// makes a label with the given text
-func makeLabel(text: String) -> SKLabelNode {
+func makeLabel(_ text: String) -> SKLabelNode {
     let textNode = SKLabelNode(text: text)
     textNode.verticalAlignmentMode = .center
     textNode.horizontalAlignmentMode = .center
@@ -57,8 +66,32 @@ func makeLabel(text: String) -> SKLabelNode {
     return textNode
 }
 
+/// Adds moving clouds to the background `scene`
+func addMenuClouds(_ scene: SKScene) {
+    let topOrBottom = scene.size.height/2
+    let leftOrRight = scene.size.width/2
+    let totalAllowableDuration = 30.0
+    let cloudGenerator = CloudGenerator(scene: scene, groundHeight: -topOrBottom)
+    
+    for _ in 0...6 {
+        let cloud = cloudGenerator.generateCloud(xPosition: CGFloat.random(in: -leftOrRight...leftOrRight))
+        let inverseCloudScale = 1-(cloud.size.width/(scene.size.width+scene.size.height))
+        let cloudsDuration = totalAllowableDuration * inverseCloudScale
+        let cloudOffScreen = leftOrRight+(cloud.size.width/2)
+        let distFromLeftPercentage = abs((cloud.position.x+leftOrRight)/scene.size.width)
+        cloud.run(SKAction.sequence([
+            SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration*distFromLeftPercentage),
+            SKAction.repeatForever(SKAction.sequence([
+                SKAction.moveTo(x: cloudOffScreen, duration: 0),
+                SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration)
+            ]))
+        ]))
+        scene.addChild(cloud)
+    }
+}
+
 /// from https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
-func hexStringToUIColor(hex: String) -> UIColor {
+func hexStringToUIColor(_ hex: String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
     if (cString.hasPrefix("#")) {

@@ -12,28 +12,10 @@ class MenuScene: MessagesScene {
             
     override func didMove(to view: SKView) {
         let topOrBottom = scene!.size.height/2
-        let leftOrRight = scene!.size.width/2
         
         // set the background and add clouds
         scene!.backgroundColor = Formats.BACKGROUND
-        
-        let totalAllowableDuration = 30.0
-        let cloudGenerator = CloudGenerator(scene: scene!, groundHeight: -topOrBottom)
-        for _ in 0...6 {
-            let cloud = cloudGenerator.generateCloud(xPosition: CGFloat.random(in: -leftOrRight...leftOrRight))
-            let inverseCloudScale = 1-(cloud.size.width/(scene!.size.width+scene!.size.height))
-            let cloudsDuration = totalAllowableDuration * inverseCloudScale
-            let cloudOffScreen = leftOrRight+(cloud.size.width/2)
-            let distFromLeftPercentage = abs((cloud.position.x+leftOrRight)/scene!.size.width)
-            cloud.run(SKAction.sequence([
-                SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration*distFromLeftPercentage),
-                SKAction.repeatForever(SKAction.sequence([
-                    SKAction.moveTo(x: cloudOffScreen, duration: 0),
-                    SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration)
-                ]))
-            ]))
-            scene!.addChild(cloud)
-        }
+        addMenuClouds(scene!)
         
         // add a title
         let title = SKLabelNode(text: "Ragdoll Run")
@@ -44,21 +26,21 @@ class MenuScene: MessagesScene {
         scene!.addChild(title)
         
         // add the buttons
-        let playBut = makeButton(scene: scene!, text: "Play 🏃‍♀️", name: SpriteNames.PLAY_NAME)
+        let playBut = makeScaledTextButton(scene: scene!, text: "Play 🏃‍♀️", name: SpriteNames.PLAY_NAME)
         playBut.position = CGPoint(x: 0, y: topOrBottom/2)
         scene!.addChild(playBut)
         
-        let customizeBut = makeButton(scene: scene!, text: "Customize 🎨", name: SpriteNames.CUSTOMIZE_NAME)
+        let customizeBut = makeScaledTextButton(scene: scene!, text: "Customize 🎨", name: SpriteNames.CUSTOMIZE_NAME)
         customizeBut.position = CGPoint(x: 0, y: topOrBottom/4)
         scene!.addChild(customizeBut)
         
         // Only let the user remove ads if they're authorized to pay
         if StoreObserver.shared.isAuthorizedForPayments {
-            let adsBut = makeButton(scene: scene!, text: "Remove ads", name: SpriteNames.REMOVE_AD_NAME)
+            let adsBut = makeScaledTextButton(scene: scene!, text: "Remove ads", name: SpriteNames.REMOVE_AD_NAME)
             adsBut.position = .zero
             scene!.addChild(adsBut)
             
-            let restoreBut = makeButton(scene: scene!, text: "Restore purchases", name: SpriteNames.RESTORE_NAME)
+            let restoreBut = makeScaledTextButton(scene: scene!, text: "Restore purchases", name: SpriteNames.RESTORE_NAME)
             restoreBut.position = CGPoint(x: 0, y: -topOrBottom/4)
             scene!.addChild(restoreBut)
         }
@@ -111,7 +93,7 @@ class MenuScene: MessagesScene {
         if CloudVars.muted {
             text = "🔇"
         }
-        let muteBut = makeButton(scene: scene!, text: text, name: SpriteNames.MUTE_NAME)
+        let muteBut = makeScaledTextButton(scene: scene!, text: text, name: SpriteNames.MUTE_NAME)
         muteBut.position = CGPoint(x: 0, y: -scene!.size.height/4)
         scene!.addChild(muteBut)
     }

@@ -39,8 +39,8 @@ struct SpriteNames {
 }
 
 struct Formats {
-    static let BACKGROUND = hexStringToUIColor(hex: "afe5fd")
-    static let HIGHLIGHT = hexStringToUIColor(hex: "f4ac45")
+    static let BACKGROUND = hexStringToUIColor("afe5fd")
+    static let HIGHLIGHT = hexStringToUIColor("f4ac45")
     static let TITLE_FONT = "AvenirNext-Heavy"
     static let EMPHASIS_FONT = "AvenirNext-Bold"
     static let LABEL_FONT = "AvenirNext-DemiBold"

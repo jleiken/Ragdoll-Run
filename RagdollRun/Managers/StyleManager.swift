@@ -15,11 +15,11 @@ let NUM_STYLES: Int = 9
 /// order of 6 element style applicator array must be torso, head, legL, legR, armL, armR
 let STYLES: [String: [StyleApplicator]] = [
     "Orange": colorToStyleAppArray(Formats.HIGHLIGHT),
-    "Green": colorToStyleAppArray(hexStringToUIColor(hex: "d6ffb7")),
-    "Blue": colorToStyleAppArray(hexStringToUIColor(hex: "080357")),
+    "Green": colorToStyleAppArray(hexStringToUIColor("d6ffb7")),
+    "Blue": colorToStyleAppArray(hexStringToUIColor("080357")),
     "Black": colorToStyleAppArray(.black),
     "White": colorToStyleAppArray(.white),
-    "Purple": colorToStyleAppArray(hexStringToUIColor(hex: "63458a")),
+    "Purple": colorToStyleAppArray(hexStringToUIColor("63458a")),
     "Blocky": characterToStyleAppArray("Blocky"),
     "Alien": characterToStyleAppArray("Alien"),
     "Sherlock": characterToStyleAppArray("Sherlock"),

@@ -33,7 +33,7 @@ class ScoreScene: MessagesScene {
         scene?.addChild(title)
         
         // add a play again button
-        let playBut = makeButton(scene: scene!, text: "Play again 🏃‍♀️", name: SpriteNames.PLAY_NAME)
+        let playBut = makeScaledTextButton(scene: scene!, text: "Play again 🏃‍♀️", name: SpriteNames.PLAY_NAME)
         playBut.position = CGPoint(x: 0, y: -topOrBottom*0.7)
         scene?.addChild(playBut)
         

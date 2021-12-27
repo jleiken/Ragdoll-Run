@@ -21,11 +21,9 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         
         loadRewardedAd()
         
-        // set the background
-        let background = SKSpriteNode(imageNamed: "BackgroundImage")
-        background.size = scene!.size
-        background.zPosition = -1.0
-        scene?.addChild(background)
+        // set the background and clouds
+        scene?.backgroundColor = Formats.BACKGROUND
+        addMenuClouds(scene!)
         
         // add a title
         let title = SKLabelNode(text: "Customize your avatar")
@@ -36,7 +34,7 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         scene?.addChild(title)
         
         // back button
-        let backBut = makeLabel(text: "< Back")
+        let backBut = makeLabel("< Back")
         backBut.fontColor = .black
         backBut.fontSize = 20.0
         backBut.name = SpriteNames.BACK_NAME
@@ -44,7 +42,7 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         scene?.addChild(backBut)
         
         // coin count indicator
-        let coinIndicator = makeLabel(text: "💰 \(CloudVars.coinCount)")
+        let coinIndicator = makeLabel("💰 \(CloudVars.coinCount)")
         coinIndicator.name = SpriteNames.CI_NAME
         coinIndicator.fontColor = .black
         coinIndicator.fontSize = 20.0
@@ -52,20 +50,21 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         scene?.addChild(coinIndicator)
         
         // watch ad for coins button
-        let adBut = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.25, yFactor: 0.03))
-        adBut.position = CGPoint(x: 0, y: -topOrBottom*0.8)
+        let adBut = makeRoundedButton(sizeByScene(scene!, xFactor: 0.25, yFactor: 0.03))
         adBut.name = SpriteNames.REWARD_AD_NAME
-        let adLabel = makeLabel(text: "Watch an ad for up to 💰25")
+        
+        let adLabel = makeLabel("Watch an ad for up to 💰25")
         adLabel.name = SpriteNames.REWARD_AD_NAME
         adLabel.fontSize = 16.0
         adLabel.position = .zero
         
         adBut.addChild(adLabel)
+        adBut.position = CGPoint(x: 0, y: -topOrBottom*0.8)
         scene?.addChild(adBut)
         
         // purchase coins section, only shown if the user is authorized for in-app purchases
         if StoreObserver.shared.isAuthorizedForPayments {
-            let purchaseLabel = makeLabel(text: "Purchase 💰")
+            let purchaseLabel = makeLabel("Purchase 💰")
             purchaseLabel.fontColor = Formats.HIGHLIGHT
             purchaseLabel.fontName = Formats.TITLE_FONT
             purchaseLabel.fontSize = title.fontSize
@@ -75,27 +74,27 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
             let y = -topOrBottom*0.64
             var col = 0
             for coins in COIN_OPTIONS {
-                let button = SKSpriteNode(color: .black, size: sizeByScene(scene!, xFactor: 0.08, yFactor: 0.045))
+                let buttonSize = sizeByScene(scene!, xFactor: 0.08, yFactor: 0.045)
+                let button = makeRoundedButton(buttonSize)
                 button.position = CGPoint(x: xCoordMod3(scene!, col), y: y)
-                button.color = .black
                 let name = "\(SpriteNames.COIN_NAME)\(coins)"
                 button.name = name
                 
-                let cLabel = makeLabel(text: "💰\(coins)")
+                let cLabel = makeLabel("💰\(coins)")
                 cLabel.name = name
                 cLabel.fontSize = 16.0
                 cLabel.position.x = 0
-                cLabel.position.y = button.size.height/4
+                cLabel.position.y = buttonSize.height/4
                 
                 // Only if this is a valid transaction should we add it
                 if let price = StoreManager.shared.price(matchingIdentifier: name), let symbol = NSLocale.current.currencySymbol {
-                    let pLabel = makeLabel(text: "\(symbol)\(price)")
+                    let pLabel = makeLabel("\(symbol)\(price)")
                     pLabel.horizontalAlignmentMode = .center
                     pLabel.name = name
                     pLabel.fontColor = .white
                     pLabel.fontSize = 16.0
                     pLabel.position.x = 0
-                    pLabel.position.y = -button.size.height/4
+                    pLabel.position.y = -buttonSize.height/4
                     
                     button.addChild(cLabel)
                     button.addChild(pLabel)
@@ -170,6 +169,18 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         default:
             return 0
         }
+    }
+    
+    func makeRoundedButton(_ size: CGSize) -> SKShapeNode {
+        let buttonPath = CGPath(
+            roundedRect: CGRect(origin: CGPoint.zero, size: size),
+            cornerWidth: 7,
+            cornerHeight: 7,
+            transform: nil)
+        let button = SKShapeNode(path: buttonPath, centered: true)
+        button.strokeColor = .black
+        button.fillColor = .black
+        return button
     }
     
     func makeModelAvatar(_ scene: SKScene, _ name: String, _ style: [StyleApplicator]) -> SKNode {
