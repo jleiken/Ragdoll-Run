@@ -12,12 +12,28 @@ class MenuScene: MessagesScene {
             
     override func didMove(to view: SKView) {
         let topOrBottom = scene!.size.height/2
+        let leftOrRight = scene!.size.width/2
         
-        // set the background
-        let background = SKSpriteNode(imageNamed: "BackgroundImage")
-        background.size = scene!.size
-        background.zPosition = -1.0
-        scene!.addChild(background)
+        // set the background and add clouds
+        scene!.backgroundColor = Formats.BACKGROUND
+        
+        let totalAllowableDuration = 30.0
+        let cloudGenerator = CloudGenerator(scene: scene!, groundHeight: -topOrBottom)
+        for _ in 0...6 {
+            let cloud = cloudGenerator.generateCloud(xPosition: CGFloat.random(in: -leftOrRight...leftOrRight))
+            let inverseCloudScale = 1-(cloud.size.width/(scene!.size.width+scene!.size.height))
+            let cloudsDuration = totalAllowableDuration * inverseCloudScale
+            let cloudOffScreen = leftOrRight+(cloud.size.width/2)
+            let distFromLeftPercentage = abs((cloud.position.x+leftOrRight)/scene!.size.width)
+            cloud.run(SKAction.sequence([
+                SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration*distFromLeftPercentage),
+                SKAction.repeatForever(SKAction.sequence([
+                    SKAction.moveTo(x: cloudOffScreen, duration: 0),
+                    SKAction.moveTo(x: -cloudOffScreen, duration: cloudsDuration)
+                ]))
+            ]))
+            scene!.addChild(cloud)
+        }
         
         // add a title
         let title = SKLabelNode(text: "Ragdoll Run")

@@ -59,6 +59,8 @@
 		97931AB72494286B00520897 /* ScoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97931AB52494286A00520897 /* ScoreScene.sks */; };
 		97931AB92494287400520897 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97931AB82494287400520897 /* ScoreScene.swift */; };
 		97931ABA2494287400520897 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97931AB82494287400520897 /* ScoreScene.swift */; };
+		979424D9277A5A9F009C5876 /* CloudGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979424D8277A5A9F009C5876 /* CloudGenerator.swift */; };
+		979424DA277A5A9F009C5876 /* CloudGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979424D8277A5A9F009C5876 /* CloudGenerator.swift */; };
 		97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B7B246CA29A007F7BE6 /* AppDelegate.swift */; };
 		97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 97961B7D246CA29A007F7BE6 /* GameScene.sks */; };
 		97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B81246CA29A007F7BE6 /* GameScene.swift */; };
@@ -156,6 +158,7 @@
 		978D83DB24807F6100D65F36 /* Ragdoll Run.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Ragdoll Run.entitlements"; sourceTree = "<group>"; };
 		97931AB52494286A00520897 /* ScoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScoreScene.sks; sourceTree = "<group>"; };
 		97931AB82494287400520897 /* ScoreScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
+		979424D8277A5A9F009C5876 /* CloudGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudGenerator.swift; sourceTree = "<group>"; };
 		97961B78246CA29A007F7BE6 /* Ragdoll Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ragdoll Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		97961B7B246CA29A007F7BE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97961B7D246CA29A007F7BE6 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 				973C06AD249836A900B05407 /* silence.mp3 */,
 				97DA3437249168F000C565EA /* CoinManager.swift */,
 				97DA34492492DC6600C565EA /* CloudVars.swift */,
+				979424D8277A5A9F009C5876 /* CloudGenerator.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -564,6 +568,7 @@
 				97692F9A2489B6FF00F86E4D /* Utils.swift in Sources */,
 				97931ABA2494287400520897 /* ScoreScene.swift in Sources */,
 				97692F962489B6E600F86E4D /* MenuScene.swift in Sources */,
+				979424DA277A5A9F009C5876 /* CloudGenerator.swift in Sources */,
 				97692F972489B6F500F86E4D /* WorldGenerator.swift in Sources */,
 				97692F912489B6D000F86E4D /* GameScene.swift in Sources */,
 				97DA344124918E3E00C565EA /* StoreObserver.swift in Sources */,
@@ -580,6 +585,7 @@
 				97961BBA246DF4C2007F7BE6 /* Utils.swift in Sources */,
 				97269AD3248B148200DC0003 /* RunMatch.swift in Sources */,
 				97961BB8246DEDAA007F7BE6 /* AvatarManager.swift in Sources */,
+				979424D9277A5A9F009C5876 /* CloudGenerator.swift in Sources */,
 				97961B82246CA29A007F7BE6 /* GameScene.swift in Sources */,
 				974AF65E2475D50F00A1EC30 /* WorldGenerator.swift in Sources */,
 				977CB7802480553D00FAF268 /* MenuScene.swift in Sources */,

@@ -20,7 +20,6 @@ class WorldGenerator {
     private var _firstRender: Bool = true
     private var _groundHeight: CGFloat
     private var _scene: SKScene
-    private let _cloudHeightGenerator: GKGaussianDistribution
     
     private var ENEMY_FREQ = 20
     private var PIPE_FREQ = 15
@@ -30,6 +29,7 @@ class WorldGenerator {
     private var HOLE_FREQ = 5
     private let HOLE_SIZE: CGFloat
     
+    private let _cloudGenerator: CloudGenerator
     private let _enemyMovementSequence: SKAction
     private let _coinMovementSequence: SKAction
     
@@ -38,9 +38,7 @@ class WorldGenerator {
         _groundHeight = groundHeight
         HOLE_SIZE = abs(_groundHeight / 1.4)
         _scene = scene
-        _cloudHeightGenerator = GKGaussianDistribution(randomSource: GKRandomSource(),
-                                                       lowestValue: Int(_groundHeight),
-                                                       highestValue: Int(_scene.size.height/2))
+        _cloudGenerator = CloudGenerator(scene: scene, groundHeight: groundHeight)
         
         _enemyMovementSequence = SKAction.repeatForever(SKAction.sequence([
             SKAction.moveBy(x: _scene.size.width * 0.4, y: 0, duration: 0.4),
@@ -130,39 +128,12 @@ class WorldGenerator {
         
         while index < to {
             if randLessThan(CLOUD_FREQ) {
-                // pick a type of cloud
-                let cloudType = Int.random(in: 1...3)
-                
-                let cloudFileName = "Cloud\(cloudType)"
-                
-                // add the cloud at a low z index
-                let cloud = cloudFrom(fileNamed: cloudFileName)
-                cloud.position = CGPoint(x: index, y: CGFloat(_cloudHeightGenerator.nextInt()))
-                cloud.zPosition = CGFloat(cloudType)
+                let cloud = _cloudGenerator.generateCloud(xPosition: index)
                 _scene.addChild(cloud)
-                
-                // add the cloud shadow
-                let cloudShadow = cloud.copy() as! SKSpriteNode
-                cloudShadow.position.x += 5
-                cloudShadow.position.y -= 3
-                cloudShadow.zPosition -= 1
-                cloudShadow.colorBlendFactor = 0.9
-                cloudShadow.color = .darkGray
-                _scene.addChild(cloudShadow)
             }
             
             index += toIncrement
         }
-    }
-    
-    private func cloudFrom(fileNamed: String) -> SKSpriteNode {
-        let cloud = SKSpriteNode(imageNamed: fileNamed)
-        
-        // pick a random size
-        let scaleFactor = CGFloat.random(in: 0.06...0.12)
-        cloud.size = sizeByScene(_scene, xFactor: scaleFactor, yFactor: scaleFactor)
-        
-        return cloud
     }
 
     /// Once the ground is generated, generate enemies and obstacles from-to based on ENEMY_FREQ and PIPE_FREQ
