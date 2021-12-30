@@ -161,17 +161,25 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         }
     }
     
-    func belowVerticalMovement(_ dy: CGFloat) -> Bool {
-        return _avatarBody.velocity.dy < dy
-    }
-    
-    func touchingSomething() -> Bool {
-        for body in _avatarBody.allContactedBodies() {
-            if body.node?.parent != _fullNode {
-                return true
+    /// Increments the position of the avatar by increment.
+    /// If the avatar has gotten out of sync with the camera, it will also push it slightly extra towards the camera
+    func walk(_ increment: CGFloat) {
+        _fullNode.position.x += increment
+        
+        let cameraOffset = ((_scene.camera?.position.x ?? _fullNode.position.x) - _cameraToAvatarOffset) - _fullNode.position.x
+        if Int(abs(cameraOffset)) > CAMERA_MARGIN {
+            if cameraOffset < 0 {
+                _fullNode.position.x -= 1
+            } else {
+                _fullNode.position.x += 1
             }
         }
-        return false
+    }
+    
+    /// Returns true if the avatar is off the screen
+    func offScreen() -> Bool {
+        return _fullNode.position.y < -_scene.size.height
+            || _fullNode.position.x < _scene.camera!.position.x - (_scene.size.width / 2)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -189,23 +197,13 @@ class AvatarManager: NSObject, SKPhysicsContactDelegate {
         }
     }
     
-    /// Increments the position of the avatar by increment.
-    /// If the avatar has gotten out of sync with the camera, it will also push it slightly extra towards the camera
-    func walk(_ increment: CGFloat) {
-        _fullNode.position.x += increment
-        
-        let cameraOffset = ((_scene.camera?.position.x ?? _fullNode.position.x) - _cameraToAvatarOffset) - _fullNode.position.x
-        if Int(abs(cameraOffset)) > CAMERA_MARGIN {
-            if cameraOffset < 0 {
-                _fullNode.position.x -= 1
-            } else {
-                _fullNode.position.x += 1
-            }
-        }
+    private func belowVerticalMovement(_ dy: CGFloat) -> Bool {
+        return _avatarBody.velocity.dy < dy
     }
     
-    func offScreen() -> Bool {
-        return _fullNode.position.y < -_scene.size.height
-            || _fullNode.position.x < _scene.camera!.position.x - (_scene.size.width / 2)
+    private func touchingSomething() -> Bool {
+        return _avatarBody.allContactedBodies().contains(where: { (body: SKPhysicsBody) -> Bool in
+            return body.node?.parent != _fullNode
+        })
     }
 }
