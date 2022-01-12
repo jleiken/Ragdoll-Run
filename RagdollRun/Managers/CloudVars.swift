@@ -13,7 +13,6 @@ struct CloudKeys {
     static let COIN_KEY = "coinCount"
     static let STYLE_KEY = "selectedStyle"
     static let UNLOCKS_KEY = "unlockedStyles"
-    static let AD_KEY = "hideAds"
     static let MUTE_KEY = "muted"
 }
 
@@ -88,22 +87,6 @@ class CloudVars {
             NSUbiquitousKeyValueStore.default.set(newValue, forKey: CloudKeys.COIN_KEY)
         }
     }
-
-    static private var _hideAds: Bool = false
-    /// True if the user has paid to hide ads, false otherwise
-    static var hideAds: Bool {
-        get {
-            // if we're the default value, just check to make sure they haven't purchased ad-free
-            if !_hideAds {
-                _hideAds = NSUbiquitousKeyValueStore.default.bool(forKey: CloudKeys.AD_KEY)
-            }
-            return _hideAds
-        }
-        set {
-            _hideAds = newValue
-            NSUbiquitousKeyValueStore.default.set(newValue, forKey: CloudKeys.AD_KEY)
-        }
-    }
     
     private static var _highScore: Int64 = -1
     /// The player's high score
@@ -135,8 +118,6 @@ class CloudVars {
             if let newValue = NSUbiquitousKeyValueStore.default.array(forKey: forKey) as? [String] {
                 _unlockedStyles = newValue
             }
-        case CloudKeys.AD_KEY:
-            _hideAds = NSUbiquitousKeyValueStore.default.bool(forKey: forKey)
         case CloudKeys.MUTE_KEY:
             _muted = NSUbiquitousKeyValueStore.default.bool(forKey: forKey)
         default:

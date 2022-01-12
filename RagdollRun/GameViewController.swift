@@ -8,12 +8,9 @@
 
 import UIKit
 import SpriteKit
-import GoogleMobileAds
 
 class GameViewController: UIViewController {
-    
-    private var _bannerView: GADBannerView?
-    
+        
     private static var _sharedSelf: GameViewController?
 
     override func viewDidLoad() {
@@ -34,32 +31,6 @@ class GameViewController: UIViewController {
             }
             
             view.ignoresSiblingOrder = true
-        }
-        
-        if !CloudVars.hideAds {
-            // In this case, we instantiate the banner with desired ad size.
-            _bannerView = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
-            addBannerViewToView(_bannerView!)
-            _bannerView?.adUnitID = AdMob.bannerUnitID
-            _bannerView?.rootViewController = self
-            _bannerView?.load(GADRequest())
-        }
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        let guide = view.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            bannerView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
-            bannerView.leftAnchor.constraint(equalTo: guide.leftAnchor),
-            bannerView.rightAnchor.constraint(equalTo: guide.rightAnchor),
-        ])
-    }
-    
-    static func hideAdsIfNecessary() {
-        if let controller = _sharedSelf {
-            controller._bannerView?.removeFromSuperview()
         }
     }
 

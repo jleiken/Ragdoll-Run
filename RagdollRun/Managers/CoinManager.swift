@@ -22,9 +22,5 @@ func registerPurchase(_ transaction: SKPaymentTransaction) {
                 CloudVars.coinCount += value
             }
         }
-    } else if (state == .purchased || state == .restored) && productID == SpriteNames.REMOVE_AD_NAME {
-        // the user has purchased the remove ad option, store that value
-        CloudVars.hideAds = true
-        GameViewController.hideAdsIfNecessary()
     }
 }

@@ -8,7 +8,6 @@
 
 import SpriteKit
 import GameplayKit
-import GoogleMobileAds
 
 class GameScene: MessagesScene {
     
@@ -22,9 +21,7 @@ class GameScene: MessagesScene {
     private var _worldGenerator: WorldGenerator?
     private var _counter: SKLabelNode?
     private var _groundHeight: CGFloat?
-    
-    private var _interstitial: GADInterstitial?
-    
+        
     var messageVC: GameMessageViewController?
     
     override func didMove(to view: SKView) {
@@ -61,10 +58,6 @@ class GameScene: MessagesScene {
         }
         
         _activeScene = true
-        
-        _interstitial = GADInterstitial(adUnitID: AdMob.intersUnitID)
-        let request = GADRequest()
-        _interstitial?.load(request)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -189,13 +182,6 @@ class GameScene: MessagesScene {
             scoreBut.fontColor = .red
             scoreBut.name = SpriteNames.SCORE_NAME
             scene.addChild(scoreBut)
-            
-            // give them a 50/50 chance of getting an interstitial
-            if !CloudVars.hideAds && _interstitial?.isReady ?? false {
-                if let vc = messageVC {
-                    _interstitial?.present(fromRootViewController: vc)
-                }
-            }
         } else {
             // menu button
             let menuBut = SKLabelNode(text: "🏠 Menu")

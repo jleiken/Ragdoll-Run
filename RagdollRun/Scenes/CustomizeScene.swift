@@ -7,20 +7,15 @@
 //
 
 import SpriteKit
-import GoogleMobileAds
 
-class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
+class CustomizeScene: MessagesScene {
     
     private static var _staticScene: SKScene?
-    
-    private var _rewardedAd: GADRewardedAd?
-            
+                
     override func didMove(to view: SKView) {
         CustomizeScene._staticScene = scene
         let topOrBottom = scene!.size.height/2
-        
-        loadRewardedAd()
-        
+                
         // set the background and clouds
         scene?.backgroundColor = Formats.BACKGROUND
         addMenuClouds(scene!)
@@ -48,19 +43,6 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
         coinIndicator.fontSize = 20.0
         coinIndicator.position = CGPoint(x: scene!.size.width*1/3, y: backBut.position.y)
         scene?.addChild(coinIndicator)
-        
-        // watch ad for coins button
-        let adBut = makeRoundedButton(sizeByScene(scene!, xFactor: 0.25, yFactor: 0.03))
-        adBut.name = SpriteNames.REWARD_AD_NAME
-        
-        let adLabel = makeLabel("Watch an ad for up to 💰25")
-        adLabel.name = SpriteNames.REWARD_AD_NAME
-        adLabel.fontSize = 16.0
-        adLabel.position = .zero
-        
-        adBut.addChild(adLabel)
-        adBut.position = CGPoint(x: 0, y: -topOrBottom*0.8)
-        scene?.addChild(adBut)
         
         // purchase coins section, only shown if the user is authorized for in-app purchases
         if StoreObserver.shared.isAuthorizedForPayments {
@@ -229,12 +211,6 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
                 presentScene(
                     view, makeScene(of: MenuScene.self, with: "MenuScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
-            } else if touchedNode.name == SpriteNames.REWARD_AD_NAME {
-                if _rewardedAd?.isReady ?? false {
-                    if let controller = controller {
-                        _rewardedAd?.present(fromRootViewController: controller, delegate: self)
-                    }
-                }
             } else if let name = touchedNode.name {
                 // name must be a button
                 // check if it's an in-app puchase button
@@ -288,26 +264,5 @@ class CustomizeScene: MessagesScene, GADRewardedAdDelegate {
             return scene.children[i] as? SKSpriteNode
         }
         return nil
-    }
-
-    func loadRewardedAd() {
-        _rewardedAd = GADRewardedAd(adUnitID: AdMob.rewardUnitID)
-        _rewardedAd?.load(GADRequest()) { error in
-            if let error = error {
-                print("Rewarded ad failed to load with error: \(error)")
-            } else {
-                print("Rewarded ad loaded")
-            }
-        }
-    }
-    
-    func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
-        loadRewardedAd()
-    }
-    
-    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
-        print("Reward received with currency: \(reward.type), amount \(reward.amount).")
-        CloudVars.coinCount += Int64(NSInteger(truncating: reward.amount))
-        CustomizeScene.updateCoinCount()
     }
 }

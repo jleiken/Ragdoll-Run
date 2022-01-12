@@ -31,17 +31,13 @@ class MenuScene: MessagesScene {
         scene!.addChild(playBut)
         
         let customizeBut = makeScaledTextButton(scene: scene!, text: "Customize 🎨", name: SpriteNames.CUSTOMIZE_NAME)
-        customizeBut.position = CGPoint(x: 0, y: topOrBottom/4)
+        customizeBut.position = CGPoint(x: 0, y: topOrBottom/6)
         scene!.addChild(customizeBut)
         
         // Only let the user remove ads if they're authorized to pay
         if StoreObserver.shared.isAuthorizedForPayments {
-            let adsBut = makeScaledTextButton(scene: scene!, text: "Remove ads", name: SpriteNames.REMOVE_AD_NAME)
-            adsBut.position = .zero
-            scene!.addChild(adsBut)
-            
             let restoreBut = makeScaledTextButton(scene: scene!, text: "Restore purchases", name: SpriteNames.RESTORE_NAME)
-            restoreBut.position = CGPoint(x: 0, y: -topOrBottom/4)
+            restoreBut.position = CGPoint(x: 0, y: -topOrBottom/6)
             scene!.addChild(restoreBut)
         }
         
@@ -70,8 +66,6 @@ class MenuScene: MessagesScene {
                 presentScene(
                     view, makeScene(of: CustomizeScene.self, with: "CustomizeScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
-            case SpriteNames.REMOVE_AD_NAME:
-                StoreManager.shared.paymentRequest(matchingIdentifier: touchedNode.name!)
             case SpriteNames.RESTORE_NAME:
                 StoreObserver.shared.restore()
             case SpriteNames.MUTE_NAME:
