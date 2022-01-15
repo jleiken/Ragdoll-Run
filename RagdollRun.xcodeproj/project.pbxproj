@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,7 @@
 		97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F7C2489A06100F86E4D /* MessagesViewController.swift */; };
 		97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97692F7E2489A06100F86E4D /* MainInterface.storyboard */; };
 		97692F822489A06500F86E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97692F812489A06500F86E4D /* Assets.xcassets */; };
-		97692F862489A06500F86E4D /* Ragdoll Run Messages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		97692F862489A06500F86E4D /* Ragdoll Run Messages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 97692F772489A06100F86E4D /* Ragdoll Run Messages.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		97692F8B2489A08F00F86E4D /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97692F792489A06100F86E4D /* Messages.framework */; };
 		97692F8F2489A74300F86E4D /* RunMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97692F8E2489A74300F86E4D /* RunMatch.swift */; };
 		97692F902489B18100F86E4D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97961B83246CA29A007F7BE6 /* GameViewController.swift */; };
@@ -588,6 +588,7 @@
 /* Begin PBXTargetDependency section */
 		97692F852489A06500F86E4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 97692F762489A06100F86E4D /* Ragdoll Run */;
 			targetProxy = 97692F842489A06500F86E4D /* PBXContainerItemProxy */;
 		};
@@ -822,7 +823,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
 				PRODUCT_NAME = "Ragdoll Run";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -851,7 +852,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jleiken.RagdollRun;
 				PRODUCT_NAME = "Ragdoll Run";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

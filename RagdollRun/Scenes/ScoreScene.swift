@@ -18,11 +18,9 @@ class ScoreScene: MessagesScene {
     override func didMove(to view: SKView) {
         let topOrBottom = scene!.size.height/2
         
-        // set the background
-        let background = SKSpriteNode(imageNamed: "BackgroundImage")
-        background.size = scene!.size
-        background.zPosition = -1.0
-        scene!.addChild(background)
+        // set the background and add clouds
+        scene!.backgroundColor = Formats.BACKGROUND
+        addMenuClouds(scene!)
         
         // add a title
         let title = SKLabelNode(text: "Scores")
