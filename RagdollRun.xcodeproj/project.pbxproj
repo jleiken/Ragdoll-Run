@@ -77,6 +77,10 @@
 		97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA2928248C6A1A00CF418E /* ReadyViewController.swift */; };
 		97EA292C248C6A8500CF418E /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292B248C6A8500CF418E /* ScoreViewController.swift */; };
 		97EA292E2490385400CF418E /* ViewControllerCommunicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */; };
+		FF97110427924DC700B207BB /* ReadyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97110327924DC700B207BB /* ReadyScene.swift */; };
+		FF97110527924DC700B207BB /* ReadyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF97110327924DC700B207BB /* ReadyScene.swift */; };
+		FF97110727925B5D00B207BB /* ReadyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF97110627925B5D00B207BB /* ReadyScene.sks */; };
+		FF97110827925B5D00B207BB /* ReadyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FF97110627925B5D00B207BB /* ReadyScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +173,8 @@
 		97EA2928248C6A1A00CF418E /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
 		97EA292B248C6A8500CF418E /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		97EA292D2490385400CF418E /* ViewControllerCommunicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCommunicators.swift; sourceTree = "<group>"; };
+		FF97110327924DC700B207BB /* ReadyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyScene.swift; sourceTree = "<group>"; };
+		FF97110627925B5D00B207BB /* ReadyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ReadyScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +251,8 @@
 				97269AD0248B13C300DC0003 /* SceneMessagesComm.swift */,
 				97931AB52494286A00520897 /* ScoreScene.sks */,
 				97931AB82494287400520897 /* ScoreScene.swift */,
+				FF97110327924DC700B207BB /* ReadyScene.swift */,
+				FF97110627925B5D00B207BB /* ReadyScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -466,6 +474,7 @@
 				97692F822489A06500F86E4D /* Assets.xcassets in Resources */,
 				97692F922489B6DA00F86E4D /* MenuScene.sks in Resources */,
 				97692F802489A06100F86E4D /* MainInterface.storyboard in Resources */,
+				FF97110827925B5D00B207BB /* ReadyScene.sks in Resources */,
 				97269ACF248B0B5900DC0003 /* Assets.xcassets in Resources */,
 				973C06A824982A3500B05407 /* death.mp3 in Resources */,
 				973C06A52498225900B05407 /* jump.mp3 in Resources */,
@@ -484,6 +493,7 @@
 				97961B7E246CA29A007F7BE6 /* GameScene.sks in Resources */,
 				97961BB6246CA7AF007F7BE6 /* Main_iPhone.storyboard in Resources */,
 				97961B89246CA29C007F7BE6 /* Assets.xcassets in Resources */,
+				FF97110727925B5D00B207BB /* ReadyScene.sks in Resources */,
 				977CB77C24804F7100FAF268 /* MenuScene.sks in Resources */,
 				973C06A724982A3500B05407 /* death.mp3 in Resources */,
 				973C06A42498225900B05407 /* jump.mp3 in Resources */,
@@ -521,6 +531,7 @@
 				97EA292A248C6A2000CF418E /* ReadyViewController.swift in Sources */,
 				97692F7D2489A06100F86E4D /* MessagesViewController.swift in Sources */,
 				97DA344B2492DC6600C565EA /* CloudVars.swift in Sources */,
+				FF97110527924DC700B207BB /* ReadyScene.swift in Sources */,
 				97692F992489B6FA00F86E4D /* StyleManager.swift in Sources */,
 				97692F952489B6E300F86E4D /* CustomizeScene.swift in Sources */,
 				97DA34442491918100C565EA /* Data.swift in Sources */,
@@ -560,6 +571,7 @@
 				97DA344024918E3E00C565EA /* StoreObserver.swift in Sources */,
 				97DA343624904AF900C565EA /* ViewControllerCommunicators.swift in Sources */,
 				976256E82485C67C00E3A277 /* StyleManager.swift in Sources */,
+				FF97110427924DC700B207BB /* ReadyScene.swift in Sources */,
 				97DA344A2492DC6600C565EA /* CloudVars.swift in Sources */,
 				97961B7C246CA29A007F7BE6 /* AppDelegate.swift in Sources */,
 				97DA34432491918100C565EA /* Data.swift in Sources */,

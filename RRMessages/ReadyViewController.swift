@@ -8,14 +8,22 @@
 
 import Foundation
 import UIKit
+import SpriteKit
 
 class ReadyViewController: ViewControllerTransferer {
     
     static let storyboardID = "ReadyViewController"
     
-    @IBAction func didTapReady(_: AnyObject) {
-        presenter?.markReady(true)
-        presenter?.presentMessagesView(newView: .play)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let view = self.view as! SKView? {
+            if let scene = ReadyScene(fileNamed: "ReadyScene") {
+                scene.presenter = presenter
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+        }
     }
-    
 }
