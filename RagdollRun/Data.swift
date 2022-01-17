@@ -27,7 +27,6 @@ struct SpriteNames {
     static let MENU_NAME = "menuBut"
     static let PLAY_NAME = "playBut"
     static let BACK_NAME = "backBut"
-    static let RESTORE_NAME = "restoreBut"
     static let MUTE_NAME = "muteBut"
     static let COIN_NAME = "coins"
     static let SCORE_NAME = "scoreBut"

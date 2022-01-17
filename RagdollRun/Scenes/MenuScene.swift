@@ -34,13 +34,6 @@ class MenuScene: MessagesScene {
         customizeBut.position = CGPoint(x: 0, y: topOrBottom/6)
         scene!.addChild(customizeBut)
         
-        // Only let the user remove ads if they're authorized to pay
-        if StoreObserver.shared.isAuthorizedForPayments {
-            let restoreBut = makeScaledTextButton(scene: scene!, text: "Restore purchases", name: SpriteNames.RESTORE_NAME)
-            restoreBut.position = CGPoint(x: 0, y: -topOrBottom/6)
-            scene!.addChild(restoreBut)
-        }
-        
         // mute button, draw for the first time
         redrawMuteButton()
         
@@ -66,8 +59,6 @@ class MenuScene: MessagesScene {
                 presentScene(
                     view, makeScene(of: CustomizeScene.self, with: "CustomizeScene"),
                     transition: SKTransition.fade(withDuration: 0.2))
-            case SpriteNames.RESTORE_NAME:
-                StoreObserver.shared.restore()
             case SpriteNames.MUTE_NAME:
                 CloudVars.muted = !CloudVars.muted
                 redrawMuteButton()
