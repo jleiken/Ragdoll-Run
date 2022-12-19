@@ -25,6 +25,14 @@ class MenuScene: MessagesScene {
         title.position = CGPoint(x: 0, y: topOrBottom*2/3)
         scene!.addChild(title)
         
+        // add title drop shadow
+        let titleShadow = title.copy() as! SKLabelNode
+        titleShadow.fontColor = Formats.SHADOW_COLOR
+        titleShadow.alpha = Formats.SHADOW_ALPHA
+        titleShadow.position = Formats.SHADOW_STANDARD_OFFSET
+        titleShadow.zPosition -= 1
+        title.addChild(titleShadow)
+        
         // add the buttons
         let playBut = makeScaledTextButton(scene: scene!, text: "Play 🏃‍♀️", name: SpriteNames.PLAY_NAME)
         playBut.position = CGPoint(x: 0, y: topOrBottom/2)

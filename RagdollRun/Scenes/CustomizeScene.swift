@@ -162,6 +162,16 @@ class CustomizeScene: MessagesScene {
         let button = SKShapeNode(path: buttonPath, centered: true)
         button.strokeColor = .black
         button.fillColor = .black
+        
+        let shadow = SKShapeNode(path: buttonPath, centered: true)
+        shadow.fillColor = Formats.SHADOW_COLOR
+        shadow.strokeColor = Formats.SHADOW_COLOR
+        shadow.alpha = Formats.SHADOW_ALPHA
+        shadow.position = Formats.SHADOW_STANDARD_OFFSET
+        shadow.zPosition = -1
+        shadow.name = name
+        button.addChild(shadow)
+        
         return button
     }
     

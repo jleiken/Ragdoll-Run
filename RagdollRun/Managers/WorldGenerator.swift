@@ -112,6 +112,7 @@ class WorldGenerator {
             
             // if it shouldn't be a whole, make a rectangle for the ground
             let ground = SKSpriteNode(color: WorldGenerator.GROUND_COLOR, size: CGSize(width: HOLE_SIZE+2, height: abs(_groundHeight)))
+            //ground.texture = SKTexture(vectorNoiseWithSmoothness: 0, size: ground.size)
             // position is x: nextStart, y: bottom of the screen
             ground.position = CGPoint(x: CGFloat(i) * HOLE_SIZE, y: _groundHeight * 1.5)
             ground.name = SpriteNames.GROUND_NAME

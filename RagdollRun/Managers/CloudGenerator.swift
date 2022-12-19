@@ -36,10 +36,10 @@ class CloudGenerator {
         
         // add the cloud shadow
         let cloudShadow = cloud.copy() as! SKSpriteNode
-        cloudShadow.position = CGPoint(x: 5, y: -3)
-        cloudShadow.zPosition -= 0.1
-        cloudShadow.colorBlendFactor = 0.9
-        cloudShadow.color = .darkGray
+        cloudShadow.position = CGPoint(x: 4, y: -2.5)
+        cloudShadow.zPosition -= 1
+        cloudShadow.color = Formats.SHADOW_COLOR
+        cloudShadow.alpha = Formats.SHADOW_ALPHA
         
         cloud.addChild(cloudShadow)
         return cloud

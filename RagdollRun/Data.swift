@@ -38,6 +38,9 @@ struct SpriteNames {
 struct Formats {
     static let BACKGROUND = hexStringToUIColor("afe5fd")
     static let HIGHLIGHT = hexStringToUIColor("f4ac45")
+    static let SHADOW_COLOR = SKColor.black
+    static let SHADOW_ALPHA = 0.25
+    static let SHADOW_STANDARD_OFFSET = CGPoint(x: 2.5, y: -2.5)
     static let TITLE_FONT = "AvenirNext-Heavy"
     static let EMPHASIS_FONT = "AvenirNext-Bold"
     static let LABEL_FONT = "AvenirNext-DemiBold"
